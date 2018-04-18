@@ -8,6 +8,7 @@ def Group(Closure closure) {
 
  libraries()
  kotlin()
+ archiComponents()
  ui()
  testing()
  **/
@@ -29,6 +30,16 @@ ext {
     }
 
     /**
+     * Android Architecture Components
+     */
+    archiComponents = Group {
+        implementation deps.archiComponents.runtime
+        implementation deps.archiComponents.extensions
+        implementation deps.archiComponents.liveData
+        kapt deps.archiComponents.compiler
+    }
+
+    /**
      * UI
      */
     ui = Group {
@@ -43,6 +54,7 @@ ext {
      */
     testing = Group {
         testImplementation(deps.jUnit) { exclude group: 'org.hamcrest' }
+        testImplementation deps.archiComponents.testing
         androidTestImplementation(deps.androidTest.runner)
         androidTestImplementation(deps.androidTest.espresso)
     }
