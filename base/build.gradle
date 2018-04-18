@@ -12,6 +12,7 @@ android {
 dependencies {
     kotlin()
     archiComponents()
+    rx()
     ui()
     testing()
 

@@ -9,6 +9,7 @@ def Group(Closure closure) {
  libraries()
  kotlin()
  archiComponents()
+ rx()
  ui()
  testing()
  **/
@@ -37,6 +38,14 @@ ext {
         implementation deps.archiComponents.extensions
         implementation deps.archiComponents.liveData
         kapt deps.archiComponents.compiler
+    }
+
+    /**
+     * Rx
+     */
+    rx = Group {
+        implementation deps.rx.android
+        implementation deps.rx.java
     }
 
     /**
