@@ -1,4 +1,4 @@
-package io.rcm.base;
+package io.rcm.wicker.base;
 
 import org.junit.Test;
 
