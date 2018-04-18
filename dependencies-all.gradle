@@ -19,6 +19,13 @@ ext.deps = [
         'app' : "com.android.support:appcompat-v7:$versions.androidSupport",
         'compat' : "com.android.support:support-compat:$versions.androidSupport",
     ],
+    'archiComponents' : [
+        'compiler' : "android.arch.lifecycle:compiler:$versions.archiComponents",
+        'extensions': "android.arch.lifecycle:extensions:$versions.archiComponents",
+        'liveData' : "android.arch.lifecycle:livedata:$versions.archiComponents",
+        'runtime' : "android.arch.lifecycle:runtime:$versions.archiComponents",
+        'testing' : "android.arch.core:core-testing:$versions.archiComponents"
+    ],
 
     /**
      * Testing
