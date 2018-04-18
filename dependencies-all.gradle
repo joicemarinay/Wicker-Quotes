@@ -26,6 +26,10 @@ ext.deps = [
         'runtime' : "android.arch.lifecycle:runtime:$versions.archiComponents",
         'testing' : "android.arch.core:core-testing:$versions.archiComponents"
     ],
+    'rx' : [
+        'android': "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+        'java'   : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
+    ],
 
     /**
      * Testing
