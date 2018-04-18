@@ -1,36 +1,21 @@
 apply plugin: 'com.android.feature'
+apply from: '../config-android.gradle'
+apply from: '../dependencies-groups.gradle'
 
 android {
-    compileSdkVersion 27
-
-
     baseFeature true
-
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
 }
 
+/**
+ * Dependencies
+ */
 dependencies {
-    api 'com.android.support:appcompat-v7:27.1.1'
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    kotlin()
+    ui()
+    testing()
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    application project(':app')
+    // For test rules, TODO: improve
+    implementation(deps.jUnit) {
+        exclude group: 'org.hamcrest'
+    }
 }
