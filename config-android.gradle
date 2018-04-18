@@ -1,0 +1,27 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+/**
+ * Common Android Config Settings
+ */
+android {
+    compileSdkVersion versions.targetSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+    }
+}
+
+/**
+ * Common Flags
+ */
+androidExtensions {
+    experimental = true
+}
+
+kapt {
+    mapDiagnosticLocations = true
+}
