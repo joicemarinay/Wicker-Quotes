@@ -1,0 +1,23 @@
+ext.versions = [
+
+        /**
+         * Build
+         */
+        'gradle' : '3.1.1',
+        'kotlin' : '1.2.31',
+        'buildTools' : '27.0.3',
+        'minSdk' : 16,
+        'targetSdk' : 27,
+
+        /**
+         * Main
+         */
+        'androidSupport' : '27.1.0',
+
+        /**
+         * Testing
+         */
+        'jUnit' : '4.12',
+        'androidTestRunner' : '1.0.1',
+        'espresso' : '3.0.1',
+]

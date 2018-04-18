@@ -1,0 +1,51 @@
+def Group(Closure closure) {
+    closure.delegate = dependencies
+    return closure
+}
+
+/**
+ All groups below for easy copy/pasting:
+
+ libraries()
+ kotlin()
+ ui()
+ testing()
+ **/
+
+ext {
+
+    /**
+     * Libraries
+     */
+    libraries = Group {
+        implementation deps.libs
+    }
+
+    /**
+     * Kotlin
+     */
+    kotlin = Group {
+        implementation deps.kotlin.lib
+    }
+
+    /**
+     * UI
+     */
+    ui = Group {
+        implementation deps.androidSupport.app
+        implementation deps.androidSupport.compat
+    }
+
+    /**
+     * Testing
+     *
+     * Note: Put test modules of other dependencies here
+     */
+    testing = Group {
+        testImplementation(deps.jUnit) { exclude group: 'org.hamcrest' }
+        androidTestImplementation(deps.androidTest.runner)
+        androidTestImplementation(deps.androidTest.espresso)
+    }
+
+    //Can add groups for Dagger, debugging, network, Rx, Android Archi Components
+}

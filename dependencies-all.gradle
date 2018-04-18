@@ -1,0 +1,31 @@
+ext.deps = [
+
+    /**
+     * Build
+     */
+    'build' : [
+        'gradle': "com.android.tools.build:gradle:$versions.gradle",
+        'kotlin': "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+    ],
+
+    /**
+     * Main
+     */
+    'libs' : fileTree(include: ['*.jar'], dir: 'libs'),
+    'kotlin' : [
+        'lib' : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+    ],
+    'androidSupport' : [
+        'app' : "com.android.support:appcompat-v7:$versions.androidSupport",
+        'compat' : "com.android.support:support-compat:$versions.androidSupport",
+    ],
+
+    /**
+     * Testing
+     */
+    'jUnit' : "junit:junit:$versions.jUnit",
+    'androidTest' : [
+        'runner'  : "com.android.support.test:runner:$versions.androidTestRunner",
+        'espresso': "com.android.support.test.espresso:espresso-core:$versions.espresso",
+    ],
+]
