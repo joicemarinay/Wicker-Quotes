@@ -9,6 +9,7 @@ def Group(Closure closure) {
  libraries()
  kotlin()
  archiComponents()
+ dagger()
  rx()
  ui()
  testing()
@@ -38,6 +39,17 @@ ext {
         implementation deps.archiComponents.extensions
         implementation deps.archiComponents.liveData
         kapt deps.archiComponents.compiler
+    }
+
+    /**
+     * Dagger
+     */
+    dagger = Group {
+        implementation deps.dagger.dagger
+        kapt deps.dagger.compiler
+        implementation deps.dagger.android
+        implementation deps.dagger.support
+        kapt deps.dagger.processor
     }
 
     /**
