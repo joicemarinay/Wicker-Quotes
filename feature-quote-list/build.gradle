@@ -8,6 +8,7 @@ apply from: '../dependencies-groups.gradle'
 dependencies {
     kotlin()
     archiComponents()
+    dagger()
     rx()
     ui()
     testing()
