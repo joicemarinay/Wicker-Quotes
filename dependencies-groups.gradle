@@ -39,6 +39,11 @@ ext {
         implementation deps.archiComponents.extensions
         implementation deps.archiComponents.liveData
         kapt deps.archiComponents.compiler
+
+        //Room
+        implementation deps.archiComponents.roomRuntime
+        implementation deps.archiComponents.roomRxJava
+        kapt deps.archiComponents.roomCompiler
     }
 
     /**
