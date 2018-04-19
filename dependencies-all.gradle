@@ -23,6 +23,9 @@ ext.deps = [
         'compiler' : "android.arch.lifecycle:compiler:$versions.archiComponents",
         'extensions': "android.arch.lifecycle:extensions:$versions.archiComponents",
         'liveData' : "android.arch.lifecycle:livedata:$versions.archiComponents",
+        'roomRuntime' : "android.arch.persistence.room:runtime:$versions.room",
+        'roomRxJava' : "android.arch.persistence.room:rxjava2:$versions.room",
+        'roomCompiler' : "android.arch.persistence.room:compiler:$versions.room",
         'runtime' : "android.arch.lifecycle:runtime:$versions.archiComponents",
         'testing' : "android.arch.core:core-testing:$versions.archiComponents"
     ],
