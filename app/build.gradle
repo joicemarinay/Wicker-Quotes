@@ -3,8 +3,8 @@ apply from: '../config-android.gradle'
 apply from: '../dependencies-groups.gradle'
 
 /**
-* App name and version
-*/
+ * App name and version
+ */
 enum BuildType {
     DEBUG,
     RELEASE
@@ -34,7 +34,7 @@ android {
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    
+
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
