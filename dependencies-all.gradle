@@ -49,4 +49,8 @@ ext.deps = [
         'runner'  : "com.android.support.test:runner:$versions.androidTestRunner",
         'espresso': "com.android.support.test.espresso:espresso-core:$versions.espresso",
     ],
+    'mockito' : [
+        'android' : "org.mockito:mockito-android:$versions.mockitoAndroid",
+        'kotlin' : "com.nhaarman:mockito-kotlin:$versions.mockitoKotlin"
+    ]
 ]
