@@ -59,6 +59,7 @@ dependencies {
     dagger()
     rx()
     ui()
+    androidTesting()
     testing()
 
     implementation project(path: ':base')

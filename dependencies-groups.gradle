@@ -12,6 +12,7 @@ def Group(Closure closure) {
  dagger()
  rx()
  ui()
+ androidTesting()
  testing()
  **/
 
@@ -74,6 +75,18 @@ ext {
     }
 
     /**
+     * Android Testing
+     */
+    androidTesting = Group {
+        androidTestImplementation(deps.androidTest.runner)
+        androidTestImplementation(deps.androidTest.espresso)
+
+        //Mockito
+        androidTestImplementation deps.mockito.android
+        androidTestImplementation deps.mockito.kotlin
+    }
+
+    /**
      * Testing
      *
      * Note: Put test modules of other dependencies here
@@ -81,8 +94,6 @@ ext {
     testing = Group {
         testImplementation(deps.jUnit) { exclude group: 'org.hamcrest' }
         testImplementation deps.archiComponents.testing
-        androidTestImplementation(deps.androidTest.runner)
-        androidTestImplementation(deps.androidTest.espresso)
     }
 
     //Can add groups for Dagger, debugging, network, Rx, Android Archi Components
