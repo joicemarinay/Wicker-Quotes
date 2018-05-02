@@ -40,6 +40,7 @@ ext.deps = [
         'android': "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
         'java'   : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
     ],
+    'timber' : "com.jakewharton.timber:timber:$versions.timber",
 
     /**
      * Testing
