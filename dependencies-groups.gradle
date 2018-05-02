@@ -16,7 +16,6 @@ def Group(Closure closure) {
  androidTesting()
  testing()
  **/
-
 ext {
 
     /**
@@ -36,10 +35,12 @@ ext {
     /**
      * Android Architecture Components
      */
+    //TODO separate group for android components for feature modules
     archiComponents = Group {
         implementation deps.archiComponents.runtime
         implementation deps.archiComponents.extensions
         implementation deps.archiComponents.liveData
+        implementation deps.archiComponents.viewModel
         kapt deps.archiComponents.compiler
 
         //Room
