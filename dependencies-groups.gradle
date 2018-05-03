@@ -11,6 +11,7 @@ def Group(Closure closure) {
  archiComponents()
  dagger()
  rx()
+ timber()
  ui()
  androidTesting()
  testing()
@@ -59,6 +60,13 @@ ext {
     }
 
     /**
+     * Timber (for logging)
+     */
+    timber = Group {
+        implementation deps.timber
+    }
+
+    /**
      * Rx
      */
     rx = Group {
@@ -81,6 +89,9 @@ ext {
         androidTestImplementation(deps.androidTest.runner)
         androidTestImplementation(deps.androidTest.espresso)
 
+        //Dagger
+        kaptAndroidTest deps.dagger.compiler
+
         //Mockito
         androidTestImplementation deps.mockito.android
         androidTestImplementation deps.mockito.kotlin
@@ -94,6 +105,9 @@ ext {
     testing = Group {
         testImplementation(deps.jUnit) { exclude group: 'org.hamcrest' }
         testImplementation deps.archiComponents.testing
+
+        //Dagger
+        kaptTest deps.dagger.compiler
     }
 
     //Can add groups for Dagger, debugging, network, Rx, Android Archi Components
