@@ -27,7 +27,8 @@ ext.deps = [
         'roomRxJava' : "android.arch.persistence.room:rxjava2:$versions.room",
         'roomCompiler' : "android.arch.persistence.room:compiler:$versions.room",
         'runtime' : "android.arch.lifecycle:runtime:$versions.archiComponents",
-        'testing' : "android.arch.core:core-testing:$versions.archiComponents"
+        'testing' : "android.arch.core:core-testing:$versions.archiComponents",
+        'viewModel' : "android.arch.lifecycle:viewmodel:$versions.archiComponents"
     ],
     'dagger': [
         'dagger' : "com.google.dagger:dagger:$versions.dagger",
