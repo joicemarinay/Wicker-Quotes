@@ -2,10 +2,6 @@ apply plugin: 'com.android.feature'
 apply from: '../config-android.gradle'
 apply from: '../dependencies-groups.gradle'
 
-android {
-    baseFeature true
-}
-
 /**
  * Dependencies
  */
@@ -14,13 +10,9 @@ dependencies {
     archiComponents()
     dagger()
     rx()
+    timber()
     ui()
     testing()
 
-    // For test rules, TODO: improve
-    implementation(deps.jUnit) {
-        exclude group: 'org.hamcrest'
-    }
-
-    feature project(":feature-write-quote")
+    implementation project(path: ':base')
 }
