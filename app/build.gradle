@@ -64,4 +64,5 @@ dependencies {
 
     implementation project(path: ':base')
     implementation project(path: ':feature-quote-list')
+    implementation project(path: ':feature-write-quote')
 }
