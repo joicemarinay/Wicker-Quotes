@@ -1,0 +1,51 @@
+{
+  "data":
+  [
+    {
+      "id": 1,
+      "quote": "Life is about making an impact, not making an income.",
+      "author": "Kevin Kruse",
+      "isFavourite": false
+    },
+    {
+      "id": 2,
+      "quote": "But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.",
+      "author": "Isaiah 40:31",
+      "sourceName": "Bible (NIV)",
+      "sourceUrl": "",
+      "isFavourite": false
+    },
+    {
+      "id": 3,
+      "quote": "Change only happens when ordinary people get involved, and they get engaged, and they come together to demand it.",
+      "author": "Barrack Obama",
+      "sourceName": "Farewell Speech at McCormick Place, Chicago",
+      "sourceUrl": "https://nyti.ms/2jsJlmM",
+      "isFavourite": true
+    },
+    {
+      "id": 4,
+      "quote": "Unless you try to do something beyond what you have already mastered, you will never grow.",
+      "author": "Ralph Waldo Emerson",
+      "sourceName": "",
+      "sourceUrl": "",
+      "isFavourite": false
+    },
+    {
+      "id": 5,
+      "quote": "It's always too early to quit.",
+      "author": "Norman Vincent Peale",
+      "sourceName": "",
+      "sourceUrl": "",
+      "isFavourite": false
+    },
+    {
+      "id": 6,
+      "quote": "Faith is the art of holding on to things your reason has once accepted, in spite of your changing moods.",
+      "author": "C.S. Lewis",
+      "sourceName": "Mere Christianity",
+      "sourceUrl": "",
+      "isFavourite": false
+    }
+  ]
+}
