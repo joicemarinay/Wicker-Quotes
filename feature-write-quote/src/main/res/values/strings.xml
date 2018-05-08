@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="action_save">Save</string>
+
+  <string name="field_author_or_speaker">Author/Speaker</string>
+  <string name="field_quote">Quote</string>
+  <string name="field_source">Source (e.g. book/article/movie)</string>
+  <string name="field_link">Link</string>
+
+</resources>

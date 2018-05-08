@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Should only contain styles specific to this feature module.
+  Note:If a style will be reused by another feature module,
+    please move said style to base/src/main/res/values/styles.xml-->
+
+  <style name="wicker_button">
+    <item name="android:background">@color/primary</item>
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="wicker_edittext">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginBottom">@dimen/margin_padding_medium</item>
+    <item name="android:fontFamily">serif</item>
+    <item name="android:gravity">start</item>
+    <item name="android:textSize">@dimen/text_small</item>
+  </style>
+
+  <style name="wicker_edittext_singleline" parent="wicker_edittext">
+    <item name="android:lines">1</item>
+  </style>
+
+</resources>
