@@ -81,6 +81,7 @@ ext {
     ui = Group {
         implementation deps.androidSupport.app
         implementation deps.androidSupport.compat
+        implementation deps.androidSupport.constraint
     }
 
     /**
