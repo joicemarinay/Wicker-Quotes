@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginBottom="@dimen/margin_padding_small"
+  android:layout_marginTop="@dimen/margin_padding_small">
+
+  <android.support.constraint.Guideline
+    android:id="@+id/quoteList_guideline_contentLeft"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_begin="41dp" />
+
+  <android.support.constraint.Guideline
+    android:id="@+id/quoteList_guideline_contentRight"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.89" />
+
+  <TextView
+    android:id="@+id/quoteList_textView_authorSource"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_padding_xsmall"
+    android:ellipsize="end"
+    android:fontFamily="sans-serif"
+    android:maxLines="1"
+    android:textColor="@color/text_secondary"
+    android:textSize="@dimen/text_xsmall"
+    app:layout_constraintBottom_toTopOf="@+id/quoteList_textView_quote"
+    app:layout_constraintEnd_toStartOf="@+id/quoteList_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@+id/quoteList_guideline_contentLeft"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="@sample/quotes.json/data/author" />
+
+  <TextView
+    android:id="@+id/quoteList_textView_quote"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:ellipsize="end"
+    android:fontFamily="serif"
+    android:gravity="left"
+    android:maxLines="2"
+    android:text="TextView"
+    android:textColor="@color/text_primary"
+    android:textSize="@dimen/text_small"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/quoteList_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@+id/quoteList_guideline_contentLeft"
+    tools:text="@sample/quotes.json/data/quote" />
+
+</android.support.constraint.ConstraintLayout>
