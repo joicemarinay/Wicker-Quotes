@@ -82,6 +82,7 @@ ext {
         implementation deps.androidSupport.app
         implementation deps.androidSupport.compat
         implementation deps.androidSupport.constraint
+        implementation deps.androidSupport.fab
         implementation deps.androidSupport.recyclerview
     }
 
