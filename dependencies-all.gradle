@@ -19,7 +19,7 @@ ext.deps = [
         'app' : "com.android.support:appcompat-v7:$versions.androidSupport",
         'compat' : "com.android.support:support-compat:$versions.androidSupport",
         'constraint' : "com.android.support.constraint:constraint-layout:$versions.constraintLayout",
-        'fab' : "com.android.support:design-floatingactionbutton:$versions.floatingactionbutton",
+        'design' : "com.android.support:design:$versions.androidSupport",
         'recyclerview' : "com.android.support:recyclerview-v7:$versions.androidSupport"
     ],
     'archiComponents' : [
