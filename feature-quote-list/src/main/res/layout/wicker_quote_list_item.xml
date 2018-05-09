@@ -5,22 +5,22 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:layout_marginBottom="@dimen/margin_padding_small"
-  android:layout_marginTop="@dimen/margin_padding_small">
+  android:paddingBottom="@dimen/margin_padding_small"
+  android:paddingTop="@dimen/margin_padding_small">
 
   <android.support.constraint.Guideline
     android:id="@+id/quoteList_guideline_contentLeft"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:layout_constraintGuide_begin="41dp" />
+    app:layout_constraintGuide_percent="0.05" />
 
   <android.support.constraint.Guideline
     android:id="@+id/quoteList_guideline_contentRight"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:layout_constraintGuide_percent="0.89" />
+    app:layout_constraintGuide_begin="345dp" />
 
   <TextView
     android:id="@+id/quoteList_textView_authorSource"
