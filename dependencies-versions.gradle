@@ -16,7 +16,6 @@ ext.versions = [
         'archiComponents' : '1.1.1',
         'constraintLayout' : '1.0.2',
         'dagger' : '2.15',
-        'floatingactionbutton' : '28.0.0-alpha1',
         'room' : '1.0.0',
         'rxAndroid' : '2.0.2',
         'rxJava' : '2.1.12',
