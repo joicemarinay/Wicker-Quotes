@@ -13,6 +13,7 @@ import org.buffer.android.boilerplate.ui.injection.scopes.PerApplication
 @PerApplication
 @Component(modules = [
   AndroidSupportInjectionModule::class,
+  Bindings::class,
   AppModule::class
 ])
 interface AppComponent {
