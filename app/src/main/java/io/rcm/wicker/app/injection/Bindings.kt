@@ -2,7 +2,7 @@ package io.rcm.wicker.app.injection
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import io.rcm.wicker.app.injection.scopes.PerActivity
+import io.rcm.wicker.base.injection.scopes.PerActivity
 import io.rcm.wicker.quotelist.presentation.QuoteListActivity
 import io.rcm.wicker.writequote.presentation.WriteQuoteActivity
 
