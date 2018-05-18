@@ -1,4 +1,4 @@
-package io.rcm.wicker.app.injection.scopes
+package io.rcm.wicker.base.injection.scopes
 
 import javax.inject.Scope
 
