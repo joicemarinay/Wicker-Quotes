@@ -9,21 +9,21 @@
   android:paddingTop="@dimen/margin_padding_small">
 
   <android.support.constraint.Guideline
-    android:id="@+id/quoteList_guideline_contentLeft"
+    android:id="@+id/quoteListItem_guideline_contentLeft"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:layout_constraintGuide_percent="0.05" />
 
   <android.support.constraint.Guideline
-    android:id="@+id/quoteList_guideline_contentRight"
+    android:id="@+id/quoteListItem_guideline_contentRight"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:layout_constraintGuide_begin="345dp" />
 
   <TextView
-    android:id="@+id/quoteList_textView_authorSource"
+    android:id="@+id/quoteListItem_text_authorAndSource"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin_padding_xsmall"
@@ -32,14 +32,14 @@
     android:maxLines="1"
     android:textColor="@color/text_secondary"
     android:textSize="@dimen/text_xsmall"
-    app:layout_constraintBottom_toTopOf="@+id/quoteList_textView_quote"
-    app:layout_constraintEnd_toStartOf="@+id/quoteList_guideline_contentRight"
-    app:layout_constraintStart_toStartOf="@+id/quoteList_guideline_contentLeft"
+    app:layout_constraintBottom_toTopOf="@+id/quoteListItem_text_quote"
+    app:layout_constraintEnd_toStartOf="@+id/quoteListItem_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@+id/quoteListItem_guideline_contentLeft"
     app:layout_constraintTop_toTopOf="parent"
     tools:text="@sample/quotes.json/data/author" />
 
   <TextView
-    android:id="@+id/quoteList_textView_quote"
+    android:id="@+id/quoteListItem_text_quote"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:ellipsize="end"
@@ -50,8 +50,8 @@
     android:textColor="@color/text_primary"
     android:textSize="@dimen/text_small"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/quoteList_guideline_contentRight"
-    app:layout_constraintStart_toStartOf="@+id/quoteList_guideline_contentLeft"
+    app:layout_constraintEnd_toStartOf="@+id/quoteListItem_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@+id/quoteListItem_guideline_contentLeft"
     tools:text="@sample/quotes.json/data/quote" />
 
 </android.support.constraint.ConstraintLayout>
