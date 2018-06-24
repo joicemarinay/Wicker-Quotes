@@ -3,6 +3,8 @@ package io.rcm.wicker.quotes
 import io.rcm.wicker.base.WickerApp
 import io.rcm.wicker.quotes.list.injection.DaggerQuoteListComponent
 import io.rcm.wicker.quotes.list.injection.QuoteListComponent
+import io.rcm.wicker.quotes.writer.injection.DaggerQuoteWriterComponent
+import io.rcm.wicker.quotes.writer.injection.QuoteWriterComponent
 import javax.inject.Singleton
 
 /**
@@ -15,6 +17,7 @@ import javax.inject.Singleton
 internal object QuotesDependencyHolder {
 
   private var quoteListComponent: QuoteListComponent? = null
+  private var quoteWriterComponent: QuoteWriterComponent? = null
 
   fun listComponent(): QuoteListComponent {
     if (quoteListComponent == null)
@@ -25,5 +28,16 @@ internal object QuotesDependencyHolder {
 
   fun destroyListComponent() {
     quoteListComponent = null
+  }
+
+  fun writerComponent(): QuoteWriterComponent {
+    if (quoteWriterComponent == null)
+      quoteWriterComponent = DaggerQuoteWriterComponent.builder()
+          .baseComponent(WickerApp.baseComponent).build()
+    return quoteWriterComponent as QuoteWriterComponent
+  }
+
+  fun destroyWriterComponent() {
+    quoteWriterComponent = null
   }
 }
