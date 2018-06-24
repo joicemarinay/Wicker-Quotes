@@ -256,3 +256,7 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # End of https://www.gitignore.io/api/osx,gradle,android,intellij,androidstudio
+
+.idea/caches/build_file_checksums.ser
+.idea/codeStyles/codeStyleConfig.xml
+.idea/kotlinc.xml
