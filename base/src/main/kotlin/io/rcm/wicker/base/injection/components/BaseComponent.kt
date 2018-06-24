@@ -14,7 +14,7 @@ import io.rcm.wicker.base.injection.scopes.PerApplication
 @Component(modules = [
   AppModule::class
 ])
-internal interface BaseComponent {
+interface BaseComponent {
 
   @Component.Builder
   interface Builder {

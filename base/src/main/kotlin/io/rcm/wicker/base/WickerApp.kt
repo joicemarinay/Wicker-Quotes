@@ -8,7 +8,7 @@ import io.rcm.wicker.base.injection.components.DaggerBaseComponent
  * Created by joicemarinay on 20/04/2018.
  */
 //STUDY I've seen other apps make this [open].
-internal class WickerApp: Application() {
+class WickerApp: Application() {
 
   override fun onCreate() {
     super.onCreate()
