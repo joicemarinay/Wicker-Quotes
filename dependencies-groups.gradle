@@ -55,9 +55,6 @@ ext {
     dagger = Group {
         implementation deps.dagger.dagger
         kapt deps.dagger.compiler
-        implementation deps.dagger.android
-        implementation deps.dagger.support
-        kapt deps.dagger.processor
     }
 
     /**
