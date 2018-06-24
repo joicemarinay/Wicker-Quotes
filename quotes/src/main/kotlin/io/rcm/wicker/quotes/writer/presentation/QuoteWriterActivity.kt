@@ -1,4 +1,4 @@
-package io.rcm.wicker.quotes.write.presentation
+package io.rcm.wicker.quotes.writer.presentation
 
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.R
@@ -9,5 +9,5 @@ import io.rcm.wicker.quotes.R
  * This Activity is not internal because it is used by
  * [io.rcm.wicker.app.view.ScreenRouterImpl]
  */
-class WriteQuoteActivity(override val layoutResourceId: Int = R.layout.wicker_write_quote_view):
+class QuoteWriterActivity(override val layoutResourceId: Int = R.layout.wicker_quote_writer_view):
     BaseActivity()

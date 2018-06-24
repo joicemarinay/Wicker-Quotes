@@ -20,7 +20,7 @@
     </activity>
   
     <activity
-        android:name=".quotes.write.presentation.WriteQuoteActivity"
+        android:name=".quotes.writer.presentation.QuoteWriterActivity"
         android:theme="@style/BaseAppTheme.NoToolbar"/>
 
   </application>
