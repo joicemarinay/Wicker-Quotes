@@ -1,4 +1,4 @@
-package io.rcm.wicker.app.view
+package io.rcm.wicker.app.presentation
 
 import android.content.Context
 import android.content.Intent
