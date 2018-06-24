@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import io.rcm.wicker.app.presentation.ScreenRouterImpl
+import io.rcm.wicker.app.presentation.RealScreenRouter
 import io.rcm.wicker.base.presentation.ScreenRouter
 import org.buffer.android.boilerplate.ui.injection.scopes.PerApplication
 
@@ -25,6 +25,6 @@ internal class AppModule {
   @Provides
   @PerApplication
   fun provideScreenRouter(): ScreenRouter {
-    return ScreenRouterImpl()
+    return RealScreenRouter()
   }
 }

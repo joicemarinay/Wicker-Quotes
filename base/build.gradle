@@ -4,6 +4,9 @@ apply from: '../dependencies-groups.gradle'
 
 android {
     baseFeature true
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 /**

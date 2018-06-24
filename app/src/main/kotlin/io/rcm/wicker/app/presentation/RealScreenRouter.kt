@@ -10,7 +10,7 @@ import io.rcm.wicker.writequote.presentation.WriteQuoteActivity
  *
  * @see https://github.com/MojRoid/memes/blob/master/app-installed/src/main/java/moj/memes/app/view/ScreenRouterImpl.kt
  */
-internal class ScreenRouterImpl: ScreenRouter {
+internal class RealScreenRouter: ScreenRouter {
 
   override fun getScreenIntent(context: Context, screen: ScreenRouter.Screen): Intent? {
     val c: Class<*>? = when (screen) {
