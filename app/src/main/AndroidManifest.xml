@@ -10,7 +10,7 @@
     android:supportsRtl="true"
     android:theme="@style/BaseAppTheme">
 
-    <activity android:name=".quotelist.presentation.QuoteListActivity">
+    <activity android:name=".quotes.list.presentation.QuoteListActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <action android:name="android.intent.action.VIEW" />
