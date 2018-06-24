@@ -1,4 +1,4 @@
-package org.buffer.android.boilerplate.ui.injection.scopes
+package io.rcm.wicker.base.injection.scopes
 
 import javax.inject.Scope
 
