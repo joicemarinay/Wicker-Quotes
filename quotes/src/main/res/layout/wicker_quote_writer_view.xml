@@ -7,7 +7,7 @@
   android:orientation="vertical">
 
   <Button
-    android:id="@+id/quoteWriterActivity_button_close"
+    android:id="@+id/quoteWriter_button_close"
     android:layout_width="25dp"
     android:layout_height="25dp"
     android:layout_marginEnd="@dimen/margin_padding_small"
@@ -29,14 +29,14 @@
     app:layout_constraintGuide_begin="41dp" />
 
   <android.support.constraint.Guideline
-    android:id="@+id/quoteWriterActivity_guideline_contentRight"
+    android:id="@+id/quoteWriter_guideline_contentRight"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:layout_constraintGuide_percent="0.89" />
 
   <EditText
-    android:id="@+id/quoteWriterActivity_editText_quote"
+    android:id="@+id/quoteWriter_editText_quote"
     style="@style/wicker_edittext"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -48,11 +48,11 @@
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintLeft_toRightOf="@+id/quoteWriter_guideline_contentLeft"
     app:layout_constraintRight_toLeftOf="@+id/quoteWriter_guideline_contentRight"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriterActivity_button_close"
+    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_button_close"
     tools:text="Life is about making an impact not making an income." />
 
   <EditText
-    android:id="@+id/quoteWriterActivity_editText_author"
+    android:id="@+id/quoteWriter_editText_author"
     style="@style/wicker_edittext_singleline"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -63,10 +63,10 @@
     app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
     app:layout_constraintHorizontal_bias="1.0"
     app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriterActivity_editText_quote" />
+    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_quote" />
 
   <EditText
-    android:id="@+id/quoteWriterActivity_editText_source"
+    android:id="@+id/quoteWriter_editText_source"
     style="@style/wicker_edittext_singleline"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -75,10 +75,10 @@
     android:inputType="textPersonName"
     app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriterActivity_editText_author" />
+    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_author" />
 
   <EditText
-    android:id="@+id/quoteWriterActivity_editText_link"
+    android:id="@+id/quoteWriter_editText_link"
     style="@style/wicker_edittext_singleline"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -87,10 +87,10 @@
     android:inputType="textPersonName"
     app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriterActivity_editText_source" />
+    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_source" />
 
   <Button
-    android:id="@+id/quoteWriterActivity_button_save"
+    android:id="@+id/quoteWriter_button_save"
     style="@style/wicker_button"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -102,5 +102,5 @@
     android:text="@string/action_save"
     app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriterActivity_editText_link" />
+    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_link" />
 </android.support.constraint.ConstraintLayout>
