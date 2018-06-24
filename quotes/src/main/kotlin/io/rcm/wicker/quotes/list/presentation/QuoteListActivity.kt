@@ -4,9 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.base.presentation.ScreenRouter
-import io.rcm.wicker.base.presentation.ScreenRouter.Screen
 import io.rcm.wicker.quotes.R
-import io.rcm.wicker.quotes.write.presentation.WriteQuoteActivity
+import io.rcm.wicker.quotes.writer.presentation.QuoteWriterActivity
 import kotlinx.android.synthetic.main.wicker_quote_list_view.*
 import javax.inject.Inject
 
@@ -25,11 +24,11 @@ class QuoteListActivity(override val layoutResourceId: Int = R.layout.wicker_quo
   }
 
   private fun setFab() {
-    quoteList_fab_addQuote.setOnClickListener { openWriteQuote() }
+    quoteList_fab_addQuote.setOnClickListener { openQuoteWriter() }
   }
 
   //TODO add [QuoteEntity] as param (when editing a quote)
-  private fun openWriteQuote() {
-    startActivity(Intent(this, WriteQuoteActivity::class.java))
+  private fun openQuoteWriter() {
+    startActivity(Intent(this, QuoteWriterActivity::class.java))
   }
 }

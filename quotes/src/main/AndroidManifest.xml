@@ -16,7 +16,7 @@
     </activity>
     
     <activity
-          android:name="write.presentation.WriteQuoteActivity"
+          android:name="writer.presentation.QuoteWriterActivity"
           android:theme="@style/BaseAppTheme.NoToolbar"/>
     
   </application>
