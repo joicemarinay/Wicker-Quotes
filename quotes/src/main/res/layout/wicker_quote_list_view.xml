@@ -9,7 +9,7 @@
   android:fitsSystemWindows="true">
 
   <android.support.v7.widget.RecyclerView
-    android:id="@+id/quoteList_recyclerView_quotes"
+    android:id="@+id/quoteList_recycler_quotes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:listitem="@layout/wicker_quote_list_item"/>
