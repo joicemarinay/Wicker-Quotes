@@ -25,6 +25,5 @@ dependencies {
         exclude group: 'org.hamcrest'
     }
 
-    feature project(":feature-quote-list")
-    feature project(":feature-write-quote")
+    feature project(':quotes')
 }

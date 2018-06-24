@@ -65,6 +65,5 @@ dependencies {
     testing()
 
     implementation project(path: ':base')
-    implementation project(path: ':feature-quote-list')
-    implementation project(path: ':feature-write-quote')
+    implementation project(path: ':quotes')
 }
