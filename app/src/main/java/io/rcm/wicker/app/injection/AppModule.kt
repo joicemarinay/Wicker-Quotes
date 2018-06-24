@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import io.rcm.wicker.app.view.ScreenRouterImpl
+import io.rcm.wicker.app.presentation.ScreenRouterImpl
 import io.rcm.wicker.base.presentation.ScreenRouter
 import org.buffer.android.boilerplate.ui.injection.scopes.PerApplication
 
