@@ -4,6 +4,7 @@ import io.rcm.wicker.quotes.data.local.db.QuotesDb
 import io.rcm.wicker.quotes.domain.model.QuoteEntity
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -17,7 +18,7 @@ import javax.inject.Inject
  * > [Flowable]
  *    - will emit data when there's change
  */
-internal class QuotesLocalDataSource@Inject constructor(private val db: QuotesDb,
+internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesDb,
   private val entityMapper: QuotesLocalMapper): QuotesLocalSource {
 
   /**
@@ -27,7 +28,9 @@ internal class QuotesLocalDataSource@Inject constructor(private val db: QuotesDb
    */
   override fun saveQuote(quote: QuoteEntity): Completable =
       Completable.defer {
-        db.quotesDao().insert(entityMapper.mapToLocal(quote))
+        //TODO handle error when inserting
+        val insertedId = db.quotesDao().insert(entityMapper.mapToLocal(quote))
+        Timber.d("saveQuote() $quote inserted with ID $insertedId")
         Completable.complete()
       }
 }
