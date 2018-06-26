@@ -1,7 +1,5 @@
 package io.rcm.wicker.quotes.domain
 
-import io.rcm.wicker.base.common.Either
-import io.rcm.wicker.base.common.Failure
 import io.rcm.wicker.quotes.domain.model.QuoteEntity
 import io.reactivex.Completable
 

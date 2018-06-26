@@ -3,6 +3,7 @@ package io.rcm.wicker.base
 import android.app.Application
 import io.rcm.wicker.base.injection.components.BaseComponent
 import io.rcm.wicker.base.injection.components.DaggerBaseComponent
+import io.rcm.wicker.base.injection.modules.AppModule
 import timber.log.Timber
 
 /**
@@ -18,7 +19,7 @@ class WickerApp: Application() {
   }
 
   private fun initDependencyInjection() {
-    baseComponent = DaggerBaseComponent.builder().application(this).build()
+    baseComponent = DaggerBaseComponent.builder().appModule(AppModule(this)).build()
   }
 
   private fun setupTimber() {

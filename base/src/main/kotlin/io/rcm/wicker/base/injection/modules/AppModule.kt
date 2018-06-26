@@ -1,10 +1,9 @@
 package io.rcm.wicker.base.injection.modules
 
-import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import io.rcm.wicker.base.injection.scopes.PerApplication
+import javax.inject.Singleton
 
 /**
  * Module used to provide dependencies at an application-level.
@@ -12,10 +11,10 @@ import io.rcm.wicker.base.injection.scopes.PerApplication
  * Created by joicemarinay on 20/04/2018.
  */
 @Module
-internal class AppModule {
+internal class AppModule(private val appContext: Context) {
 
-  @PerApplication
   @Provides
-  fun provideAppContext(application: Application): Context = application
+  @Singleton
+  fun provideAppContext(): Context = appContext
 
 }
