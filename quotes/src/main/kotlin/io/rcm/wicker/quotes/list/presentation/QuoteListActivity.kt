@@ -20,10 +20,10 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
   override fun onCreate(savedInstanceState: Bundle?) {
     component.inject(this)
     super.onCreate(savedInstanceState)
-    setFab()
+    setClickListeners()
   }
 
-  private fun setFab() {
+  private fun setClickListeners() {
     quoteList_fab_addQuote.setOnClickListener { openQuoteWriter() }
   }
 
