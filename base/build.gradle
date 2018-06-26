@@ -19,6 +19,7 @@ dependencies {
     rx()
     ui()
     testing()
+    timber()
 
     // For test rules, TODO: improve
     implementation(deps.jUnit) {
