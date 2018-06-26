@@ -23,7 +23,7 @@ internal abstract class QuotesDb: RoomDatabase() {
     @Volatile
     private var INSTANCE: QuotesDb? = null
 
-    private const val DB_NAME = "wicker-rcm-io.db"
+    private const val DB_NAME = "wicker-quotes.db"
 
     fun getInstance(context: Context): QuotesDb =
         INSTANCE ?: synchronized(this) {
