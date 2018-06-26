@@ -17,4 +17,5 @@ internal abstract class QuoteListModule {
   @IntoMap
   @ViewModelKey(QuoteListViewModel::class)
   abstract fun bindQuoteListViewModel(quoteListViewModel: QuoteListViewModel): ViewModel
+
 }

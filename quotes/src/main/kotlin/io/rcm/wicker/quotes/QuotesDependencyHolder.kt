@@ -33,7 +33,7 @@ internal object QuotesDependencyHolder {
   fun writerComponent(): QuoteWriterComponent {
     if (quoteWriterComponent == null)
       quoteWriterComponent = DaggerQuoteWriterComponent.builder()
-          .baseComponent(WickerApp.baseComponent).build()
+        .quoteListComponent(listComponent()).build()
     return quoteWriterComponent as QuoteWriterComponent
   }
 
