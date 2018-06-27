@@ -8,7 +8,13 @@ import io.rcm.wicker.quotes.domain.model.QuoteEntity
  */
 internal interface SaveQuote: UseCase<SaveQuote.Result> {
 
-  //STUDY why does this have to be sealed?
+  /**
+   * #KotlinNotes
+   * This is sealed because it indicates that there won't be any subclasses
+   *  of [Result] other than the ones defined here.
+   *  Pros:
+   *  - No need to handle `else` (default branch) in a `when` expression
+   */
   sealed class Result {
     object OnSuccess: Result()
     object OnError: Result()
