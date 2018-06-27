@@ -42,6 +42,7 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
   }
 
   private fun setClickListeners() {
+    quoteWriter_button_close.setOnClickListener { onBackPressed() }
     quoteWriter_button_save.setOnClickListener { viewModel.onClickSave(quote = inputQuote(),
       author = inputAuthor(), sourceName = inputSource(), sourceUrl = inputLink()) }
   }
