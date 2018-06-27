@@ -29,10 +29,10 @@ internal data class QuoteInDb(
     val sourceUrl: String,
 
     @ColumnInfo(name = COLUMN_IS_FAVOURITE)
-    val isFavourite: Boolean,
+    val isFavourite: Boolean = false,
 
     @ColumnInfo(name = COLUMN_IS_DELETED)
-    val isDeleted: Boolean
+    val isDeleted: Boolean = false
 //TODO add tags
 ) {
   companion object {
