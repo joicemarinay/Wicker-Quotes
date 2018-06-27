@@ -17,23 +17,25 @@ internal class QuotesLocalMapper @Inject constructor(): EntityMapper<QuoteInDb, 
    * Map a [QuoteInDb] instance to a [QuoteEntity] instance
    */
   override fun mapFromLocal(type: QuoteInDb): QuoteEntity =
-      QuoteEntity(type.quote, type.author, type.sourceName, type.sourceUrl,
-        type.isFavourite, type.isDeleted, type.id)
+      QuoteEntity(id = type.id, quote = type.quote, author = type.author,
+        sourceName = type.sourceName, sourceUrl = type.sourceUrl, isFavourite = type.isFavourite,
+        isDeleted = type.isDeleted)
 
   /**
    * Map a [QuoteEntity] instance to a [QuoteInDb] instance
    */
   override fun mapToLocal(type: QuoteEntity): QuoteInDb =
-      QuoteInDb(type.id, type.quote, type.author, type.sourceName, type.sourceUrl,
-        type.isFavourite, type.isDeleted)
+      QuoteInDb(id = type.id, quote = type.quote, author = type.author,
+        sourceName = type.sourceName, sourceUrl = type.sourceUrl, isFavourite = type.isFavourite,
+        isDeleted = type.isDeleted)
 
   /**
    * Map a [QuoteInDb] instance to a [QuoteEntity] instance
    */
   override fun mapFromLocal(types: List<QuoteInDb>): List<QuoteEntity> =
       types.map {
-      QuoteEntity(it.quote, it.author, it.sourceName, it.sourceUrl,
-          it.isFavourite, it.isDeleted, it.id)
+      QuoteEntity(id = it.id, quote = it.quote, author = it.author, sourceName = it.sourceName,
+        sourceUrl = it.sourceUrl, isFavourite = it.isFavourite, isDeleted = it.isDeleted)
     }
 
   /**
@@ -41,7 +43,7 @@ internal class QuotesLocalMapper @Inject constructor(): EntityMapper<QuoteInDb, 
    */
   override fun mapToLocal(types: List<QuoteEntity>): List<QuoteInDb> =
       types.map {
-      QuoteInDb(it.id, it.quote, it.author, it.sourceName, it.sourceUrl, it.isFavourite,
-          it.isDeleted)
+      QuoteInDb(id = it.id, quote = it.quote, author = it.author, sourceName = it.sourceName,
+        sourceUrl = it.sourceUrl, isFavourite = it.isFavourite, isDeleted = it.isDeleted)
     }
 }
