@@ -26,14 +26,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:layout_constraintGuide_begin="41dp" />
+    app:layout_constraintGuide_begin="@dimen/margin_padding_midlarge" />
 
   <android.support.constraint.Guideline
     android:id="@+id/quoteWriter_guideline_contentRight"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:layout_constraintGuide_percent="0.89" />
+    app:layout_constraintGuide_end="@dimen/margin_padding_midlarge" />
 
   <EditText
     android:id="@+id/quoteWriter_editText_quote"
