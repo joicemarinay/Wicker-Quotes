@@ -1,17 +1,20 @@
 package io.rcm.wicker.quotes.domain.model
 
+import io.rcm.wicker.base.domain.BaseEntity
+
 /**
- * Representation of a [QuoteEntity] fetched from an external layer data source
- *
  * Created by joicemarinay on 20/04/2018.
+ *
+ * Representation of a [QuoteEntity] fetched either from an external layer data source or
+ *  will be written to external layer data source
  */
 data class QuoteEntity(
-    val quote: String,
-    val author: String,
-    val sourceName: String,
-    val sourceUrl: String,
-    val isFavourite: Boolean = false,
-    val isDeleted: Boolean = false,
-    val id: Int = 0
-//TODO add tags
-)
+  override val id: Int = 0,
+  val quote: String,
+  val author: String,
+  val sourceName: String,
+  val sourceUrl: String,
+  val isFavourite: Boolean = false,
+  val isDeleted: Boolean = false
+  //TODO add tags
+): BaseEntity
