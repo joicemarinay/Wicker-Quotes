@@ -1,4 +1,4 @@
-package io.rcm.wicker.quotes.writer.domain
+package io.rcm.wicker.quotes.features.writer.domain
 
 import io.rcm.wicker.base.domain.UseCase
 import io.rcm.wicker.quotes.domain.model.QuoteEntity

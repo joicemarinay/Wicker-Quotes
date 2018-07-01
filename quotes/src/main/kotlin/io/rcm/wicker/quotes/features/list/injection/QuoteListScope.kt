@@ -1,4 +1,4 @@
-package io.rcm.wicker.quotes.list.injection
+package io.rcm.wicker.quotes.features.list.injection
 
 import javax.inject.Scope
 

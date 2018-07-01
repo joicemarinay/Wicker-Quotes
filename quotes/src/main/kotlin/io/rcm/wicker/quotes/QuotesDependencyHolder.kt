@@ -1,10 +1,10 @@
 package io.rcm.wicker.quotes
 
 import io.rcm.wicker.base.WickerApp
-import io.rcm.wicker.quotes.list.injection.DaggerQuoteListComponent
-import io.rcm.wicker.quotes.list.injection.QuoteListComponent
-import io.rcm.wicker.quotes.writer.injection.DaggerQuoteWriterComponent
-import io.rcm.wicker.quotes.writer.injection.QuoteWriterComponent
+import io.rcm.wicker.quotes.features.list.injection.DaggerQuoteListComponent
+import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
+import io.rcm.wicker.quotes.features.writer.injection.DaggerQuoteWriterComponent
+import io.rcm.wicker.quotes.features.writer.injection.QuoteWriterComponent
 import javax.inject.Singleton
 
 /**

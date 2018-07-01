@@ -1,4 +1,4 @@
-package io.rcm.wicker.quotes.list.presentation
+package io.rcm.wicker.quotes.features.list.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,11 @@ import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
-import io.rcm.wicker.quotes.list.injection.QuoteListComponent
-import io.rcm.wicker.quotes.list.presentation.adapter.QuoteListAdapter
-import io.rcm.wicker.quotes.list.presentation.adapter.QuoteListViewHolder
+import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
+import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListAdapter
+import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListViewHolder
 import io.rcm.wicker.quotes.presentation.QuoteUi
-import io.rcm.wicker.quotes.writer.presentation.QuoteWriterActivity
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 import kotlinx.android.synthetic.main.wicker_quote_list_view.*
 
 /**

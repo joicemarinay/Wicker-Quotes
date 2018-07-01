@@ -1,8 +1,8 @@
-package io.rcm.wicker.quotes.writer.injection
+package io.rcm.wicker.quotes.features.writer.injection
 
 import dagger.Component
-import io.rcm.wicker.quotes.list.injection.QuoteListComponent
-import io.rcm.wicker.quotes.writer.presentation.QuoteWriterActivity
+import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 
 /**
  * Created by joicemarinay on 6/24/18.
