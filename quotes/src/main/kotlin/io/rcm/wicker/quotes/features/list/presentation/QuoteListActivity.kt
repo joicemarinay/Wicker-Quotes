@@ -9,6 +9,7 @@ import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
+import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsActivity
 import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
 import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListAdapter
 import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListViewHolder
@@ -34,7 +35,7 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
   }
 
   override fun onQuoteClicked(quote: QuoteUi) {
-    Toast.makeText(this, "${quote.quote}", Toast.LENGTH_SHORT).show()
+    startActivity(QuoteDetailsActivity.intent(this, quote))
   }
 
   private fun setClickListeners() {
