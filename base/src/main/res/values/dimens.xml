@@ -15,6 +15,7 @@
   <!-- Text Size -->
   <dimen name="text_xsmall">12sp</dimen>
   <dimen name="text_small">14sp</dimen>
+  <dimen name="text_smedium">15sp</dimen>
   <dimen name="text_medium">16sp</dimen>
   <dimen name="text_large">20sp</dimen>
   <dimen name="text_xlarge">34sp</dimen>

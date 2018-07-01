@@ -5,8 +5,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:paddingBottom="@dimen/margin_padding_small"
-  android:paddingTop="@dimen/margin_padding_small">
+  android:paddingBottom="@dimen/margin_padding_medium"
+  android:paddingTop="@dimen/margin_padding_medium">
 
   <android.support.constraint.Guideline
     android:id="@+id/quoteListItem_guideline_contentLeft"
@@ -46,9 +46,8 @@
     android:fontFamily="serif"
     android:gravity="left"
     android:maxLines="2"
-    android:text="TextView"
     android:textColor="@color/text_primary"
-    android:textSize="@dimen/text_small"
+    android:textSize="@dimen/text_smedium"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/quoteListItem_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@+id/quoteListItem_guideline_contentLeft"
