@@ -29,7 +29,7 @@ internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesD
   override fun saveQuote(quote: QuoteEntity): Completable =
       Completable.defer {
         //TODO handle error when inserting
-        val insertedId = db.quotesDao().insert(entityMapper.mapToLocal(quote))
+        val insertedId = db.quotesDao().insert(entityMapper.mapFromDomain(quote))
         Timber.d("saveQuote() $quote inserted with ID $insertedId")
         Completable.complete()
       }
