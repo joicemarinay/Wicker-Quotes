@@ -1,10 +1,10 @@
-package io.rcm.wicker.quotes.list.presentation
+package io.rcm.wicker.quotes.features.list.presentation
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.quotes.QuotesDependencyHolder
-import io.rcm.wicker.quotes.list.domain.GetQuotes
+import io.rcm.wicker.quotes.features.list.domain.GetQuotes
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package io.rcm.wicker.quotes.list.presentation.adapter
+package io.rcm.wicker.quotes.features.list.presentation.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup

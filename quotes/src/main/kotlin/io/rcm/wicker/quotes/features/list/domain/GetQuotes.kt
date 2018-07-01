@@ -1,4 +1,4 @@
-package io.rcm.wicker.quotes.list.domain
+package io.rcm.wicker.quotes.features.list.domain
 
 import io.rcm.wicker.base.domain.UseCase
 import io.rcm.wicker.quotes.presentation.QuoteUi

@@ -1,12 +1,12 @@
-package io.rcm.wicker.quotes.writer.presentation
+package io.rcm.wicker.quotes.features.writer.presentation
 
 import android.os.Bundle
 import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
-import io.rcm.wicker.quotes.writer.injection.QuoteWriterComponent
-import io.rcm.wicker.quotes.writer.presentation.QuoteWriterViewModel.State
+import io.rcm.wicker.quotes.features.writer.injection.QuoteWriterComponent
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterViewModel.State
 import kotlinx.android.synthetic.main.wicker_quote_writer_view.*
 
 /**

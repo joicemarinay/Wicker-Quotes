@@ -10,7 +10,7 @@
     android:supportsRtl="true"
     android:theme="@style/BaseAppTheme">
 
-    <activity android:name=".quotes.list.presentation.QuoteListActivity">
+    <activity android:name=".quotes.features.list.presentation.QuoteListActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <action android:name="android.intent.action.VIEW" />
@@ -20,8 +20,8 @@
     </activity>
   
     <activity
-        android:name=".quotes.writer.presentation.QuoteWriterActivity"
-        android:theme="@style/BaseAppTheme.NoToolbar"/>
+      android:name=".quotes.features.writer.presentation.QuoteWriterActivity"
+      android:theme="@style/BaseAppTheme.NoToolbar"/>
 
   </application>
 </manifest>
