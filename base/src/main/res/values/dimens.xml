@@ -18,5 +18,8 @@
   <dimen name="text_medium">16sp</dimen>
   <dimen name="text_large">20sp</dimen>
   <dimen name="text_xlarge">34sp</dimen>
+  
+  <dimen name="linespacing">5sp</dimen>
+  <dimen name="text_emptylist_quotationmarks">72sp</dimen>
 
 </resources>
