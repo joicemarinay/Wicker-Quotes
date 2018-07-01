@@ -10,7 +10,7 @@ import javax.inject.Inject
 /**
  * Created by joicemarinay on 20/04/2018.
  *
- * Rx notes:
+ * #RxNotes:
  * > [defer] operator
  *    - waits until an observer subscribes to it
  *    - creates a fresh [Observable] for each observer
@@ -20,6 +20,12 @@ import javax.inject.Inject
  */
 internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesDb,
   private val entityMapper: QuotesLocalMapper): QuotesLocalSource {
+
+  /**
+   * Retrieve all [QuoteInDb] from quotes table in DB
+   */
+  override fun getAllQuotes(): Flowable<List<QuoteEntity>> =
+    db.quotesDao().getAll().map(entityMapper::mapToDomain)
 
   /**
    * Save a Quote in local data source/store
