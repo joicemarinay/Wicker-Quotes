@@ -1,6 +1,8 @@
 package io.rcm.wicker.quotes
 
 import io.rcm.wicker.base.WickerApp
+import io.rcm.wicker.quotes.features.details.injection.DaggerQuoteDetailsComponent
+import io.rcm.wicker.quotes.features.details.injection.QuoteDetailsComponent
 import io.rcm.wicker.quotes.features.list.injection.DaggerQuoteListComponent
 import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
 import io.rcm.wicker.quotes.features.writer.injection.DaggerQuoteWriterComponent
@@ -16,9 +18,21 @@ import javax.inject.Singleton
 @Singleton
 internal object QuotesDependencyHolder {
 
+  private var quoteDetailsComponent: QuoteDetailsComponent? = null
   private var quoteListComponent: QuoteListComponent? = null
   private var quoteWriterComponent: QuoteWriterComponent? = null
+  
+  fun detailsComponent(): QuoteDetailsComponent {
+    if (quoteDetailsComponent == null)
+      quoteDetailsComponent = DaggerQuoteDetailsComponent.builder()
+          .quoteListComponent(listComponent()).build()
+    return quoteDetailsComponent as QuoteDetailsComponent
+  }
 
+  fun destroyDetailsComponent() {
+    quoteDetailsComponent = null
+  }
+  
   fun listComponent(): QuoteListComponent {
     if (quoteListComponent == null)
       quoteListComponent = DaggerQuoteListComponent.builder()
