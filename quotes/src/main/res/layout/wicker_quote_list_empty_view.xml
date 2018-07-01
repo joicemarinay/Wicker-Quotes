@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  
+  <TextView
+      android:id="@+id/quoteListEmpty_quotationmarks"
+      android:layout_width="wrap_content"
+      android:layout_height="70dp"
+      android:fontFamily="serif-monospace"
+      android:lineSpacingMultiplier="0.3"
+      android:text="@string/char_quotation_marks_emptylist"
+      android:textColor="@color/accent"
+      android:textSize="@dimen/text_emptylist_quotationmarks"
+      app:layout_constraintBottom_toTopOf="@+id/quoteListEmpty_quote"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.52"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"/>
+  
+  <TextView
+      android:id="@+id/quoteListEmpty_quote"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_padding_small"
+      android:fontFamily="serif"
+      android:gravity="center"
+      android:text="@string/spiel_quote_list_empty"
+      android:textColor="@color/text_primary"
+      android:textSize="@dimen/text_medium"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toTopOf="@+id/quoteListEmpty_spiel"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"/>
+  
+  <TextView
+      android:id="@+id/quoteListEmpty_spiel"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="228dp"
+      android:fontFamily="sans-serif"
+      android:maxLines="1"
+      android:text="@string/spiel_quote_list_empty_sub"
+      android:textColor="@color/text_secondary"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"/>
+</android.support.constraint.ConstraintLayout>
