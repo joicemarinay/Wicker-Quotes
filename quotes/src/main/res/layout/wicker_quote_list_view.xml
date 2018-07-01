@@ -5,14 +5,27 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:paddingTop="@dimen/margin_padding_small"
   android:fitsSystemWindows="true">
-
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/quoteList_recycler_quotes"
+  
+  <FrameLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:listitem="@layout/wicker_quote_list_item"/>
+    android:layout_height="match_parent">
+    
+    <include
+        android:id="@+id/quoteList_empty"
+        layout="@layout/wicker_quote_list_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+    
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/quoteList_recyclerView_quotes"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+      tools:listitem="@layout/wicker_quote_list_item"/>
+  
+  </FrameLayout>
 
   <android.support.design.widget.FloatingActionButton
     android:id="@+id/quoteList_fab_addQuote"
