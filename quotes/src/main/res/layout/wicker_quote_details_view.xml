@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  
+  <android.support.constraint.Guideline
+    android:id="@+id/quoteDetail_guideline_contentLeft"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_begin="@dimen/margin_padding_midlarge" />
+  
+  <android.support.constraint.Guideline
+    android:id="@+id/quoteDetail_guideline_contentRight"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_end="@dimen/margin_padding_midlarge" />
+  
+  <TextView
+      android:id="@+id/quoteDetail_text_quote"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:fontFamily="serif"
+      android:lineSpacingMultiplier="0.55"
+      android:textColor="@color/text_primary"
+      android:textSize="@dimen/text_slarge"
+      app:layout_constraintBottom_toTopOf="@id/quoteDetail_text_authorAndSource"
+      app:layout_constraintEnd_toStartOf="@+id/quoteDetail_guideline_contentRight"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="@+id/quoteDetail_guideline_contentLeft"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.100000024" app:layout_constraintVertical_chainStyle="packed" tools:text="@sample/quotes.json/data/quote"/>
+  
+  <TextView
+      android:id="@+id/quoteDetail_text_authorAndSource"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_padding_midlarge"
+      android:layout_marginLeft="@dimen/margin_padding_small"
+      android:layout_marginTop="@dimen/margin_padding_smedium"
+      android:fontFamily="sans-serif"
+      android:textColor="@color/text_secondary"
+      android:textSize="@dimen/text_small"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/quoteDetail_guideline_contentRight"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="@+id/quoteDetail_guideline_contentLeft"
+      app:layout_constraintTop_toBottomOf="@+id/quoteDetail_text_quote"
+      tools:text="@sample/quotes.json/data/author"/>
+
+</android.support.constraint.ConstraintLayout>
