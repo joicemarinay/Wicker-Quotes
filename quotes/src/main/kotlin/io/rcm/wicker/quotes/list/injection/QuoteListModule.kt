@@ -5,6 +5,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import io.rcm.wicker.base.injection.keys.ViewModelKey
+import io.rcm.wicker.quotes.list.domain.GetQuotes
+import io.rcm.wicker.quotes.list.domain.GetQuotesUseCase
 import io.rcm.wicker.quotes.list.presentation.QuoteListViewModel
 
 /**
@@ -12,6 +14,9 @@ import io.rcm.wicker.quotes.list.presentation.QuoteListViewModel
  */
 @Module
 internal abstract class QuoteListModule {
+
+  @Binds
+  abstract fun bindGetQuotes(getQuotesUseCase: GetQuotesUseCase): GetQuotes
 
   @Binds
   @IntoMap
