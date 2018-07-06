@@ -10,8 +10,8 @@ import io.reactivex.disposables.Disposable
  * https://github.com/MojRoid/memes/blob/master/base/src/main/java/moj/memes/base/domain/BaseUseCase.kt
  */
 abstract class BaseUseCase<T>(
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable(),
-    protected val liveData: MutableLiveData<T> = MutableLiveData()) : UseCase<T> {
+  private val compositeDisposable: CompositeDisposable = CompositeDisposable(),
+  protected val liveData: MutableLiveData<T> = MutableLiveData()) : UseCase<T> {
 
   protected fun Disposable.track() {
     compositeDisposable.add(this)

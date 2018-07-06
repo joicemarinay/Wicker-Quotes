@@ -21,7 +21,7 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
-  
+
   <style name="BaseTextViewStyle" parent="android:Widget.TextView">
     <item name="android:lineSpacingExtra">@dimen/linespacing</item>
   </style>

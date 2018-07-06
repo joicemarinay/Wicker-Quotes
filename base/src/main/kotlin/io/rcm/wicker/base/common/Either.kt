@@ -1,4 +1,5 @@
 package io.rcm.wicker.base.common
+
 /**
  * Copyright (C) 2018 Fernando Cejas Open Source Project
  *
@@ -44,10 +45,10 @@ sealed class Either<out L, out R> {
   fun <R> right(b: R) = Right(b)
 
   fun either(fnL: (L) -> Any, fnR: (R) -> Any): Any =
-      when (this) {
-        is Left -> fnL(a)
-        is Right -> fnR(b)
-      }
+    when (this) {
+      is Left -> fnL(a)
+      is Right -> fnR(b)
+    }
 }
 
 // Credits to Alex Hart -> https://proandroiddev.com/kotlins-nothing-type-946de7d464fb
@@ -57,10 +58,10 @@ fun <A, B, C> ((A) -> B).c(f: (B) -> C): (A) -> C = {
 }
 
 fun <T, L, R> Either<L, R>.flatMap(fn: (R) -> Either<L, T>): Either<L, T> =
-    when (this) {
-      is Either.Left -> Either.Left(
-          a)
-      is Either.Right -> fn(b)
-    }
+  when (this) {
+    is Either.Left -> Either.Left(
+      a)
+    is Either.Right -> fn(b)
+  }
 
 fun <T, L, R> Either<L, R>.map(fn: (R) -> (T)): Either<L, T> = this.flatMap(fn.c(::right))

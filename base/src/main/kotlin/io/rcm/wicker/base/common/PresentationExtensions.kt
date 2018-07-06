@@ -15,4 +15,4 @@ fun <T> LifecycleOwner.observe(liveData: LiveData<T>, action: (t: T) -> Unit) {
 }
 
 fun ViewGroup.inflate(layoutRes: Int): View =
-    LayoutInflater.from(context).inflate(layoutRes, this, false)
+  LayoutInflater.from(context).inflate(layoutRes, this, false)
