@@ -51,9 +51,9 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
    * TODO Find position of first alphabet
    */
   private fun spannedQuote(quote: String): SpannableString {
-    val spannableString = SpannableString(quote);
+    val spannableString = SpannableString(quote)
     spannableString.setSpan(RelativeSizeSpan(2f), 0, 1,
-        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+      Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     return spannableString
   }
 

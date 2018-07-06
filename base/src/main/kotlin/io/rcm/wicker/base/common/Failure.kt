@@ -1,4 +1,5 @@
 package io.rcm.wicker.base.common
+
 /**
  * Copyright (C) 2018 Fernando Cejas Open Source Project
  *
