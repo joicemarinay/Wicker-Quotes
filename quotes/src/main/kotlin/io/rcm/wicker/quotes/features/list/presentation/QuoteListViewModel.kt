@@ -14,10 +14,10 @@ import javax.inject.Inject
 internal class QuoteListViewModel @Inject constructor(private val getQuotes: GetQuotes):
   BaseViewModel() {
 
-  private val state: MediatorLiveData<QuoteListViewModel.State> = MediatorLiveData()
+  private val uiState: MediatorLiveData<QuoteListViewModel.UiState> = MediatorLiveData()
 
   init {
-    state.addSource(getQuotes.liveData(), ::onGetQuotesResult)
+    uiState.addSource(getQuotes.liveData(), ::onGetQuotesResult)
     fetchQuotes()
   }
 
@@ -28,36 +28,36 @@ internal class QuoteListViewModel @Inject constructor(private val getQuotes: Get
     super.onCleared()
   }
 
-  fun state(): LiveData<State> = state
+  fun state(): LiveData<UiState> = uiState
 
   private fun fetchQuotes() {
-    state.value = State.ShowLoading
+    uiState.value = UiState.ShowLoading
     getQuotes.execute()
   }
 
   private fun onGetQuotesResult(result: GetQuotes.Result?) {
     when (result) {
-      is GetQuotes.Result.OnError -> state.value = State.GetQuotesFailed
+      is GetQuotes.Result.OnError -> uiState.value = UiState.GetQuotesFailed
       is GetQuotes.Result.OnSuccess -> onGetQuotesResultSuccess(result.quotes)
     }
   }
 
   private fun onGetQuotesResultSuccess(quotes: List<QuoteUi>) {
     if (quotes.isEmpty()) {
-      state.value = State.GetQuotesOkEmpty
+      uiState.value = UiState.GetQuotesOkEmpty
     } else {
-      state.value = State.GetQuotesOk
-      val quotesLoaded = State.QuotesLoaded(quotes)
-      state.value = quotesLoaded
+      uiState.value = UiState.GetQuotesOk
+      val quotesLoaded = UiState.QuotesLoaded(quotes)
+      uiState.value = quotesLoaded
     }
   }
 
-  sealed class State {
-    data class QuotesLoaded(val quotes: List<QuoteUi>): State()
-    object GetQuotesOk: State()
-    object GetQuotesOkEmpty: State()
-    object GetQuotesFailed: State()
-    object ShowLoading: State()
+  sealed class UiState {
+    data class QuotesLoaded(val quotes: List<QuoteUi>): UiState()
+    object GetQuotesOk: UiState()
+    object GetQuotesOkEmpty: UiState()
+    object GetQuotesFailed: UiState()
+    object ShowLoading: UiState()
 
   }
 }

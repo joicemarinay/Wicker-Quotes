@@ -6,7 +6,7 @@ import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
 import io.rcm.wicker.quotes.features.writer.injection.QuoteWriterComponent
-import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterViewModel.State
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterViewModel.UiState
 import kotlinx.android.synthetic.main.wicker_quote_writer_view.*
 
 /**
@@ -35,10 +35,10 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
 
   private fun inputSource(): String = quoteWriter_editText_source.text.toString()
 
-  private fun onStateChange(state: State) = when(state) {
-    is State.Loading -> showLoading()
-    State.SaveFailed -> showError()
-    State.SaveOk -> finish()
+  private fun onStateChange(uiState: UiState) = when(uiState) {
+    is UiState.Loading -> showLoading()
+    UiState.SaveFailed -> showError()
+    UiState.SaveOk -> finish()
   }
 
   private fun setClickListeners() {
