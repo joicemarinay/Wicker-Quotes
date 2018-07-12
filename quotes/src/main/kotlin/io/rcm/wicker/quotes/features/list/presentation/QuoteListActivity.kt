@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.view.View
-import android.widget.Toast
 import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
@@ -70,12 +69,12 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
     quoteList_recyclerView_quotes.visibility = View.VISIBLE
   }
 
-  private fun onStateChange(state: QuoteListViewModel.State) = when(state) {
-    is QuoteListViewModel.State.QuotesLoaded -> quoteListAdapter.setQuoteList(state.quotes)
-    QuoteListViewModel.State.GetQuotesOk -> showQuoteList()
-    QuoteListViewModel.State.GetQuotesOkEmpty -> showEmptyView()
-    QuoteListViewModel.State.GetQuotesFailed -> showError()
-    QuoteListViewModel.State.ShowLoading -> showLoading()
+  private fun onStateChange(uiState: QuoteListViewModel.UiState) = when(uiState) {
+    is QuoteListViewModel.UiState.QuotesLoaded -> quoteListAdapter.setQuoteList(uiState.quotes)
+    QuoteListViewModel.UiState.GetQuotesOk -> showQuoteList()
+    QuoteListViewModel.UiState.GetQuotesOkEmpty -> showEmptyView()
+    QuoteListViewModel.UiState.GetQuotesFailed -> showError()
+    QuoteListViewModel.UiState.ShowLoading -> showLoading()
   }
 
   //TODO add [QuoteEntity] as param (when editing a quote)
