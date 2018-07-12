@@ -15,7 +15,7 @@
     android:layout_marginRight="@dimen/margin_padding_small"
     android:layout_marginStart="@dimen/margin_padding_small"
     android:layout_marginTop="@dimen/margin_padding_medium"
-    android:background="@drawable/wicker_drawable_close"
+    android:background="@drawable/close"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.023"
     app:layout_constraintStart_toStartOf="parent"
