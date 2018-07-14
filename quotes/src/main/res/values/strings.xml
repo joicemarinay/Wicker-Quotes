@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+  <string name="action_copy">Copy</string>
+  <string name="action_edit">Edit</string>
+  <string name="action_delete">Delete</string>
   <string name="action_save">Save</string>
-  
+
   <string name="char_quotation_marks_emptylist">\u0020\”\n\“</string>
 
   <string name="field_author_or_speaker">Author/Speaker</string>
   <string name="field_quote">Quote</string>
   <string name="field_source">Source (e.g. book/article/movie)</string>
   <string name="field_link">Link</string>
-  
+
   <string name="spiel_quote_list_empty">The secret of getting ahead\nis getting started.</string>
   <string name="spiel_quote_list_empty_sub">Tap the \"+\" button below to get started.</string>
 

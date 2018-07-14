@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.RelativeSizeSpan
+import android.view.Menu
+import android.view.MenuItem
 import io.rcm.wicker.base.common.KEY_PREFIX
 import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
@@ -28,6 +30,33 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     super.onCreate(savedInstanceState)
     handleIntent()
     setDataObservers()
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.wicker_menu_quote_details, menu)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when (item?.itemId) {
+      android.R.id.home -> {
+        onBackPressed()
+        return true
+      }
+      R.id.wicker_menu_quotedetails_copy -> {
+        //TODO
+        return true
+      }
+      R.id.wicker_menu_quotedetails_edit -> {
+        //TODO
+        return true
+      }
+      R.id.wicker_menu_quotedetails_delete -> {
+        //TODO
+        return true
+      }
+      else -> return super.onOptionsItemSelected(item)
+    }
   }
 
   private fun handleIntent() {
