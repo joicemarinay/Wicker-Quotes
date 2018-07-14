@@ -14,14 +14,14 @@ import javax.inject.Inject
 internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: SaveQuote):
   BaseViewModel() {
 
-  private val state: MediatorLiveData<State> = MediatorLiveData()
+  private val uiState: MediatorLiveData<UiState> = MediatorLiveData()
 
   init {
     /**
      * Start listening to [saveQuote.liveData()]
      *  then call [onSaveQuoteResult(SaveQuote.Result?)] whenever saveQuote.liveData().value changes
      */
-    state.addSource(saveQuote.liveData(), ::onSaveQuoteResult)
+    uiState.addSource(saveQuote.liveData(), ::onSaveQuoteResult)
   }
 
   //STUDY why destroy component in ViewModel.onCleared() instead of in Activity.onDestroy()
@@ -37,18 +37,18 @@ internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: S
       sourceUrl = sourceUrl))
   }
 
-  fun state(): LiveData<State> = state
+  fun state(): LiveData<UiState> = uiState
 
   private fun onSaveQuoteResult(result: SaveQuote.Result?) {
     when (result) {
-      is SaveQuote.Result.OnSuccess -> state.value = State.SaveOk
-      is SaveQuote.Result.OnError -> state.value = State.SaveFailed
+      is SaveQuote.Result.OnSuccess -> uiState.value = UiState.SaveOk
+      is SaveQuote.Result.OnError -> uiState.value = UiState.SaveFailed
     }
   }
 
-  sealed class State {
-    object Loading : State()
-    object SaveOk: State()
-    object SaveFailed: State()
+  sealed class UiState {
+    object Loading : UiState()
+    object SaveOk: UiState()
+    object SaveFailed: UiState()
   }
 }
