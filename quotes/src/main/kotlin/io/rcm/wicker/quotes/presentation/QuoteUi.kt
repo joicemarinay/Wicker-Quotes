@@ -1,5 +1,8 @@
 package io.rcm.wicker.quotes.presentation
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Parcel
 import io.rcm.wicker.base.common.KParcelable
 import io.rcm.wicker.base.common.parcelableCreator
@@ -38,6 +41,10 @@ internal data class QuoteUi(
     else -> ""
   }
 
+  fun formattedQuote(resourceProvider: ResourceProvider): String =
+    "${resourceProvider.openQuoteMark()}$quote${resourceProvider.closeQuoteMark()}" +
+      "\n$dashedAuthorAndSource"
+
   override fun writeToParcel(dest: Parcel, flags: Int) {
     with(dest) {
       writeInt(id)
@@ -54,3 +61,12 @@ internal data class QuoteUi(
     @JvmField val CREATOR = parcelableCreator(::QuoteUi)
   }
 }
+
+//<editor-fold desc="Extension Functions">
+//TODO check if this is safe
+internal fun QuoteUi.copyToClipBoard(context: Context, resourceProvider: ResourceProvider) {
+  val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+  clipboard.primaryClip = ClipData.newPlainText(resourceProvider.appName(),
+    this.formattedQuote(resourceProvider))
+}
+//</editor-fold>

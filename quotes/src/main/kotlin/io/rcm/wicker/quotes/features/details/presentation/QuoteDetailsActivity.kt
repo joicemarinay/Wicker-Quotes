@@ -3,6 +3,7 @@ package io.rcm.wicker.quotes.features.details.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.RelativeSizeSpan
@@ -44,7 +45,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
         return true
       }
       R.id.wicker_menu_quotedetails_copy -> {
-        //TODO
+        viewModel.copyQuoteToClipboard(this)
         return true
       }
       R.id.wicker_menu_quotedetails_edit -> {
@@ -72,6 +73,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
 
   private fun setDataObservers() {
     observe(viewModel.quote) { onQuoteChanged(it) }
+    observe(viewModel.onCopySuccess) { if (it) showSpielQuoteCopied() }
   }
 
   /**
@@ -84,6 +86,10 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     spannableString.setSpan(RelativeSizeSpan(2f), 0, 1,
       Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     return spannableString
+  }
+
+  private fun showSpielQuoteCopied() {
+    Snackbar.make(quoteDetail_parent, R.string.spiel_quote_copied, Snackbar.LENGTH_SHORT).show()
   }
 
   companion object {
