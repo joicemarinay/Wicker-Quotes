@@ -1,4 +1,5 @@
-<resources>
+<resources
+  xmlns:tools="http://schemas.android.com/tools">
   <!-- Should only contain styles that are will be reused
   by multiple feature modules -->
 
@@ -24,6 +25,13 @@
 
   <style name="BaseTextViewStyle" parent="android:Widget.TextView">
     <item name="android:lineSpacingExtra">@dimen/linespacing</item>
+  </style>
+
+  <!-- I still need to figure out how to override the color of snackbar's message and action
+  because, overriding it here or in a separate style for TextAppearance.Design.Snackbar.Action
+  and TextAppearance.Design.Snackbar.Message are not working -->
+  <style name="Widget.Design.Snackbar" parent="android:Widget" tools:override="true">
+    <item name="android:background">@color/snackbar_background</item>
   </style>
 
 </resources>
