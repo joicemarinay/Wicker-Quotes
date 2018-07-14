@@ -6,6 +6,9 @@
   <string name="action_delete">Delete</string>
   <string name="action_save">Save</string>
 
+  <string name="char_en_dash">– </string>
+  <string name="char_quotation_mark_close">”</string>
+  <string name="char_quotation_mark_open">“</string>
   <string name="char_quotation_marks_emptylist">\u0020\”\n\“</string>
 
   <string name="field_author_or_speaker">Author/Speaker</string>

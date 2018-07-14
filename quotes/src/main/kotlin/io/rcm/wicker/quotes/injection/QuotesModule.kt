@@ -10,6 +10,8 @@ import io.rcm.wicker.quotes.data.local.QuotesLocalSource
 import io.rcm.wicker.quotes.data.local.db.QuotesDb
 import io.rcm.wicker.quotes.domain.QuotesRepository
 import io.rcm.wicker.quotes.features.list.injection.QuoteListScope
+import io.rcm.wicker.quotes.presentation.ResourceProvider
+import io.rcm.wicker.quotes.presentation.ResourceProviderImpl
 
 /**
  * Created by joicemarinay on 26/06/2018.
@@ -32,4 +34,8 @@ internal class QuotesModule {
   @QuoteListScope
   fun repository(localSource: QuotesLocalSource): QuotesRepository =
     QuotesLocalRepository(localSource)
+
+  @Provides
+  @QuoteListScope
+  fun resourceProvider(context: Context): ResourceProvider = ResourceProviderImpl(context)
 }
