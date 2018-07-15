@@ -15,6 +15,7 @@ import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
 import io.rcm.wicker.quotes.features.details.injection.QuoteDetailsComponent
+import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsViewModel.UiState
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import kotlinx.android.synthetic.main.wicker_quote_details_view.*
 
@@ -60,20 +61,24 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     }
   }
 
-  private fun handleIntent() {
-    viewModel.setQuote(intent.extras.getParcelable(EXTRA_SELECTED_QUOTE) as QuoteUi)
-  }
-
-  private fun onQuoteChanged(quote: QuoteUi) {
+  private fun displayQuoteDetails(quote: QuoteUi) {
     quote?.let {
       quoteDetail_text_quote.text = spannedQuote(it.quote)
       quoteDetail_text_authorAndSource.text = it.dashedAuthorAndSource
     }
   }
 
+  private fun handleIntent() {
+    viewModel.setQuote(intent.extras.getParcelable(EXTRA_SELECTED_QUOTE) as QuoteUi)
+  }
+
+  private fun onStateChanged(uiState: UiState) = when(uiState) {
+    is UiState.CopyFinish -> showSpielQuoteCopied()
+    is QuoteDetailsViewModel.UiState.QuoteLoaded -> displayQuoteDetails(uiState.quote)
+  }
+
   private fun setDataObservers() {
-    observe(viewModel.quote) { onQuoteChanged(it) }
-    observe(viewModel.onCopySuccess) { if (it) showSpielQuoteCopied() }
+    observe(viewModel.uiState) { onStateChanged(it) }
   }
 
   /**
