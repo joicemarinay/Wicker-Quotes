@@ -7,16 +7,15 @@ import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.domain.model.QuoteEntity
 import io.rcm.wicker.quotes.features.writer.domain.SaveQuote
 import io.rcm.wicker.quotes.presentation.QuoteUi
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
  * Created by joicemarinay on 6/24/18.
  */
 internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: SaveQuote):
-  BaseViewModel() {
+  BaseViewModel<QuoteWriterState>() {
 
-  private val uiState: MediatorLiveData<UiState> = MediatorLiveData()
+  private val uiState: MediatorLiveData<QuoteWriterState> = MediatorLiveData()
   private var quote: QuoteUi = QuoteUi.empty()
 
   init {
@@ -34,6 +33,8 @@ internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: S
     super.onCleared()
   }
 
+  override fun state(): LiveData<QuoteWriterState> = uiState
+
   //TODO set quote as mandatory
   fun onClickSave(quote: String, author: String, sourceName: String, sourceUrl: String) {
     saveQuote.execute(QuoteEntity(id = this.quote.id, quote = quote, author = author,
@@ -42,22 +43,13 @@ internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: S
 
   fun setQuote(quote: QuoteUi) {
     this.quote = quote
-    uiState.postValue(UiState.EditQuote(this.quote))
+    uiState.postValue(QuoteWriterState.EditQuote(this.quote))
   }
-
-  fun state(): LiveData<UiState> = uiState
 
   private fun onSaveQuoteResult(result: SaveQuote.Result?) {
     when (result) {
-      is SaveQuote.Result.OnSuccess -> uiState.value = UiState.SaveOk
-      is SaveQuote.Result.OnError -> uiState.value = UiState.SaveFailed
+      is SaveQuote.Result.OnSuccess -> uiState.postValue(QuoteWriterState.SaveSuccessful)
+      is SaveQuote.Result.OnError -> uiState.postValue(QuoteWriterState.SaveFailed)
     }
-  }
-
-  sealed class UiState {
-    data class EditQuote(val quote: QuoteUi): UiState()
-    object Loading : UiState()
-    object SaveOk: UiState()
-    object SaveFailed: UiState()
   }
 }

@@ -15,6 +15,7 @@ package io.rcm.wicker.base.presentation
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import io.rcm.wicker.base.common.Failure
@@ -26,8 +27,19 @@ import io.rcm.wicker.base.common.Failure
  * Base ViewModel class with default Failure handling.
  * @see ViewModel
  * @see Failure
+ *
+ * Changes:
+ * - Added <T: BaseUiState>
+ * - Added state()
  */
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel<T: BaseUiState> : ViewModel() {
+
+  /**
+   * - This will be observed by view [Activity]/[Fragment]
+   * - Transform [MediatorLiveData] of T to [LiveData]
+   *  to prevent view from changing the UiState's value
+   */
+  abstract fun state(): LiveData<T>
 
   var failure: MutableLiveData<Failure> = MutableLiveData()
 

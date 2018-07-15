@@ -12,6 +12,7 @@ import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsActivity
 import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
 import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListAdapter
 import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListViewHolder
+import io.rcm.wicker.quotes.features.list.presentation.QuoteListState.*
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 import kotlinx.android.synthetic.main.wicker_quote_list_view.*
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.wicker_quote_list_view.*
  * Created by joicemarinay on 09/05/2018.
  */
 internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.wicker_quote_list_view):
-    BaseActivity<QuoteListViewModel>(), QuoteListViewHolder.Listener {
+    BaseActivity<QuoteListViewModel, QuoteListState>(), QuoteListViewHolder.Listener {
 
   private val component: QuoteListComponent by lazy { QuotesDependencyHolder.listComponent() }
   private val quoteListAdapter: QuoteListAdapter = QuoteListAdapter(this)
@@ -35,6 +36,14 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
 
   override fun onQuoteClicked(quote: QuoteUi) {
     startActivity(QuoteDetailsActivity.intent(this, quote))
+  }
+
+  override fun onStateChange(state: QuoteListState) = when(state) {
+    is GetQuotesFailed -> showError()
+    is GetQuotesSuccessful -> showQuoteList()
+    is Loading -> showLoading()
+    is QuotesEmpty -> showEmptyView()
+    is QuotesLoaded -> quoteListAdapter.setQuoteList(state.quotes)
   }
 
   private fun setClickListeners() {
@@ -67,14 +76,6 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
   private fun showQuoteList() {
     quoteList_empty.visibility = View.GONE
     quoteList_recyclerView_quotes.visibility = View.VISIBLE
-  }
-
-  private fun onStateChange(uiState: QuoteListViewModel.UiState) = when(uiState) {
-    is QuoteListViewModel.UiState.QuotesLoaded -> quoteListAdapter.setQuoteList(uiState.quotes)
-    QuoteListViewModel.UiState.GetQuotesOk -> showQuoteList()
-    QuoteListViewModel.UiState.GetQuotesOkEmpty -> showEmptyView()
-    QuoteListViewModel.UiState.GetQuotesFailed -> showError()
-    QuoteListViewModel.UiState.ShowLoading -> showLoading()
   }
 
   private fun openQuoteWriter() {
