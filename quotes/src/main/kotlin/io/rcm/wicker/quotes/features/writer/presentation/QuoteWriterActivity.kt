@@ -9,7 +9,7 @@ import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
 import io.rcm.wicker.quotes.features.writer.injection.QuoteWriterComponent
-import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterViewModel.UiState
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState.*
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import kotlinx.android.synthetic.main.wicker_quote_writer_view.*
 
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.wicker_quote_writer_view.*
  * [io.rcm.wicker.app.view.ScreenRouterImpl]
  */
 internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout.wicker_quote_writer_view):
-    BaseActivity<QuoteWriterViewModel>() {
+    BaseActivity<QuoteWriterViewModel, QuoteWriterState>() {
 
   private val component: QuoteWriterComponent by lazy { QuotesDependencyHolder.writerComponent() }
 
@@ -30,6 +30,13 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
     handleIntent()
     setClickListeners()
     setDataObservers()
+  }
+
+  override fun onStateChange(state: QuoteWriterState) = when(state) {
+    is EditQuote -> prefillFields(state.quote)
+    is Loading -> showLoading()
+    is SaveFailed -> showError()
+    is SaveSuccessful -> finish()
   }
 
   private fun handleIntent() {
@@ -43,13 +50,6 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
   private fun inputQuote(): String = quoteWriter_editText_quote.text.toString()
 
   private fun inputSource(): String = quoteWriter_editText_source.text.toString()
-
-  private fun onStateChange(uiState: UiState) = when(uiState) {
-    is UiState.EditQuote -> prefillFields(uiState.quote)
-    UiState.Loading -> showLoading()
-    UiState.SaveFailed -> showError()
-    UiState.SaveOk -> finish()
-  }
 
   private fun prefillFields(quote: QuoteUi) {
     quoteWriter_editText_author.setText(quote.author)

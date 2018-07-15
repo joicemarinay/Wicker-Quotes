@@ -12,13 +12,13 @@ import javax.inject.Inject
  * Created by joicemarinay on 6/24/18.
  */
 internal class QuoteListViewModel @Inject constructor(private val getQuotes: GetQuotes):
-  BaseViewModel() {
+  BaseViewModel<QuoteListState>() {
 
-  private val uiState: MediatorLiveData<QuoteListViewModel.UiState> = MediatorLiveData()
+  private val uiState: MediatorLiveData<QuoteListState> = MediatorLiveData()
 
   init {
     uiState.addSource(getQuotes.liveData(), ::onGetQuotesResult)
-    fetchQuotes()
+    loadQuotes()
   }
 
   //STUDY why destroy component in ViewModel.onCleared() instead of in Activity.onDestroy()
@@ -28,36 +28,26 @@ internal class QuoteListViewModel @Inject constructor(private val getQuotes: Get
     super.onCleared()
   }
 
-  fun state(): LiveData<UiState> = uiState
+  override fun state(): LiveData<QuoteListState> = uiState
 
-  private fun fetchQuotes() {
-    uiState.value = UiState.ShowLoading
+  private fun loadQuotes() {
+    uiState.postValue(QuoteListState.Loading)
     getQuotes.execute()
   }
 
   private fun onGetQuotesResult(result: GetQuotes.Result?) {
     when (result) {
-      is GetQuotes.Result.OnError -> uiState.value = UiState.GetQuotesFailed
+      is GetQuotes.Result.OnError -> uiState.postValue(QuoteListState.GetQuotesFailed)
       is GetQuotes.Result.OnSuccess -> onGetQuotesResultSuccess(result.quotes)
     }
   }
 
   private fun onGetQuotesResultSuccess(quotes: List<QuoteUi>) {
     if (quotes.isEmpty()) {
-      uiState.value = UiState.GetQuotesOkEmpty
+      uiState.postValue(QuoteListState.QuotesEmpty)
     } else {
-      uiState.value = UiState.GetQuotesOk
-      val quotesLoaded = UiState.QuotesLoaded(quotes)
-      uiState.value = quotesLoaded
+      uiState.postValue(QuoteListState.GetQuotesSuccessful)
+      uiState.postValue(QuoteListState.QuotesLoaded(quotes))
     }
-  }
-
-  sealed class UiState {
-    data class QuotesLoaded(val quotes: List<QuoteUi>): UiState()
-    object GetQuotesOk: UiState()
-    object GetQuotesOkEmpty: UiState()
-    object GetQuotesFailed: UiState()
-    object ShowLoading: UiState()
-
   }
 }

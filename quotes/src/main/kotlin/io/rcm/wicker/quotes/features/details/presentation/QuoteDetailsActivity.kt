@@ -15,7 +15,7 @@ import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
 import io.rcm.wicker.quotes.features.details.injection.QuoteDetailsComponent
-import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsViewModel.UiState
+import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsState.*
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import kotlinx.android.synthetic.main.wicker_quote_details_view.*
@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.wicker_quote_details_view.*
  * Created by joicemarinay on 7/1/18.
  */
 internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layout.wicker_quote_details_view):
-    BaseActivity<QuoteDetailsViewModel>() {
+    BaseActivity<QuoteDetailsViewModel, QuoteDetailsState>() {
 
   private val component: QuoteDetailsComponent by lazy { QuotesDependencyHolder.detailsComponent() }
 
@@ -62,6 +62,12 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     }
   }
 
+  override fun onStateChange(state: QuoteDetailsState) = when(state) {
+    is CopyFinish -> showSpielQuoteCopied()
+    is OpenEditQuote -> openQuoteWriter(state.quote)
+    is QuoteLoaded -> displayQuoteDetails(state.quote)
+  }
+
   private fun displayQuoteDetails(quote: QuoteUi) {
     quote?.let {
       quoteDetail_text_quote.text = spannedQuote(it.quote)
@@ -73,18 +79,12 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     viewModel.setQuote(intent.extras.getParcelable(EXTRA_SELECTED_QUOTE) as QuoteUi)
   }
 
-  private fun onStateChanged(uiState: UiState) = when(uiState) {
-    is UiState.CopyFinish -> showSpielQuoteCopied()
-    is UiState.OpenEditQuote -> openQuoteWriter(uiState.quote)
-    is QuoteDetailsViewModel.UiState.QuoteLoaded -> displayQuoteDetails(uiState.quote)
-  }
-
   private fun openQuoteWriter(quote: QuoteUi) {
     startActivity(QuoteWriterActivity.intentToEdit(this, quote))
   }
 
   private fun setDataObservers() {
-    observe(viewModel.uiState) { onStateChanged(it) }
+    observe(viewModel.state()) { onStateChange(it) }
   }
 
   /**
