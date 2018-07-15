@@ -77,7 +77,6 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
     QuoteListViewModel.UiState.ShowLoading -> showLoading()
   }
 
-  //TODO add [QuoteEntity] as param (when editing a quote)
   private fun openQuoteWriter() {
     startActivity(Intent(this, QuoteWriterActivity::class.java))
   }
