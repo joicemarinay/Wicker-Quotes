@@ -16,6 +16,7 @@ import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
 import io.rcm.wicker.quotes.features.details.injection.QuoteDetailsComponent
 import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsViewModel.UiState
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import kotlinx.android.synthetic.main.wicker_quote_details_view.*
 
@@ -50,7 +51,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
         return true
       }
       R.id.wicker_menu_quotedetails_edit -> {
-        //TODO
+        viewModel.editQuote()
         return true
       }
       R.id.wicker_menu_quotedetails_delete -> {
@@ -74,7 +75,12 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
 
   private fun onStateChanged(uiState: UiState) = when(uiState) {
     is UiState.CopyFinish -> showSpielQuoteCopied()
+    is UiState.OpenEditQuote -> openQuoteWriter(uiState.quote)
     is QuoteDetailsViewModel.UiState.QuoteLoaded -> displayQuoteDetails(uiState.quote)
+  }
+
+  private fun openQuoteWriter(quote: QuoteUi) {
+    startActivity(QuoteWriterActivity.intentToEdit(this, quote))
   }
 
   private fun setDataObservers() {

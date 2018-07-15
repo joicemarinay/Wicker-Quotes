@@ -29,12 +29,17 @@ internal class QuoteDetailsViewModel @Inject constructor(
     uiState.postValue(UiState.CopyFinish)
   }
 
+  fun editQuote() {
+    uiState.postValue(UiState.OpenEditQuote(this.quote))
+  }
+
   fun setQuote(quote: QuoteUi) {
     this.quote = quote
     uiState.postValue(UiState.QuoteLoaded(this.quote))
   }
 
   sealed class UiState {
+    data class OpenEditQuote(val quote: QuoteUi): UiState()
     data class QuoteLoaded(val quote: QuoteUi): UiState()
     object CopyFinish: UiState()
   }
