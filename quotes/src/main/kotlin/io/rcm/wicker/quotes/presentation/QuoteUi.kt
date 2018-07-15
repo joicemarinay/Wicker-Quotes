@@ -59,6 +59,8 @@ internal data class QuoteUi(
 
   companion object {
     @JvmField val CREATOR = parcelableCreator(::QuoteUi)
+
+    fun empty() =  QuoteUi(quote = "", author = "", sourceName = "", sourceUrl = "")
   }
 }
 

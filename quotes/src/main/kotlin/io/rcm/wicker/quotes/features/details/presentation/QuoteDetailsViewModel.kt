@@ -1,6 +1,6 @@
 package io.rcm.wicker.quotes.features.details.presentation
 
-import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.MediatorLiveData
 import android.content.Context
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.quotes.QuotesDependencyHolder
@@ -13,10 +13,11 @@ import javax.inject.Inject
  * Created by joicemarinay on 7/1/18.
  */
 internal class QuoteDetailsViewModel @Inject constructor(
-  private val resourceProvider: ResourceProvider): BaseViewModel() {
+  private val resourceProvider: ResourceProvider):
+  BaseViewModel() {
 
-  val onCopySuccess: MutableLiveData<Boolean> = MutableLiveData()
-  val quote: MutableLiveData<QuoteUi> = MutableLiveData()
+  val uiState: MediatorLiveData<UiState> = MediatorLiveData()
+  private lateinit var quote: QuoteUi
 
   override fun onCleared() {
     QuotesDependencyHolder.destroyDetailsComponent()
@@ -24,12 +25,18 @@ internal class QuoteDetailsViewModel @Inject constructor(
   }
 
   fun copyQuoteToClipboard(context: Context) {
-    quote.value?.copyToClipBoard(context, resourceProvider)
-    onCopySuccess.postValue(true)
+    quote.copyToClipBoard(context, resourceProvider)
+    uiState.postValue(UiState.CopyFinish)
   }
 
   fun setQuote(quote: QuoteUi) {
-    this.quote.postValue(quote)
+    this.quote = quote
+    uiState.postValue(UiState.QuoteLoaded(this.quote))
+  }
+
+  sealed class UiState {
+    data class QuoteLoaded(val quote: QuoteUi): UiState()
+    object CopyFinish: UiState()
   }
 
 }
