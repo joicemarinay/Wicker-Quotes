@@ -46,7 +46,6 @@ internal class QuoteListViewModel @Inject constructor(private val getQuotes: Get
     if (quotes.isEmpty()) {
       uiState.postValue(QuoteListState.QuotesEmpty)
     } else {
-      uiState.postValue(QuoteListState.GetQuotesSuccessful)
       uiState.postValue(QuoteListState.QuotesLoaded(quotes))
     }
   }
