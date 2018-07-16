@@ -5,19 +5,26 @@ import android.arch.lifecycle.MediatorLiveData
 import android.content.Context
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.quotes.QuotesDependencyHolder
+import io.rcm.wicker.quotes.features.details.domain.GetQuoteDetails
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import io.rcm.wicker.quotes.presentation.ResourceProvider
 import io.rcm.wicker.quotes.presentation.copyToClipBoard
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
  * Created by joicemarinay on 7/1/18.
  */
 internal class QuoteDetailsViewModel @Inject constructor(
-  private val resourceProvider: ResourceProvider): BaseViewModel<QuoteDetailsState>() {
+  private val getQuoteDetails: GetQuoteDetails, private val resourceProvider: ResourceProvider):
+  BaseViewModel<QuoteDetailsState>() {
 
   private val uiState: MediatorLiveData<QuoteDetailsState> = MediatorLiveData()
   private lateinit var quote: QuoteUi
+
+  init {
+    uiState.addSource(getQuoteDetails.liveData(), ::onGetQuoteDetailsResult)
+  }
 
   override fun onCleared() {
     QuotesDependencyHolder.destroyDetailsComponent()
@@ -35,7 +42,30 @@ internal class QuoteDetailsViewModel @Inject constructor(
     uiState.postValue(QuoteDetailsState.OpenEditQuote(this.quote))
   }
 
-  fun setQuote(quote: QuoteUi) {
+  /**
+   * `getQuoteDetails.execute(quote.id)`
+   *  - get details of quote from data source.
+   *  This also allows this ViewModel to subscribe to any changes made on this quote
+   *    (e.g. when editing this quote, the changes will be reflected right away)
+   *
+   * `setQuote(quote)`
+   *  - Display quote right away. If this is removed, a "flicker" will be displayed in UI
+   *    since there is an delay/interval to get quote details from data source
+   *    before being able to display it
+   */
+  fun loadQuote(quote: QuoteUi) {
+    getQuoteDetails.execute(quote.id)
+    setQuote(quote)
+  }
+
+  private fun onGetQuoteDetailsResult(result: GetQuoteDetails.Result?) {
+    when (result) {
+      is GetQuoteDetails.Result.OnError -> Timber.d("onSaveQuoteResult() failed") //TODO
+      is GetQuoteDetails.Result.OnSuccess -> setQuote(result.quote)
+    }
+  }
+
+  private fun setQuote(quote: QuoteUi) {
     this.quote = quote
     uiState.postValue(QuoteDetailsState.QuoteLoaded(this.quote))
   }
