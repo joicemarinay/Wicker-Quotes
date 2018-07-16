@@ -24,8 +24,20 @@ internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesD
   /**
    * Retrieve all [QuoteInDb] from quotes table in DB
    */
-  override fun getAllQuotes(): Flowable<List<QuoteEntity>> =
-    db.quotesDao().getAll().map(entityMapper::mapToDomain)
+  override fun getAllQuotes(): Flowable<List<QuoteEntity>> {
+    Timber.d("getAllQuotes() is running on ${Thread.currentThread()}")
+    return db.quotesDao().getAll().map(entityMapper::mapToDomain)
+  }
+
+  /**
+   * Retrieve [QuoteInDb] from quotes table in DB
+   *
+   * @param id: ID of quote to retrieve
+   */
+  override fun getQuote(id: Int): Flowable<QuoteEntity> {
+    Timber.d("getQuote() is running on ${Thread.currentThread()}")
+    return db.quotesDao().getQuote(id).map(entityMapper::mapToDomain)
+  }
 
   /**
    * Save a Quote in local data source/store
@@ -36,6 +48,7 @@ internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesD
       Completable.defer {
         //TODO handle error when inserting
         val insertedId = db.quotesDao().insert(entityMapper.mapFromDomain(quote))
+        Timber.d("saveQuote() is running on ${Thread.currentThread()}")
         Timber.d("saveQuote() $quote inserted with ID $insertedId")
         Completable.complete()
       }
