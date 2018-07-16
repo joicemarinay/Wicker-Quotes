@@ -15,6 +15,9 @@ internal interface QuotesDao {
   @Query("SELECT * FROM ${QuoteInDb.TABLE_NAME}")
   fun getAll(): Flowable<List<QuoteInDb>>
 
+  @Query("SELECT * FROM ${QuoteInDb.TABLE_NAME} WHERE ${QuoteInDb.COLUMN_ID} = :id")
+  fun getQuote(id: Int): Flowable<QuoteInDb>
+
   /**
    * Returns row ID of the last row inserted if insert is successful
    *  Returns -1 if this insert fails

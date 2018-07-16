@@ -15,5 +15,7 @@ internal interface QuotesLocalSource {
 
   fun getAllQuotes(): Flowable<List<QuoteEntity>>
 
+  fun getQuote(id: Int): Flowable<QuoteEntity>
+
   fun saveQuote(quote: QuoteEntity): Completable
 }

@@ -16,6 +16,7 @@ internal interface QuotesRepository {
 
   fun getAll(): Flowable<List<QuoteEntity>>
 
-  //TODO change to Either<Failure, QuoteEntity>
+  fun getQuote(id: Int): Flowable<QuoteEntity>
+
   fun save(quote: QuoteEntity): Completable
 }
