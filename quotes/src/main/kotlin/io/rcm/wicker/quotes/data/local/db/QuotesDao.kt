@@ -20,7 +20,8 @@ internal interface QuotesDao {
   @Query("DELETE FROM ${QuoteInDb.TABLE_NAME} WHERE ${QuoteInDb.COLUMN_ID} = :id")
   fun deleteQuoteById(id: Int): Int
 
-  @Query("SELECT * FROM ${QuoteInDb.TABLE_NAME}")
+  @Query("SELECT * FROM ${QuoteInDb.TABLE_NAME} " +
+    "WHERE ${QuoteInDb.COLUMN_IS_SOFT_DELETED} = 0 ORDER BY ${QuoteInDb.COLUMN_ID} DESC")
   fun getAll(): Flowable<List<QuoteInDb>>
 
   @Query("SELECT * FROM ${QuoteInDb.TABLE_NAME} WHERE ${QuoteInDb.COLUMN_ID} = :id")
