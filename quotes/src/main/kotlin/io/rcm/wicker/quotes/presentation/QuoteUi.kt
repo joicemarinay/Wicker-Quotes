@@ -19,7 +19,7 @@ internal data class QuoteUi(
     val sourceName: String,
     val sourceUrl: String,
     val isFavourite: Boolean = false,
-    val isDeleted: Boolean = false
+    var isDeleted: Boolean = false
     //TODO add tags
 ): KParcelable {
 
