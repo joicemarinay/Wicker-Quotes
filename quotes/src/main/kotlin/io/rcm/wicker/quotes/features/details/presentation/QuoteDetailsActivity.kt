@@ -76,7 +76,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
   }
 
   private fun handleIntent() {
-    viewModel.setQuote(intent.extras.getParcelable(EXTRA_SELECTED_QUOTE) as QuoteUi)
+    viewModel.loadQuote(intent.extras.getParcelable(EXTRA_SELECTED_QUOTE) as QuoteUi)
   }
 
   private fun openQuoteWriter(quote: QuoteUi) {
@@ -105,7 +105,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
 
   companion object {
 
-    private val EXTRA_SELECTED_QUOTE = "$KEY_PREFIX.SELECTED_QUOTE"
+    private val EXTRA_SELECTED_QUOTE = "$KEY_PREFIX.SELECTED_QUOTE_ID"
 
     fun intent(context: Context, quote: QuoteUi): Intent {
       val intent = Intent(context, QuoteDetailsActivity::class.java)
