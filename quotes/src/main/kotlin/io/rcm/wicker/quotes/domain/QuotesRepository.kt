@@ -21,4 +21,6 @@ internal interface QuotesRepository {
   fun getQuote(id: Int): Flowable<QuoteEntity>
 
   fun save(quote: QuoteEntity): Completable
+
+  fun softDeleteQuote(quote: QuoteEntity): Completable
 }

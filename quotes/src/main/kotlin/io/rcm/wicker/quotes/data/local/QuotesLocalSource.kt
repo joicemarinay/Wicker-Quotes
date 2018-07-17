@@ -20,4 +20,6 @@ internal interface QuotesLocalSource {
   fun getQuote(id: Int): Flowable<QuoteEntity>
 
   fun saveQuote(quote: QuoteEntity): Completable
+
+  fun softDeleteQuote(quote: QuoteEntity): Completable
 }

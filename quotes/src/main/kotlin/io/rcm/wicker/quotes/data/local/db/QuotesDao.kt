@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
+import android.arch.persistence.room.Update
 import io.reactivex.Flowable
 
 /**
@@ -33,5 +34,13 @@ internal interface QuotesDao {
    */
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   fun insert(quote: QuoteInDb): Long
+
+  /**
+   * Use update since soft deletion means setting [QuoteInDb.COLUMN_IS_SOFT_DELETED] to true
+   *
+   * @return the number of quotes soft-deleted (updated). This should always be 1.
+   */
+  @Update
+  fun softDeleteQuote(quote: QuoteInDb): Int
 
 }
