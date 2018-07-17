@@ -31,8 +31,8 @@ internal data class QuoteInDb(
     @ColumnInfo(name = COLUMN_IS_FAVOURITE)
     val isFavourite: Boolean = false,
 
-    @ColumnInfo(name = COLUMN_IS_DELETED)
-    val isDeleted: Boolean = false
+    @ColumnInfo(name = COLUMN_IS_SOFT_DELETED)
+    val isSoftDeleted: Boolean = false
 //TODO add tags
 ) {
   companion object {
@@ -43,6 +43,6 @@ internal data class QuoteInDb(
     const val COLUMN_SOURCE_NAME = "sourceName"
     const val COLUMN_SOURCE_URL = "sourceUrl"
     const val COLUMN_IS_FAVOURITE = "isFavourite"
-    const val COLUMN_IS_DELETED = "isDeleted"
+    const val COLUMN_IS_SOFT_DELETED = "isSoftDeleted"
   }
 }
