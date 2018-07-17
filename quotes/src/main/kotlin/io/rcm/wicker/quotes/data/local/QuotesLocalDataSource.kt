@@ -22,6 +22,20 @@ internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesD
   private val entityMapper: QuotesLocalMapper): QuotesLocalSource {
 
   /**
+   * Delete a Quote in local data source/store using its ID
+   *
+   * Returns [Completable] because we notify that deletion succeeded
+   */
+  override fun deleteQuote(id: Int): Completable =
+    Completable.defer {
+      //TODO handle error when inserting
+      val deletedQuoteCount = db.quotesDao().deleteQuoteById(id)
+      Timber.d("deleteQuote() is running on ${Thread.currentThread()}")
+      Timber.d("deleteQuote() number of deleted quotes is $deletedQuoteCount")
+      Completable.complete()
+    }
+
+  /**
    * Retrieve all [QuoteInDb] from quotes table in DB
    */
   override fun getAllQuotes(): Flowable<List<QuoteEntity>> {

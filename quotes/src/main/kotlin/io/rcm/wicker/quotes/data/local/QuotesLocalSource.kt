@@ -13,6 +13,8 @@ import io.reactivex.Flowable
  */
 internal interface QuotesLocalSource {
 
+  fun deleteQuote(id: Int): Completable
+
   fun getAllQuotes(): Flowable<List<QuoteEntity>>
 
   fun getQuote(id: Int): Flowable<QuoteEntity>
