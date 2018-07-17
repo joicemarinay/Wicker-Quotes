@@ -10,4 +10,6 @@ internal sealed class QuoteDetailsState: BaseUiState() {
   data class OpenEditQuote(val quote: QuoteUi): QuoteDetailsState()
   data class QuoteLoaded(val quote: QuoteUi): QuoteDetailsState()
   object CopyFinish: QuoteDetailsState()
+  object DeleteSuccessful: QuoteDetailsState()
+  object DeleteFailed: QuoteDetailsState()
 }

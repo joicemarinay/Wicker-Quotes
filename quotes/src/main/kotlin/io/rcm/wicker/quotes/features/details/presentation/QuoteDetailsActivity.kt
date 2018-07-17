@@ -55,7 +55,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
         return true
       }
       R.id.wicker_menu_quotedetails_delete -> {
-        //TODO
+        viewModel.deleteQuote()
         return true
       }
       else -> return super.onOptionsItemSelected(item)
@@ -66,6 +66,8 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     is CopyFinish -> showSpielQuoteCopied()
     is OpenEditQuote -> openQuoteWriter(state.quote)
     is QuoteLoaded -> displayQuoteDetails(state.quote)
+    is QuoteDetailsState.DeleteSuccessful -> quoteDeleted()
+    is QuoteDetailsState.DeleteFailed -> TODO()
   }
 
   private fun displayQuoteDetails(quote: QuoteUi) {
@@ -81,6 +83,11 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
 
   private fun openQuoteWriter(quote: QuoteUi) {
     startActivity(QuoteWriterActivity.intentToEdit(this, quote))
+  }
+
+  private fun quoteDeleted() {
+    setResult(DELETE_RESULT_OK)
+    finish()
   }
 
   private fun setDataObservers() {
@@ -104,6 +111,8 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
   }
 
   companion object {
+
+    const val DELETE_RESULT_OK = RESULT_FIRST_USER + 1
 
     private val EXTRA_SELECTED_QUOTE = "$KEY_PREFIX.SELECTED_QUOTE_ID"
 

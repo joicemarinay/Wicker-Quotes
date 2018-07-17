@@ -5,6 +5,8 @@ import android.arch.lifecycle.MediatorLiveData
 import android.content.Context
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.quotes.QuotesDependencyHolder
+import io.rcm.wicker.quotes.domain.usecase.DeleteQuote
+import io.rcm.wicker.quotes.domain.usecase.SoftDeleteQuote
 import io.rcm.wicker.quotes.features.details.domain.GetQuoteDetails
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import io.rcm.wicker.quotes.presentation.ResourceProvider
@@ -16,13 +18,14 @@ import javax.inject.Inject
  * Created by joicemarinay on 7/1/18.
  */
 internal class QuoteDetailsViewModel @Inject constructor(
-  private val getQuoteDetails: GetQuoteDetails, private val resourceProvider: ResourceProvider):
-  BaseViewModel<QuoteDetailsState>() {
+  private val getQuoteDetails: GetQuoteDetails, private val softDeleteQuote: SoftDeleteQuote,
+  private val resourceProvider: ResourceProvider): BaseViewModel<QuoteDetailsState>() {
 
   private val uiState: MediatorLiveData<QuoteDetailsState> = MediatorLiveData()
   private lateinit var quote: QuoteUi
 
   init {
+    uiState.addSource(softDeleteQuote.liveData(), ::onDeleteQuoteResult)
     uiState.addSource(getQuoteDetails.liveData(), ::onGetQuoteDetailsResult)
   }
 
@@ -36,6 +39,10 @@ internal class QuoteDetailsViewModel @Inject constructor(
   fun copyQuoteToClipboard(context: Context) {
     quote.copyToClipBoard(context, resourceProvider)
     uiState.postValue(QuoteDetailsState.CopyFinish)
+  }
+
+  fun deleteQuote() {
+    softDeleteQuote.execute(quote)
   }
 
   fun editQuote() {
@@ -56,6 +63,14 @@ internal class QuoteDetailsViewModel @Inject constructor(
   fun loadQuote(quote: QuoteUi) {
     getQuoteDetails.execute(quote.id)
     setQuote(quote)
+  }
+
+  private fun onDeleteQuoteResult(result: SoftDeleteQuote.Result?) {
+    Timber.d("onDeleteQuoteResult() $result")
+    when (result) {
+      is SoftDeleteQuote.Result.OnSuccess -> uiState.postValue(QuoteDetailsState.DeleteSuccessful)
+      is SoftDeleteQuote.Result.OnError -> uiState.postValue(QuoteDetailsState.DeleteFailed)
+    }
   }
 
   private fun onGetQuoteDetailsResult(result: GetQuoteDetails.Result?) {

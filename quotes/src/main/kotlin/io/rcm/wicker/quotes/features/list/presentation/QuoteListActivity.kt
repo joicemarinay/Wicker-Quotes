@@ -8,6 +8,7 @@ import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
+import io.rcm.wicker.quotes.common.showSnackbar
 import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsActivity
 import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
 import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListAdapter
@@ -26,6 +27,13 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
   private val component: QuoteListComponent by lazy { QuotesDependencyHolder.listComponent() }
   private val quoteListAdapter: QuoteListAdapter = QuoteListAdapter(this)
 
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if (REQUEST_CODE_DETAILS == requestCode) {
+      onQuoteDetailsResult(resultCode)
+    }
+  }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     component.inject(this)
     super.onCreate(savedInstanceState)
@@ -35,7 +43,7 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
   }
 
   override fun onQuoteClicked(quote: QuoteUi) {
-    startActivity(QuoteDetailsActivity.intent(this, quote))
+    startActivityForResult(QuoteDetailsActivity.intent(this, quote), REQUEST_CODE_DETAILS)
   }
 
   override fun onStateChange(state: QuoteListState) = when(state) {
@@ -43,6 +51,16 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
     is Loading -> showLoading()
     is QuotesEmpty -> showEmptyView()
     is QuotesLoaded -> showQuoteList(state.quotes)
+  }
+
+  private fun onQuoteDetailsResult(resultCode: Int) {
+    when (resultCode) {
+      QuoteDetailsActivity.DELETE_RESULT_OK -> onQuoteDeleted()
+    }
+  }
+
+  private fun onQuoteDeleted() {
+    quoteList_parent.showSnackbar(R.string.spiel_quote_deleted)
   }
 
   private fun setClickListeners() {
@@ -80,5 +98,9 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
 
   private fun openQuoteWriter() {
     startActivity(Intent(this, QuoteWriterActivity::class.java))
+  }
+
+  companion object {
+    private const val REQUEST_CODE_DETAILS = 1
   }
 }
