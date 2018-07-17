@@ -12,6 +12,8 @@ import javax.inject.Inject
 internal class QuotesLocalRepository @Inject constructor(private val localSource: QuotesLocalSource):
     QuotesRepository {
 
+  override fun deleteQuote(id: Int): Completable = localSource.deleteQuote(id)
+
   override fun getAll(): Flowable<List<QuoteEntity>> = localSource.getAllQuotes()
 
   override fun getQuote(id: Int): Flowable<QuoteEntity> = localSource.getQuote(id)

@@ -12,6 +12,14 @@ import io.reactivex.Flowable
 @Dao
 internal interface QuotesDao {
 
+  /**
+   * Delete a quote by id.
+   *
+   * @return the number of quotes deleted. This should always be 1.
+   */
+  @Query("DELETE FROM ${QuoteInDb.TABLE_NAME} WHERE ${QuoteInDb.COLUMN_ID} = :id")
+  fun deleteQuoteById(id: Int): Int
+
   @Query("SELECT * FROM ${QuoteInDb.TABLE_NAME}")
   fun getAll(): Flowable<List<QuoteInDb>>
 
