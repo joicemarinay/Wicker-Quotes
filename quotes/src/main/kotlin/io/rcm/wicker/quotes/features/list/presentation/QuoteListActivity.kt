@@ -40,10 +40,9 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
 
   override fun onStateChange(state: QuoteListState) = when(state) {
     is GetQuotesFailed -> showError()
-    is GetQuotesSuccessful -> showQuoteList()
     is Loading -> showLoading()
     is QuotesEmpty -> showEmptyView()
-    is QuotesLoaded -> quoteListAdapter.setQuoteList(state.quotes)
+    is QuotesLoaded -> showQuoteList(state.quotes)
   }
 
   private fun setClickListeners() {
@@ -73,7 +72,8 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
     //TODO
   }
 
-  private fun showQuoteList() {
+  private fun showQuoteList(quotes: List<QuoteUi>) {
+    quoteListAdapter.setQuoteList(quotes)
     quoteList_empty.visibility = View.GONE
     quoteList_recyclerView_quotes.visibility = View.VISIBLE
   }

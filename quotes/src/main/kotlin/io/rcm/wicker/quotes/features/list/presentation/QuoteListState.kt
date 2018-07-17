@@ -8,7 +8,6 @@ import io.rcm.wicker.quotes.presentation.QuoteUi
  */
 internal sealed class QuoteListState: BaseUiState() {
   data class QuotesLoaded(val quotes: List<QuoteUi>): QuoteListState()
-  object GetQuotesSuccessful: QuoteListState()
   object GetQuotesFailed: QuoteListState()
   object Loading: QuoteListState()
   object QuotesEmpty: QuoteListState()
