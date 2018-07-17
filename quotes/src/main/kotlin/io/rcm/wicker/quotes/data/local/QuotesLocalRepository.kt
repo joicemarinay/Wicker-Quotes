@@ -19,4 +19,6 @@ internal class QuotesLocalRepository @Inject constructor(private val localSource
   override fun getQuote(id: Int): Flowable<QuoteEntity> = localSource.getQuote(id)
 
   override fun save(quote: QuoteEntity): Completable = localSource.saveQuote(quote)
+
+  override fun softDeleteQuote(quote: QuoteEntity): Completable = localSource.softDeleteQuote(quote)
 }
