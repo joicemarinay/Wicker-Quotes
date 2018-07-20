@@ -11,7 +11,7 @@ import javax.inject.Inject
  * Created by joicemarinay on 20/04/2018.
  *
  * #RxNotes:
- * > [defer] operator
+ * > [Completable.defer] operator
  *    - waits until an observer subscribes to it
  *    - creates a fresh [Observable] for each observer
  *
@@ -22,6 +22,11 @@ import javax.inject.Inject
  *      periods of time than Android UI is. Flowable adds option to handle backpressure,
  *      in short: when there are too many database updates to handle,
  *      only most recent update will be emitted through our reactive stream."
+ *
+ * > [Flowable.distinctUntilChanged]
+ *    - ensures that "DAO filters emissions and only reacts to distinct objects.
+ *    - avoid false-positive notifications
+ *   @see <a href="https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1">#7 of "7 Pro-tips for Room" by Florina Muntenescu</a>
  */
 internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesDb,
   private val entityMapper: QuotesLocalMapper): QuotesLocalSource {
@@ -45,17 +50,20 @@ internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesD
    */
   override fun getAllQuotes(): Flowable<List<QuoteEntity>> {
     Timber.d("getAllQuotes() is running on ${Thread.currentThread()}")
-    return db.quotesDao().getAll().map(entityMapper::mapToDomain)
+    return db.quotesDao().getAll().distinctUntilChanged().map(entityMapper::mapToDomain)
   }
 
   /**
    * Retrieve [QuoteInDb] from quotes table in DB
    *
+   * [Flowable.distinctUntilChanged] is used to ensure "DAO filters emissions
+   * and only reacts to distinct objects."
+   *
    * @param id: ID of quote to retrieve
    */
   override fun getQuote(id: Int): Flowable<QuoteEntity> {
     Timber.d("getQuote() is running on ${Thread.currentThread()}")
-    return db.quotesDao().getQuote(id).map(entityMapper::mapToDomain)
+    return db.quotesDao().getQuote(id).distinctUntilChanged().map(entityMapper::mapToDomain)
   }
 
   /**
