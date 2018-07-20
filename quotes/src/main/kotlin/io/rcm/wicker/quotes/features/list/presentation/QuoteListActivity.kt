@@ -2,6 +2,7 @@ package io.rcm.wicker.quotes.features.list.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.DividerItemDecoration
 import android.view.View
 import io.rcm.wicker.base.common.observe
@@ -17,7 +18,7 @@ import io.rcm.wicker.quotes.presentation.QuoteUi
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 import kotlinx.android.synthetic.main.wicker_quote_list_view.*
 import io.rcm.wicker.quotes.common.EXTRA_DELETED_QUOTE
-import io.rcm.wicker.quotes.common.showSnackbarWithAction
+import io.rcm.wicker.quotes.common.showSnackbarWithActionAndDismissCallback
 
 
 /**
@@ -63,8 +64,13 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
   }
 
   private fun onQuoteDeleted(deletedQuote: QuoteUi) {
-    quoteList_parent.showSnackbarWithAction(message = R.string.spiel_quote_deleted,
-      actionMessage = R.string.action_undo) { viewModel.undoDelete(deletedQuote) }
+    quoteList_parent.showSnackbarWithActionAndDismissCallback(message = R.string.spiel_quote_deleted,
+      actionMessage = R.string.action_undo, actionCallback =  { viewModel.undoDelete(deletedQuote) },
+      dismissCallback = object:Snackbar.Callback() {
+        override fun onDismissed(snackbar: Snackbar, event: Int) {
+          viewModel.ignoreUndoDelete(deletedQuote)
+        }
+      })
   }
 
   private fun setClickListeners() {
