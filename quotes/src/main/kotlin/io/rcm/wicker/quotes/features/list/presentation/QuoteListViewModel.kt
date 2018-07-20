@@ -25,6 +25,7 @@ internal class QuoteListViewModel @Inject constructor(private val getQuotes: Get
 
   //STUDY why destroy component in ViewModel.onCleared() instead of in Activity.onDestroy()
   override fun onCleared() {
+    changeDeleteState.cleanUp()
     getQuotes.cleanUp()
     QuotesDependencyHolder.destroyListComponent()
     super.onCleared()
