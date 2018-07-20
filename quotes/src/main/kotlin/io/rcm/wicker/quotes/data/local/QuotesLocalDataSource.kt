@@ -17,6 +17,11 @@ import javax.inject.Inject
  *
  * > [Flowable]
  *    - will emit data when there's change
+ *    - Why Flowable? (answer found here https://tkolbusz.github.io/controlling-database-flow/)
+ *      > "Google Developers had in mind that SQLite databases are updated in much shorter
+ *      periods of time than Android UI is. Flowable adds option to handle backpressure,
+ *      in short: when there are too many database updates to handle,
+ *      only most recent update will be emitted through our reactive stream."
  */
 internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesDb,
   private val entityMapper: QuotesLocalMapper): QuotesLocalSource {
