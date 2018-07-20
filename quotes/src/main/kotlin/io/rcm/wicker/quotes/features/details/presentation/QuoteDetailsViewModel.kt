@@ -24,7 +24,6 @@ internal class QuoteDetailsViewModel @Inject constructor(
   private lateinit var quote: QuoteUi
 
   init {
-    uiState.addSource(changeDeleteState.liveData(), ::onDeleteQuoteResult)
     uiState.addSource(getQuoteDetails.liveData(), ::onGetQuoteDetailsResult)
   }
 
@@ -42,7 +41,20 @@ internal class QuoteDetailsViewModel @Inject constructor(
     uiState.postValue(QuoteDetailsState.CopyFinish)
   }
 
+  /**
+   * Initially, adding [changeDeleteState]'s LiveData as one of [uiState]'s source is done in
+   *  [QuoteDetailsViewModel.init]. But I noticed that the next time this ViewModel's
+   *  LifecycleOwner is created, [onDeleteQuoteResult] will be called even when
+   *  [changeDeleteState] is not yet executed. Because of that, I decided to only add
+   *  [changeDeleteState]'s LiveData as [uiState]'s source when deletion happens as a safe measure.
+   *
+   * Note: I've read a bit about googlesample's SingleLiveEvent. It seems like a solution to
+   *  this problem but I still need to understand its use case further.
+   *  @see https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java
+   *  @see https://medium.com/google-developers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
+   */
   fun deleteQuote() {
+    uiState.addSource(changeDeleteState.liveData(), ::onDeleteQuoteResult)
     changeDeleteState.execute(quote, true)
   }
 
@@ -66,8 +78,15 @@ internal class QuoteDetailsViewModel @Inject constructor(
     setQuote(quote)
   }
 
+  /**
+   * Remove [changeDeleteState]'s LiveData as one of [uiState]'s source when change is already
+   *  received to prevent unexpected emission of result.
+   *
+   * See comments on [deleteQuote] for context of problem
+   */
   private fun onDeleteQuoteResult(result: ChangeDeleteState.Result?) {
     Timber.d("onDeleteQuoteResult() $result")
+    uiState.removeSource(changeDeleteState.liveData())
     when (result) {
       is ChangeDeleteState.Result.OnSuccess ->
         uiState.postValue(QuoteDetailsState.DeleteSuccessful(this.quote))
@@ -82,9 +101,17 @@ internal class QuoteDetailsViewModel @Inject constructor(
     }
   }
 
+  /**
+   * Checking quote is deleted before setting [uiState] as [QuoteDetailsState.QuoteLoaded]
+   *  prevents overriding [uiState] value of [QuoteDetailsState.DeleteSuccessful]
+   *   when a quote is deleted. Without this check, there will be times when the LifeCycleOwner
+   *   that listens to uiState will miss the uiState change to [QuoteDetailsState.DeleteSuccessful]
+   */
   private fun setQuote(quote: QuoteUi) {
     this.quote = quote
-    uiState.postValue(QuoteDetailsState.QuoteLoaded(this.quote))
+    if (!quote.isDeleted) {
+      uiState.postValue(QuoteDetailsState.QuoteLoaded(this.quote))
+    }
   }
 
 }
