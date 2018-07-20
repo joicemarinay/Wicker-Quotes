@@ -11,8 +11,8 @@ import io.rcm.wicker.quotes.data.local.db.QuotesDb
 import io.rcm.wicker.quotes.domain.QuotesRepository
 import io.rcm.wicker.quotes.domain.usecase.DeleteQuote
 import io.rcm.wicker.quotes.domain.usecase.DeleteQuoteUseCase
-import io.rcm.wicker.quotes.domain.usecase.SoftDeleteQuote
-import io.rcm.wicker.quotes.domain.usecase.SoftDeleteUseCase
+import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteState
+import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteUseCase
 import io.rcm.wicker.quotes.features.list.injection.QuoteListScope
 import io.rcm.wicker.quotes.presentation.QuotesUiMapper
 import io.rcm.wicker.quotes.presentation.ResourceProvider
@@ -30,13 +30,13 @@ internal class QuotesModule {
 
   @Provides
   @QuoteListScope
-  fun deleteQuoteUseCase(repository: QuotesRepository): DeleteQuote =
-    DeleteQuoteUseCase(repository)
+  fun changeDeleteStateUseCase(mapper: QuotesUiMapper, repository: QuotesRepository):
+    ChangeDeleteState = ChangeDeleteUseCase(mapper, repository)
 
   @Provides
   @QuoteListScope
-  fun softDeleteQuoteUseCase(mapper: QuotesUiMapper, repository: QuotesRepository): SoftDeleteQuote =
-    SoftDeleteUseCase(mapper, repository)
+  fun deleteQuoteUseCase(repository: QuotesRepository): DeleteQuote =
+    DeleteQuoteUseCase(repository)
 
   @Provides
   @QuoteListScope
