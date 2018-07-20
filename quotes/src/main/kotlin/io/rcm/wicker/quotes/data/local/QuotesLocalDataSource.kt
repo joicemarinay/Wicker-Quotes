@@ -67,12 +67,12 @@ internal class QuotesLocalDataSource @Inject constructor(private val db: QuotesD
         Completable.complete()
       }
 
-  override fun softDeleteQuote(quote: QuoteEntity): Completable =
+  override fun updateQuote(quote: QuoteEntity): Completable =
     Completable.defer {
-      Timber.d("softDeleteQuote() $quote")
-      val softDeletedQuote = db.quotesDao().softDeleteQuote(entityMapper.mapFromDomain(quote))
-      Timber.d("softDeleteQuote() is running on ${Thread.currentThread()}")
-      Timber.d("softDeleteQuote() number of soft-deleted quote is $softDeletedQuote")
+      Timber.d("updateQuote() $quote")
+      val softDeletedQuote = db.quotesDao().update(entityMapper.mapFromDomain(quote))
+      Timber.d("updateQuote() is running on ${Thread.currentThread()}")
+      Timber.d("updateQuote() number of soft-deleted quote is $softDeletedQuote")
       Completable.complete()
     }
 }

@@ -22,5 +22,5 @@ internal interface QuotesRepository {
 
   fun save(quote: QuoteEntity): Completable
 
-  fun softDeleteQuote(quote: QuoteEntity): Completable
+  fun updateQuote(quote: QuoteEntity): Completable
 }
