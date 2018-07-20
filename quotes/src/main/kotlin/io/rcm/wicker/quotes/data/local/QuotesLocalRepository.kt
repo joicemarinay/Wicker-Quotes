@@ -20,5 +20,5 @@ internal class QuotesLocalRepository @Inject constructor(private val localSource
 
   override fun save(quote: QuoteEntity): Completable = localSource.saveQuote(quote)
 
-  override fun softDeleteQuote(quote: QuoteEntity): Completable = localSource.softDeleteQuote(quote)
+  override fun updateQuote(quote: QuoteEntity): Completable = localSource.updateQuote(quote)
 }

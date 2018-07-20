@@ -17,7 +17,7 @@ internal class ChangeDeleteUseCase @Inject constructor(private val mapper: Quote
 
   override fun execute(quote: QuoteUi, isSoftDeleted: Boolean) {
     quote.isDeleted = isSoftDeleted
-    repo.softDeleteQuote(mapper.mapToDomain(quote))
+    repo.updateQuote(mapper.mapToDomain(quote))
       .subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe(::success, ::error)

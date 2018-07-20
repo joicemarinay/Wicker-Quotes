@@ -36,11 +36,13 @@ internal interface QuotesDao {
   fun insert(quote: QuoteInDb): Long
 
   /**
-   * Use update since soft deletion means setting [QuoteInDb.COLUMN_IS_SOFT_DELETED] to true
+   * This will be used by:
+   * - soft deleting quote (set isSoftDeleted to true, equivalent to 1 in DB)
+   * - undo (soft) deleting of quote (set isSoftDeleted to false, equivalent to 0 in DB)
    *
    * @return the number of quotes soft-deleted (updated). This should always be 1.
    */
   @Update
-  fun softDeleteQuote(quote: QuoteInDb): Int
+  fun update(quote: QuoteInDb): Int
 
 }
