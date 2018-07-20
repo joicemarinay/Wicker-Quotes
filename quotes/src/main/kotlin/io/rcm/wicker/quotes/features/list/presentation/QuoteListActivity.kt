@@ -8,7 +8,6 @@ import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
-import io.rcm.wicker.quotes.common.showSnackbar
 import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsActivity
 import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
 import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListAdapter
@@ -17,6 +16,9 @@ import io.rcm.wicker.quotes.features.list.presentation.QuoteListState.*
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 import kotlinx.android.synthetic.main.wicker_quote_list_view.*
+import io.rcm.wicker.quotes.common.EXTRA_DELETED_QUOTE
+import io.rcm.wicker.quotes.common.showSnackbarWithAction
+
 
 /**
  * Created by joicemarinay on 09/05/2018.
@@ -30,7 +32,7 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
     if (REQUEST_CODE_DETAILS == requestCode) {
-      onQuoteDetailsResult(resultCode)
+      onQuoteDetailsResult(resultCode, data)
     }
   }
 
@@ -53,14 +55,16 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
     is QuotesLoaded -> showQuoteList(state.quotes)
   }
 
-  private fun onQuoteDetailsResult(resultCode: Int) {
+  private fun onQuoteDetailsResult(resultCode: Int, data: Intent?) {
     when (resultCode) {
-      QuoteDetailsActivity.DELETE_RESULT_OK -> onQuoteDeleted()
+      QuoteDetailsActivity.DELETE_RESULT_OK ->
+        data?.getParcelableExtra<QuoteUi>(EXTRA_DELETED_QUOTE)?.let { onQuoteDeleted(it) }
     }
   }
 
-  private fun onQuoteDeleted() {
-    quoteList_parent.showSnackbar(R.string.spiel_quote_deleted)
+  private fun onQuoteDeleted(deletedQuote: QuoteUi) {
+    quoteList_parent.showSnackbarWithAction(message = R.string.spiel_quote_deleted,
+      actionMessage = R.string.action_undo) { viewModel.undoDelete(deletedQuote) }
   }
 
   private fun setClickListeners() {

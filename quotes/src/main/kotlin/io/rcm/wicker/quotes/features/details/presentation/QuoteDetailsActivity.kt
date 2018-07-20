@@ -14,6 +14,7 @@ import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
+import io.rcm.wicker.quotes.common.EXTRA_DELETED_QUOTE
 import io.rcm.wicker.quotes.features.details.injection.QuoteDetailsComponent
 import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsState.*
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
@@ -66,7 +67,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     is CopyFinish -> showSpielQuoteCopied()
     is OpenEditQuote -> openQuoteWriter(state.quote)
     is QuoteLoaded -> displayQuoteDetails(state.quote)
-    is QuoteDetailsState.DeleteSuccessful -> quoteDeleted()
+    is QuoteDetailsState.DeleteSuccessful -> quoteDeleted(state.deletedQuote)
     is QuoteDetailsState.DeleteFailed -> TODO()
   }
 
@@ -85,13 +86,19 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     startActivity(QuoteWriterActivity.intentToEdit(this, quote))
   }
 
-  private fun quoteDeleted() {
-    setResult(DELETE_RESULT_OK)
+  private fun quoteDeleted(deletedQuote: QuoteUi) {
+    setDeleteResult(deletedQuote)
     finish()
   }
 
   private fun setDataObservers() {
     observe(viewModel.state()) { onStateChange(it) }
+  }
+
+  private fun setDeleteResult(deletedQuote: QuoteUi) {
+    val deleteResultIntent = Intent()
+    deleteResultIntent.putExtra(EXTRA_DELETED_QUOTE, deletedQuote)
+    setResult(DELETE_RESULT_OK, deleteResultIntent)
   }
 
   /**

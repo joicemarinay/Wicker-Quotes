@@ -67,7 +67,8 @@ internal class QuoteDetailsViewModel @Inject constructor(
   private fun onDeleteQuoteResult(result: ChangeDeleteState.Result?) {
     Timber.d("onDeleteQuoteResult() $result")
     when (result) {
-      is ChangeDeleteState.Result.OnSuccess -> uiState.postValue(QuoteDetailsState.DeleteSuccessful)
+      is ChangeDeleteState.Result.OnSuccess ->
+        uiState.postValue(QuoteDetailsState.DeleteSuccessful(this.quote))
       is ChangeDeleteState.Result.OnError -> uiState.postValue(QuoteDetailsState.DeleteFailed)
     }
   }

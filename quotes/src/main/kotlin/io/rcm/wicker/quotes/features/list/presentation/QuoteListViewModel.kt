@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.quotes.QuotesDependencyHolder
+import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteState
 import io.rcm.wicker.quotes.features.list.domain.GetQuotes
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import javax.inject.Inject
@@ -11,7 +12,8 @@ import javax.inject.Inject
 /**
  * Created by joicemarinay on 6/24/18.
  */
-internal class QuoteListViewModel @Inject constructor(private val getQuotes: GetQuotes):
+internal class QuoteListViewModel @Inject constructor(private val getQuotes: GetQuotes,
+  private val changeDeleteState: ChangeDeleteState):
   BaseViewModel<QuoteListState>() {
 
   private val uiState: MediatorLiveData<QuoteListState> = MediatorLiveData()
@@ -29,6 +31,10 @@ internal class QuoteListViewModel @Inject constructor(private val getQuotes: Get
   }
 
   override fun state(): LiveData<QuoteListState> = uiState
+
+  fun undoDelete(deletedQuote: QuoteUi) {
+    changeDeleteState.execute(deletedQuote, false)
+  }
 
   private fun loadQuotes() {
     uiState.postValue(QuoteListState.Loading)
