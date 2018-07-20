@@ -29,6 +29,8 @@ internal class QuoteDetailsViewModel @Inject constructor(
   }
 
   override fun onCleared() {
+    changeDeleteState.cleanUp()
+    getQuoteDetails.cleanUp()
     QuotesDependencyHolder.destroyDetailsComponent()
     super.onCleared()
   }
@@ -75,7 +77,7 @@ internal class QuoteDetailsViewModel @Inject constructor(
 
   private fun onGetQuoteDetailsResult(result: GetQuoteDetails.Result?) {
     when (result) {
-      is GetQuoteDetails.Result.OnError -> Timber.d("onSaveQuoteResult() failed") //TODO
+      is GetQuoteDetails.Result.OnError -> Timber.d("onGetQuoteDetailsResult() failed") //TODO
       is GetQuoteDetails.Result.OnSuccess -> setQuote(result.quote)
     }
   }
