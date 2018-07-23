@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.wicker_quote_list_view.*
 import io.rcm.wicker.quotes.common.EXTRA_DELETED_QUOTE
 import io.rcm.wicker.quotes.common.showSnackbarWithActionAndDismissCallback
 
-
 /**
  * Created by joicemarinay on 09/05/2018.
  */
@@ -68,7 +67,10 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
       actionMessage = R.string.action_undo, actionCallback =  { viewModel.undoDelete(deletedQuote) },
       dismissCallback = object:Snackbar.Callback() {
         override fun onDismissed(snackbar: Snackbar, event: Int) {
-          viewModel.ignoreUndoDelete(deletedQuote)
+          //Hard-delete quote if Undo action is ignored (not tapped)
+          if (event != DISMISS_EVENT_ACTION) {
+            viewModel.ignoreUndoDelete(deletedQuote)
+          }
         }
       })
   }
