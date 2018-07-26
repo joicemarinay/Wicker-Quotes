@@ -4,7 +4,9 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.annotation.Nullable
 import android.support.v7.app.AppCompatActivity
+import io.rcm.wicker.base.common.whenNotNull
 import javax.inject.Inject
 
 /**
@@ -13,8 +15,12 @@ import javax.inject.Inject
  */
 abstract class BaseActivity<T: ViewModel, U: BaseUiState>: AppCompatActivity() {
 
+  /**
+   * This is nullable so that it can also be extended by Activities without display
+   * (i.e. [QuoteReceiverActivity])
+   */
   @get:LayoutRes
-  protected abstract val layoutResourceId: Int
+  protected abstract val layoutResourceId: Int?
 
   @Inject
   protected lateinit var viewModel: T
@@ -27,8 +33,10 @@ abstract class BaseActivity<T: ViewModel, U: BaseUiState>: AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     viewModel = ViewModelProviders.of(this, viewModelFactory).get(viewModel.javaClass)
-    setContentView(layoutResourceId)
-    setToolbar()
+    whenNotNull(layoutResourceId) {
+      setContentView(it)
+      setToolbar()
+    }
   }
 
   private fun setToolbar() {
