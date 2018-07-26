@@ -18,7 +18,7 @@ import io.rcm.wicker.quotes.presentation.QuoteUi
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 import kotlinx.android.synthetic.main.wicker_quote_list_view.*
 import io.rcm.wicker.quotes.common.EXTRA_DELETED_QUOTE
-import io.rcm.wicker.quotes.common.showSnackbarWithActionAndDismissCallback
+import io.rcm.wicker.base.common.showSnackbarWithActionAndDismissCallback
 
 /**
  * Created by joicemarinay on 09/05/2018.
