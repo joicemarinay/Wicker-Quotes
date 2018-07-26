@@ -5,6 +5,8 @@ import io.rcm.wicker.quotes.features.details.injection.DaggerQuoteDetailsCompone
 import io.rcm.wicker.quotes.features.details.injection.QuoteDetailsComponent
 import io.rcm.wicker.quotes.features.list.injection.DaggerQuoteListComponent
 import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
+import io.rcm.wicker.quotes.features.receiver.injection.DaggerQuoteReceiverComponent
+import io.rcm.wicker.quotes.features.receiver.injection.QuoteReceiverComponent
 import io.rcm.wicker.quotes.features.writer.injection.DaggerQuoteWriterComponent
 import io.rcm.wicker.quotes.features.writer.injection.QuoteWriterComponent
 import javax.inject.Singleton
@@ -20,6 +22,7 @@ internal object QuotesDependencyHolder {
 
   private var quoteDetailsComponent: QuoteDetailsComponent? = null
   private var quoteListComponent: QuoteListComponent? = null
+  private var quoteReceiverComponent: QuoteReceiverComponent? = null
   private var quoteWriterComponent: QuoteWriterComponent? = null
   
   fun detailsComponent(): QuoteDetailsComponent {
@@ -42,6 +45,17 @@ internal object QuotesDependencyHolder {
 
   fun destroyListComponent() {
     quoteListComponent = null
+  }
+
+  fun receiverComponent(): QuoteReceiverComponent {
+    if (quoteReceiverComponent == null)
+      quoteReceiverComponent = DaggerQuoteReceiverComponent.builder()
+        .quoteListComponent(listComponent()).build()
+    return quoteReceiverComponent as QuoteReceiverComponent
+  }
+
+  fun destroyReceiverComponent() {
+    quoteReceiverComponent = null
   }
 
   fun writerComponent(): QuoteWriterComponent {

@@ -17,6 +17,18 @@
   
     <activity
         android:name=".features.details.presentation.QuoteDetailsActivity"/>
+
+    <activity
+      android:name=".features.receiver.presentation.QuoteReceiverActivity"
+      android:theme="@android:style/Theme.NoDisplay">
+
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="text/plain" />
+      </intent-filter>
+
+    </activity>
     
     <activity
       android:name=".features.writer.presentation.QuoteWriterActivity"
