@@ -21,5 +21,6 @@
   <string name="spiel_quote_deleted">Quote deleted.</string>
   <string name="spiel_quote_list_empty">The secret of getting ahead\nis getting started.</string>
   <string name="spiel_quote_list_empty_sub">Tap the \"+\" button below to get started.</string>
+  <string name="spiel_saved_to_wicker">Saved to Wicker</string>
 
 </resources>

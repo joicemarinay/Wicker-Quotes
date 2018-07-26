@@ -35,8 +35,12 @@ internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: S
 
   override fun state(): LiveData<QuoteWriterState> = uiState
 
-  //TODO set quote as mandatory
-  fun onClickSave(quote: String, author: String, sourceName: String, sourceUrl: String) {
+  /**
+   * Set default value for all params except [quote] so that it this function is also
+   *  applicable to [QuoteReceiverActivity]
+   */
+  fun saveQuote(quote: String, author: String = "", sourceName: String = "",
+    sourceUrl: String = "") {
     saveQuote.execute(QuoteEntity(id = this.quote.id, quote = quote, author = author,
       sourceName = sourceName, sourceUrl = sourceUrl))
   }
