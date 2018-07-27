@@ -49,7 +49,7 @@
     android:layout_marginTop="@dimen/margin_padding_large"
     android:gravity="bottom"
     android:hint="@string/field_quote"
-    android:inputType="textMultiLine"
+    android:inputType="textCapSentences|textMultiLine"
     android:lines="4"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintLeft_toRightOf="@+id/quoteWriter_guideline_contentLeft"
@@ -64,7 +64,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:hint="@string/field_author_or_speaker"
-    android:inputType="textPersonName"
+    android:inputType="textCapWords"
     android:singleLine="true"
     app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
     app:layout_constraintHorizontal_bias="1.0"
@@ -78,11 +78,12 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:hint="@string/field_source"
-    android:inputType="textPersonName"
+    android:inputType="textCapWords"
     app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
     app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_author" />
 
+  <!-- input type textUri also includes ".com" key in keyboard -->
   <EditText
     android:id="@+id/quoteWriter_editText_link"
     style="@style/wicker_edittext_singleline"
@@ -90,7 +91,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:hint="@string/field_link"
-    android:inputType="textPersonName"
+    android:inputType="textUri"
     app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
     app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_source" />
