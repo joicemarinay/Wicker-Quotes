@@ -21,6 +21,7 @@
 
   <style name="wicker_edittext_singleline" parent="wicker_edittext">
     <item name="android:lines">1</item>
+    <item name="android:maxLines">1</item>
   </style>
 
 </resources>
