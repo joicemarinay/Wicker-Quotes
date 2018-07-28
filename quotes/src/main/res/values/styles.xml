@@ -5,9 +5,10 @@
   Note:If a style will be reused by another feature module,
     please move said style to base/src/main/res/values/styles.xml-->
 
+  <!-- TODO improve using this tip: https://stackoverflow.com/a/26686433 -->
   <style name="wicker_button">
-    <item name="android:background">@color/primary</item>
-    <item name="android:textColor">@color/accent</item>
+    <item name="android:background">@drawable/selector_button_bg</item>
+    <item name="android:textColor">@color/selector_text</item>
   </style>
 
   <style name="wicker_edittext">
