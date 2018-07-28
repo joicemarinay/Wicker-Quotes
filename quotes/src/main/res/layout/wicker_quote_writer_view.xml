@@ -52,9 +52,9 @@
     android:inputType="textCapSentences|textMultiLine"
     android:lines="4"
     app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintLeft_toRightOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintRight_toLeftOf="@+id/quoteWriter_guideline_contentRight"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_button_close"
+    app:layout_constraintLeft_toRightOf="@id/quoteWriter_guideline_contentLeft"
+    app:layout_constraintRight_toLeftOf="@id/quoteWriter_guideline_contentRight"
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_button_close"
     tools:text="Life is about making an impact not making an income." />
 
   <EditText
@@ -66,10 +66,10 @@
     android:hint="@string/field_author_or_speaker"
     android:inputType="textCapWords"
     android:singleLine="true"
-    app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
+    app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
     app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_quote" />
+    app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_editText_quote" />
 
   <EditText
     android:id="@+id/quoteWriter_editText_source"
@@ -79,9 +79,9 @@
     android:layout_marginTop="20dp"
     android:hint="@string/field_source"
     android:inputType="textCapWords"
-    app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
-    app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_author" />
+    app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_editText_author" />
 
   <!-- input type textUri also includes ".com" key in keyboard -->
   <EditText
@@ -92,9 +92,9 @@
     android:layout_marginTop="20dp"
     android:hint="@string/field_link"
     android:inputType="textUri"
-    app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
-    app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_source" />
+    app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_editText_source" />
 
   <Button
     android:id="@+id/quoteWriter_button_save"
@@ -107,8 +107,8 @@
     android:layout_marginStart="16dp"
     android:layout_marginTop="24dp"
     android:text="@string/action_save"
-    app:layout_constraintEnd_toStartOf="@+id/quoteWriter_guideline_contentRight"
-    app:layout_constraintStart_toStartOf="@+id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@+id/quoteWriter_editText_link" />
+    app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_editText_link" />
 </android.support.constraint.ConstraintLayout>
 </ScrollView>
