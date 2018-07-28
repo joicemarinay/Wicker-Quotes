@@ -32,9 +32,9 @@
     android:maxLines="1"
     android:textColor="@color/text_secondary"
     android:textSize="@dimen/text_xsmall"
-    app:layout_constraintBottom_toTopOf="@+id/quoteListItem_text_quote"
-    app:layout_constraintEnd_toStartOf="@+id/quoteListItem_guideline_contentRight"
-    app:layout_constraintStart_toStartOf="@+id/quoteListItem_guideline_contentLeft"
+    app:layout_constraintBottom_toTopOf="@id/quoteListItem_text_quote"
+    app:layout_constraintEnd_toStartOf="@id/quoteListItem_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@id/quoteListItem_guideline_contentLeft"
     app:layout_constraintTop_toTopOf="parent"
     tools:text="@sample/quotes.json/data/author" />
 
@@ -49,8 +49,8 @@
     android:textColor="@color/text_primary"
     android:textSize="@dimen/text_smedium"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/quoteListItem_guideline_contentRight"
-    app:layout_constraintStart_toStartOf="@+id/quoteListItem_guideline_contentLeft"
+    app:layout_constraintEnd_toStartOf="@id/quoteListItem_guideline_contentRight"
+    app:layout_constraintStart_toStartOf="@id/quoteListItem_guideline_contentLeft"
     tools:text="@sample/quotes.json/data/quote" />
 
 </android.support.constraint.ConstraintLayout>
