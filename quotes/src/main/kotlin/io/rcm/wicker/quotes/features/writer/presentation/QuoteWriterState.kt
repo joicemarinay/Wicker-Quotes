@@ -9,6 +9,7 @@ import io.rcm.wicker.quotes.presentation.QuoteUi
 internal sealed class QuoteWriterState: BaseUiState() {
   data class EditQuote(val quote: QuoteUi): QuoteWriterState()
   object Loading: QuoteWriterState()
-  object SaveSuccessful: QuoteWriterState()
   object SaveFailed: QuoteWriterState()
+  object SaveSuccessful: QuoteWriterState()
+  data class SaveState(val isSaveEnabled: Boolean): QuoteWriterState()
 }

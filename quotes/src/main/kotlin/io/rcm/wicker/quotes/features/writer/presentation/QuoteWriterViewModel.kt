@@ -19,6 +19,8 @@ internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: S
   private var quote: QuoteUi = QuoteUi.empty()
 
   init {
+    //Tells view to enable/disable saving on start up
+    postSaveStateByQuoteEmptiness(this.quote.quote)
     /**
      * Start listening to [saveQuote.liveData()]
      *  then call [onSaveQuoteResult(SaveQuote.Result?)] whenever saveQuote.liveData().value changes
@@ -34,6 +36,10 @@ internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: S
   }
 
   override fun state(): LiveData<QuoteWriterState> = uiState
+
+  fun onQuoteInputChanged(inputtedQuote: String) {
+    postSaveStateByQuoteEmptiness(inputtedQuote)
+  }
 
   /**
    * Set default value for all params except [quote] so that it this function is also
@@ -55,5 +61,9 @@ internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: S
       is SaveQuote.Result.OnSuccess -> uiState.postValue(QuoteWriterState.SaveSuccessful)
       is SaveQuote.Result.OnError -> uiState.postValue(QuoteWriterState.SaveFailed)
     }
+  }
+
+  private fun postSaveStateByQuoteEmptiness(quote: String) {
+    uiState.postValue(QuoteWriterState.SaveState(quote.isNotEmpty()))
   }
 }

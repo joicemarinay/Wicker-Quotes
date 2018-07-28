@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import io.rcm.wicker.base.common.KEY_PREFIX
 import io.rcm.wicker.base.common.observe
+import io.rcm.wicker.base.common.setTextChangeListener
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
@@ -28,6 +29,7 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
     component.inject(this)
     super.onCreate(savedInstanceState)
     handleIntent()
+    setActionListeners()
     setClickListeners()
     setDataObservers()
   }
@@ -37,6 +39,7 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
     is Loading -> showLoading()
     is SaveFailed -> showError()
     is SaveSuccessful -> finish()
+    is SaveState -> setSaveButton(state.isSaveEnabled)
   }
 
   private fun handleIntent() {
@@ -58,6 +61,10 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
     quoteWriter_editText_source.setText(quote.sourceName)
   }
 
+  private fun setActionListeners() {
+    quoteWriter_editText_quote.setTextChangeListener { viewModel.onQuoteInputChanged(it) }
+  }
+
   private fun setClickListeners() {
     quoteWriter_button_close.setOnClickListener { onBackPressed() }
     quoteWriter_button_save.setOnClickListener { viewModel.saveQuote(quote = inputQuote(),
@@ -66,6 +73,10 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
 
   private fun setDataObservers() {
     observe(viewModel.state()) { onStateChange(it) }
+  }
+
+  private fun setSaveButton(isEnabled: Boolean) {
+    quoteWriter_button_save.isEnabled = isEnabled
   }
 
   private fun showError() {
