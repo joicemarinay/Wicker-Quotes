@@ -10,7 +10,15 @@
 <android.support.constraint.ConstraintLayout
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical">
+  android:orientation="vertical"
+  android:paddingBottom="@dimen/margin_padding_large">
+
+  <android.support.constraint.Guideline
+    android:id="@+id/quoteWriter_guideline_contentTop"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_begin="@dimen/margin_padding_xlarge" />
 
   <Button
     android:id="@+id/quoteWriter_button_close"
@@ -23,9 +31,9 @@
     android:layout_marginTop="@dimen/margin_padding_medium"
     android:background="@drawable/ic_close"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.023"
+    app:layout_constraintHorizontal_bias="0.025"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_guideline_contentTop" />
 
   <android.support.constraint.Guideline
     android:id="@+id/quoteWriter_guideline_contentLeft"

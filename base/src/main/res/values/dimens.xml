@@ -13,6 +13,7 @@
   <dimen name="margin_padding_xmedium">20dp</dimen>
   <dimen name="margin_padding_midlarge">24dp</dimen>
   <dimen name="margin_padding_large">32dp</dimen>
+  <dimen name="margin_padding_xlarge">36dp</dimen>
 
   <!-- Text Size -->
   <dimen name="text_xsmall">12sp</dimen>
