@@ -41,60 +41,96 @@
     android:orientation="vertical"
     app:layout_constraintGuide_end="@dimen/margin_padding_midlarge" />
 
-  <EditText
-    android:id="@+id/quoteWriter_editText_quote"
-    style="@style/wicker_edittext"
+  <!--<editor-fold desc="Quote field">-->
+  <android.support.design.widget.TextInputLayout
+    android:id="@+id/quoteWriter_textinputlayout_quote"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/margin_padding_large"
-    android:gravity="bottom"
-    android:hint="@string/field_quote"
-    android:inputType="textCapSentences|textMultiLine"
-    android:lines="4"
-    app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintLeft_toRightOf="@id/quoteWriter_guideline_contentLeft"
     app:layout_constraintRight_toLeftOf="@id/quoteWriter_guideline_contentRight"
-    app:layout_constraintTop_toBottomOf="@id/quoteWriter_button_close"
-    tools:text="Life is about making an impact not making an income." />
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_button_close">
 
-  <EditText
-    android:id="@+id/quoteWriter_editText_author"
-    style="@style/wicker_edittext_singleline"
+    <EditText
+      android:id="@+id/quoteWriter_editText_quote"
+      style="@style/wicker_edittext"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="bottom"
+      android:hint="@string/field_quote"
+      android:inputType="textCapSentences|textMultiLine"
+      android:lines="2"
+      tools:text="Life is about making an impact not making an income." />
+
+  </android.support.design.widget.TextInputLayout>
+  <!--</editor-fold>-->
+
+  <!--<editor-fold desc="Author field">-->
+  <android.support.design.widget.TextInputLayout
+    android:id="@+id/quoteWriter_textinputlayout_author"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_padding_xmedium"
-    android:hint="@string/field_author_or_speaker"
-    android:inputType="textCapWords"
-    android:singleLine="true"
     app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
-    app:layout_constraintHorizontal_bias="1.0"
     app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@id/quoteWriter_editText_quote" />
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_textinputlayout_quote">
 
-  <EditText
-    android:id="@+id/quoteWriter_editText_source"
-    style="@style/wicker_edittext_singleline"
+    <EditText
+      android:id="@+id/quoteWriter_editText_author"
+      style="@style/wicker_edittext_singleline"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/field_author_or_speaker"
+      android:inputType="textCapWords" />
+
+  </android.support.design.widget.TextInputLayout>
+  <!--</editor-fold>-->
+
+  <!--<editor-fold desc="Source field">-->
+  <android.support.design.widget.TextInputLayout
+    android:id="@+id/quoteWriter_textinputlayout_source"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_padding_xmedium"
-    android:hint="@string/field_source"
-    android:inputType="textCapWords"
     app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@id/quoteWriter_editText_author" />
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_textinputlayout_author">
 
+    <EditText
+      android:id="@+id/quoteWriter_editText_source"
+      style="@style/wicker_edittext_singleline"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/field_source"
+      android:inputType="textCapWords"
+      app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
+      app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
+      app:layout_constraintTop_toBottomOf="@id/quoteWriter_textinputlayout_author" />
+
+  </android.support.design.widget.TextInputLayout>
+  <!--</editor-fold>-->
+
+  <!--<editor-fold desc="Link field">-->
   <!-- input type textUri also includes ".com" key in keyboard -->
-  <EditText
-    android:id="@+id/quoteWriter_editText_link"
-    style="@style/wicker_edittext_singleline"
+  <android.support.design.widget.TextInputLayout
+    android:id="@+id/quoteWriter_textinputlayout_link"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_padding_xmedium"
-    android:hint="@string/field_link"
-    android:inputType="textUri"
     app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@id/quoteWriter_editText_source" />
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_textinputlayout_source">
+
+    <EditText
+      android:id="@+id/quoteWriter_editText_link"
+      style="@style/wicker_edittext_singleline"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/field_link"
+      android:inputType="textUri"
+      app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
+      app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
+      app:layout_constraintTop_toBottomOf="@id/quoteWriter_textinputlayout_source" />
+
+  </android.support.design.widget.TextInputLayout>
+  <!--</editor-fold>-->
 
   <Button
     android:id="@+id/quoteWriter_button_save"
@@ -109,6 +145,6 @@
     android:text="@string/action_save"
     app:layout_constraintEnd_toStartOf="@id/quoteWriter_guideline_contentRight"
     app:layout_constraintStart_toStartOf="@id/quoteWriter_guideline_contentLeft"
-    app:layout_constraintTop_toBottomOf="@id/quoteWriter_editText_link" />
+    app:layout_constraintTop_toBottomOf="@id/quoteWriter_textinputlayout_link" />
 </android.support.constraint.ConstraintLayout>
 </ScrollView>
