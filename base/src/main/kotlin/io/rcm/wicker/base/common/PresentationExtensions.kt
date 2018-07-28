@@ -6,9 +6,12 @@ import android.arch.lifecycle.Observer
 import android.content.Context
 import android.support.annotation.StringRes
 import android.support.design.widget.Snackbar
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 
 /**
@@ -20,6 +23,19 @@ fun Context.showToast(@StringRes message: Int) {
 
 fun <T> LifecycleOwner.observe(liveData: LiveData<T>, action: (t: T) -> Unit) {
   liveData.observe(this, Observer { it?.let { action(it) } })
+}
+
+fun EditText.setTextChangeListener(afterTextChange: (String) -> Unit) {
+  this.addTextChangedListener(object: TextWatcher {
+    override fun afterTextChanged(s: Editable?) {
+      afterTextChange(s.toString())
+    }
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+  })
 }
 
 fun View.showSnackbar(messageResourceId: Int) {
