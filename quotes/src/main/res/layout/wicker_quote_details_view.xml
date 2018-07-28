@@ -27,7 +27,6 @@
     android:layout_height="wrap_content"
     android:ellipsize="end"
     android:fontFamily="serif"
-    android:lineSpacingMultiplier="0.55"
     android:textColor="@color/text_primary"
     android:textSize="@dimen/text_slarge"
     app:layout_constraintBottom_toTopOf="@id/quoteDetail_text_authorAndSource"
@@ -35,8 +34,10 @@
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="@+id/quoteDetail_guideline_contentLeft"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.100000024" app:layout_constraintVertical_chainStyle="packed" tools:text="@sample/quotes.json/data/quote"/>
-  
+    app:layout_constraintVertical_bias="0.1"
+    app:layout_constraintVertical_chainStyle="packed"
+    tools:text="@sample/quotes.json/data/quote"/>
+
   <TextView
     android:id="@+id/quoteDetail_text_authorAndSource"
     android:layout_width="0dp"

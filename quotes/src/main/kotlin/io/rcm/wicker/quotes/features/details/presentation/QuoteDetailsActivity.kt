@@ -105,10 +105,13 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
    * Make first character's text size larger
    *
    * TODO Find position of first alphabet
+   *
+   * Great article on Spans:
+   * @see https://medium.com/google-developers/spantastic-text-styling-with-spans-17b0c16b4568
    */
   private fun spannedQuote(quote: String): SpannableString {
     val spannableString = SpannableString(quote)
-    spannableString.setSpan(RelativeSizeSpan(2f), 0, 1,
+    spannableString.setSpan(RelativeSizeSpan(1.7f), 0, 1,
       Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     return spannableString
   }
