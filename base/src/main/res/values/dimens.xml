@@ -10,6 +10,7 @@
   <dimen name="margin_padding_small">8dp</dimen>
   <dimen name="margin_padding_smedium">12dp</dimen>
   <dimen name="margin_padding_medium">16dp</dimen>
+  <dimen name="margin_padding_xmedium">20dp</dimen>
   <dimen name="margin_padding_midlarge">24dp</dimen>
   <dimen name="margin_padding_large">32dp</dimen>
 
@@ -22,6 +23,7 @@
   <dimen name="text_large">20sp</dimen>
   <dimen name="text_xlarge">34sp</dimen>
 
+  <dimen name="close_button_width_height">25dp</dimen>
   <dimen name="linespacing">5sp</dimen>
   <dimen name="text_emptylist_quotationmarks">72sp</dimen>
 
