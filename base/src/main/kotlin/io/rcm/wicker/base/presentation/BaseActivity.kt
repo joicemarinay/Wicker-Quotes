@@ -39,7 +39,10 @@ abstract class BaseActivity<T: ViewModel, U: BaseUiState>: AppCompatActivity() {
     }
   }
 
-  private fun setToolbar() {
-    supportActionBar?.setDisplayShowTitleEnabled(false)
+  open fun setToolbar() {
+    supportActionBar?.setDisplayShowTitleEnabled(true)
+    //Social experiment to not show back buttons (since Android phones have it in nav bar anyway)
+    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    supportActionBar?.setDisplayShowHomeEnabled(false)
   }
 }
