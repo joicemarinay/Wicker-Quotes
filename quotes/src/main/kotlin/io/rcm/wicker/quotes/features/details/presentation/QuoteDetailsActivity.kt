@@ -73,7 +73,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
 
   private fun displayQuoteDetails(quote: QuoteUi) {
     quote?.let {
-      quoteDetail_text_quote.text = spannedQuote(it.quote)
+      quoteDetail_text_quote.text = it.quote
       quoteDetail_text_authorAndSource.text = it.dashedAuthorAndSource
     }
   }
@@ -104,6 +104,7 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
   /**
    * Make first character's text size larger
    *
+   * TODO improve by adjusting line spacing. when this is implemented, linespacing is too high.
    * TODO Find position of first alphabet
    *
    * Great article on Spans:
