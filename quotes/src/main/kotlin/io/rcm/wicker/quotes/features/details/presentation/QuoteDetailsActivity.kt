@@ -71,6 +71,11 @@ internal class QuoteDetailsActivity(override val layoutResourceId: Int = R.layou
     is QuoteDetailsState.DeleteFailed -> TODO()
   }
 
+  override fun setToolbar() {
+    super.setToolbar()
+    supportActionBar?.setDisplayShowTitleEnabled(false)
+  }
+
   private fun displayQuoteDetails(quote: QuoteUi) {
     quote?.let {
       quoteDetail_text_quote.text = it.quote

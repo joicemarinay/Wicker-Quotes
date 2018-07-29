@@ -17,6 +17,8 @@
   <string name="field_source">Source (e.g. book/article/movie)</string>
   <string name="field_link">Link</string>
 
+  <string name="label_your_collection">\ \ Your Collection</string>
+
   <string name="spiel_quote_copied">Quote copied to clipboard.</string>
   <string name="spiel_quote_deleted">Quote deleted.</string>
   <string name="spiel_quote_list_empty">The secret of getting ahead\nis getting started.</string>

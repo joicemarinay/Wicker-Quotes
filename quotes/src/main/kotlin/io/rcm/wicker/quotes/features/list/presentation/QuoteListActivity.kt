@@ -55,6 +55,11 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
     is QuotesLoaded -> showQuoteList(state.quotes)
   }
 
+  override fun setToolbar() {
+    super.setToolbar()
+    supportActionBar?.subtitle = getString(R.string.label_your_collection)
+  }
+
   private fun onQuoteDetailsResult(resultCode: Int, data: Intent?) {
     when (resultCode) {
       QuoteDetailsActivity.DELETE_RESULT_OK ->
