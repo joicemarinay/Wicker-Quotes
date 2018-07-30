@@ -6,6 +6,7 @@ android {
     baseFeature true
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += 'src/test/kotlin'
     }
 }
 
