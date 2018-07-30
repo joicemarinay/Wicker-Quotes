@@ -92,10 +92,6 @@ ext {
 
         //Dagger
         kaptAndroidTest deps.dagger.compiler
-
-        //Mockito
-        androidTestImplementation deps.mockito.android
-        androidTestImplementation deps.mockito.kotlin
     }
 
     /**
@@ -109,6 +105,10 @@ ext {
 
         //Dagger
         kaptTest deps.dagger.compiler
+
+        //Mockito
+        testImplementation deps.mockito.core
+        testImplementation deps.mockito.inline
     }
 
     //Can add groups for Dagger, debugging, network, Rx, Android Archi Components

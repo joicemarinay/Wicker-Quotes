@@ -52,7 +52,7 @@ ext.deps = [
         'espresso': "com.android.support.test.espresso:espresso-core:$versions.espresso",
     ],
     'mockito' : [
-        'android' : "org.mockito:mockito-android:$versions.mockitoAndroid",
-        'kotlin' : "com.nhaarman:mockito-kotlin:$versions.mockitoKotlin"
+        'core'  : "org.mockito:mockito-core:$versions.mockito",
+        'inline': "org.mockito:mockito-inline:$versions.mockito",
     ]
 ]
