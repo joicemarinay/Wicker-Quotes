@@ -8,7 +8,7 @@ import io.rcm.wicker.base.domain.BaseEntity
  * Representation of a [QuoteEntity] fetched either from an external layer data source or
  *  will be written to external layer data source
  */
-data class QuoteEntity(
+internal data class QuoteEntity(
   override val id: Int = 0,
   val quote: String,
   val author: String,
