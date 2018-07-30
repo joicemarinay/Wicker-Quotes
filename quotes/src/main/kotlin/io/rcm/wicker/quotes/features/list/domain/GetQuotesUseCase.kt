@@ -24,7 +24,7 @@ internal class GetQuotesUseCase @Inject constructor(private val repo: QuotesRepo
   }
 
   private fun success(quotes: List<QuoteEntity>) {
-    liveData.value = GetQuotes.Result.OnSuccess(quotes.map(mapper::mapFromDomain))
+    liveData.value = GetQuotes.Result.OnSuccess(mapper.mapFromDomain(quotes))
   }
 
   private fun error(throwable: Throwable) {
