@@ -10,7 +10,7 @@
   <string name="char_en_dash">– </string>
   <string name="char_quotation_mark_close">”</string>
   <string name="char_quotation_mark_open">“</string>
-  <string name="char_quotation_marks_emptylist">\u0020\”\n\“</string>
+  <string name="char_quotation_marks_emptylist">\“\n \”</string>
 
   <string name="field_author_or_speaker">Author/Speaker</string>
   <string name="field_quote">Quote</string>
