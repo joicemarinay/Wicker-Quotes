@@ -7,19 +7,26 @@ import android.support.v7.widget.PagerSnapHelper
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.onboarding.R
 import io.rcm.wicker.onboarding.common.LinePagerIndicatorDecoration
+import io.rcm.wicker.onboarding.injection.OnboardingComponent
+import io.rcm.wicker.onboarding.injection.OnboardingDependencyHolder
 import io.rcm.wicker.onboarding.presentation.adapter.OnboardingPagesAdapter
 import kotlinx.android.synthetic.main.wicker_onboarding_view.*
 
 /**
  * Created by joicemarinay on 02/08/2018.
  */
-internal class OnboardingActivity: AppCompatActivity() {
+internal class OnboardingActivity(override val layoutResourceId: Int = R.layout.wicker_onboarding_view):
+  BaseActivity<OnboardingViewModel, OnboardingState>() {
+
+  private val component: OnboardingComponent by lazy { OnboardingDependencyHolder.onboardingComponent() }
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    component.inject(this)
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.wicker_onboarding_view)
     setRecyclerViewPages()
   }
+
+  override fun onStateChange(state: OnboardingState){}
 
   private fun setRecyclerViewPages() {
     onboarding_recyclerview_pages?.layoutManager =

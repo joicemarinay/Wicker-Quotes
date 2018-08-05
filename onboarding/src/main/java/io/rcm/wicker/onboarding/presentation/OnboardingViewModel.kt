@@ -13,5 +13,10 @@ internal class OnboardingViewModel @Inject constructor(): BaseViewModel<Onboardi
 
   private val uiState: MediatorLiveData<OnboardingState> = MediatorLiveData()
 
+  override fun onCleared() {
+    OnboardingDependencyHolder.destroyOnboardingComponent()
+    super.onCleared()
+  }
+
   override fun state(): LiveData<OnboardingState> = uiState
 }
