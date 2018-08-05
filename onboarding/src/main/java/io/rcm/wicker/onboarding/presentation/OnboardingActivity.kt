@@ -14,6 +14,9 @@ import io.rcm.wicker.onboarding.injection.OnboardingDependencyHolder
 import io.rcm.wicker.onboarding.presentation.OnboardingState.*
 import io.rcm.wicker.onboarding.presentation.adapter.OnboardingPagesAdapter
 import kotlinx.android.synthetic.main.wicker_onboarding_view.*
+import android.content.Intent
+import io.rcm.wicker.base.common.QUOTES_CLASS_NAME
+
 
 /**
  * Created by joicemarinay on 02/08/2018.
@@ -27,6 +30,7 @@ internal class OnboardingActivity(override val layoutResourceId: Int = R.layout.
   override fun onCreate(savedInstanceState: Bundle?) {
     component.inject(this)
     super.onCreate(savedInstanceState)
+    setActionListeners()
     setDataObservers()
     setPagesScrollListener()
     setRecyclerViewPages()
@@ -35,9 +39,19 @@ internal class OnboardingActivity(override val layoutResourceId: Int = R.layout.
 
   override fun onStateChange(state: OnboardingState) {
     when(state) {
+      is ExitOnboarding -> openQuotes()
       is PageChange -> setGetStarted(state.isGetStartedVisible)
       is PagesLoaded -> setPages(state.pages)
     }
+  }
+
+  private fun openQuotes() {
+    startActivity(Intent(this, Class.forName(QUOTES_CLASS_NAME)))
+    finish()
+  }
+
+  private fun setActionListeners() {
+    onboarding_button_getstarted.setOnClickListener{ viewModel.getStarted() }
   }
 
   private fun setDataObservers() {
