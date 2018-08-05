@@ -42,6 +42,14 @@ fun EditText.setTextChangeListener(afterTextChange: (String) -> Unit) {
   })
 }
 
+fun View.setVisibilityByBoolean(isVisible: Boolean) {
+  this.visibility = if (isVisible) {
+    View.VISIBLE
+  } else{
+    View.GONE
+  }
+}
+
 fun View.showSnackbar(messageResourceId: Int) {
   Snackbar.make(this, messageResourceId, Snackbar.LENGTH_SHORT).show()
 }

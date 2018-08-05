@@ -7,5 +7,6 @@ import io.rcm.wicker.base.presentation.BaseUiState
  */
 internal sealed class OnboardingState: BaseUiState() {
 
+  data class PageChange(val isGetStartedVisible: Boolean): OnboardingState()
   data class PagesLoaded(val pages: List<OnboardingPage>): OnboardingState()
 }

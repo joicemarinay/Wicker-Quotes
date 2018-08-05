@@ -3,7 +3,9 @@ package io.rcm.wicker.onboarding.presentation
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
+import android.support.v7.widget.RecyclerView
 import io.rcm.wicker.base.common.observe
+import io.rcm.wicker.base.common.setVisibilityByBoolean
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.onboarding.R
 import io.rcm.wicker.onboarding.common.LinePagerIndicatorDecoration
@@ -26,12 +28,14 @@ internal class OnboardingActivity(override val layoutResourceId: Int = R.layout.
     component.inject(this)
     super.onCreate(savedInstanceState)
     setDataObservers()
+    setPagesScrollListener()
     setRecyclerViewPages()
     viewModel.loadPages()
   }
 
   override fun onStateChange(state: OnboardingState) {
     when(state) {
+      is PageChange -> setGetStarted(state.isGetStartedVisible)
       is PagesLoaded -> setPages(state.pages)
     }
   }
@@ -40,8 +44,21 @@ internal class OnboardingActivity(override val layoutResourceId: Int = R.layout.
     observe(viewModel.state()) { onStateChange(it) }
   }
 
+  private fun setGetStarted(isVisible: Boolean) {
+    onboarding_button_getstarted.setVisibilityByBoolean(isVisible)
+  }
+
   private fun setPages(pages: List<OnboardingPage>) {
     pagesAdapter.setPages(pages)
+  }
+
+  private fun setPagesScrollListener() {
+    onboarding_recyclerview_pages.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+      override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+        viewModel.onSelectedPageChange((recyclerView.layoutManager as LinearLayoutManager).
+          findLastVisibleItemPosition())
+      }
+    })
   }
 
   private fun setRecyclerViewPages() {

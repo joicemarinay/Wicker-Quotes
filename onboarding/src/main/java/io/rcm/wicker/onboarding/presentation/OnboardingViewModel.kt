@@ -12,6 +12,8 @@ import javax.inject.Inject
  */
 internal class OnboardingViewModel @Inject constructor(): BaseViewModel<OnboardingState>() {
 
+  private val pages: List<OnboardingPage> by lazy {  listOf(pageOverview, pageShare, pageBeta) }
+
   private val pageBeta: OnboardingPage by lazy {
     OnboardingPage(description = R.string.spiel_onboarding_beta,
       image = R.drawable.onboarding_beta,
@@ -40,6 +42,13 @@ internal class OnboardingViewModel @Inject constructor(): BaseViewModel<Onboardi
   override fun state(): LiveData<OnboardingState> = uiState
 
   fun loadPages() {
-    uiState.postValue(OnboardingState.PagesLoaded(listOf(pageOverview, pageShare, pageBeta)))
+    uiState.postValue(OnboardingState.PagesLoaded(pages))
   }
+
+  fun onSelectedPageChange(selectedPagePosition: Int) {
+    uiState.postValue(OnboardingState.PageChange(
+      isGetStartedVisible = isLastPage(selectedPagePosition)))
+  }
+
+  private fun isLastPage(position: Int): Boolean = position == pages.size - 1
 }
