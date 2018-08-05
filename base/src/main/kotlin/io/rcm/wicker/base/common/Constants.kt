@@ -14,3 +14,5 @@ import io.rcm.wicker.base.BuildConfig
  * - SharedPreferences
  */
 val KEY_PREFIX = "${BuildConfig.APPLICATION_ID}.${BuildConfig.BUILD_TYPE}"
+
+val SHARED_PREFS_NAME = "wicker_preferences"
