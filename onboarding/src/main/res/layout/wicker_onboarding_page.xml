@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <android.support.constraint.Guideline
+    android:id="@+id/onboarding_page_guideline_left"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_begin="@dimen/margin_padding_midlarge" />
+
+  <android.support.constraint.Guideline
+    android:id="@+id/onboarding_page_guideline_right"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_end="@dimen/margin_padding_midlarge" />
+
+  <android.support.v7.widget.AppCompatTextView
+    android:id="@+id/onboarding_page_text_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_padding_medium"
+    android:layout_marginTop="@dimen/page_margin_top"
+    android:fontFamily="serif"
+    android:textColor="@color/text_secondary"
+    android:textSize="@dimen/text_medium"
+    android:textStyle="bold|italic"
+    app:layout_constraintEnd_toStartOf="@id/onboarding_page_guideline_right"
+    app:layout_constraintHorizontal_bias="0.497"
+    app:layout_constraintStart_toEndOf="@id/onboarding_page_guideline_left"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.3"
+    tools:text="@string/title_onboarding_overview" />
+
+  <android.support.v7.widget.AppCompatImageView
+    android:id="@+id/onboarding_page_image"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/page_image_height"
+    android:layout_marginTop="@dimen/margin_padding_medium"
+    android:contentDescription="@string/title_onboarding_overview"
+    app:layout_constraintEnd_toStartOf="@id/onboarding_page_guideline_right"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@id/onboarding_page_guideline_left"
+    app:layout_constraintTop_toBottomOf="@id/onboarding_page_text_title"
+    tools:srcCompat="@drawable/onboarding_overview" />
+
+  <android.support.v7.widget.AppCompatTextView
+    android:id="@+id/onboarding_page_text_description"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_padding_xmedium"
+    android:textColor="@color/abc_secondary_text_material_light"
+    android:textSize="@dimen/text_smedium"
+    android:lineSpacingMultiplier="1.1"
+    app:layout_constraintEnd_toStartOf="@id/onboarding_page_guideline_right"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@id/onboarding_page_guideline_left"
+    app:layout_constraintTop_toBottomOf="@id/onboarding_page_image"
+    tools:text="@string/spiel_onboarding_overview" />
+</android.support.constraint.ConstraintLayout>
