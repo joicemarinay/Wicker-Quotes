@@ -2,4 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="io.rcm.wicker.onboarding">
 
+  <application
+    android:theme="@style/BaseAppTheme">
+    <activity
+      android:name=".presentation.OnboardingActivity"
+      android:theme="@style/BaseAppTheme.NoToolbar">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </activity>
+  </application>
+
 </manifest>
