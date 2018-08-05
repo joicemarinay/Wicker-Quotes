@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <string name="action_skip">Skip</string>
+  <string name="action_get_started">Get Started</string>
 
   <string name="spiel_onboarding_beta">Wicker is still in it\'s infancy and more features are in the works! If you have any suggestions, you may reach us at ...</string>
   <string name="spiel_onboarding_share">Easily save a quotable statement from an app that allows you to highlight the text then share it to Wicker.</string>
