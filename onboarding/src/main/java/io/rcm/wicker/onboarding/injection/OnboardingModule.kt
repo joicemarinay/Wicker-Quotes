@@ -9,6 +9,8 @@ import io.rcm.wicker.onboarding.data.OnboardingRepository
 import io.rcm.wicker.onboarding.data.OnboardingRepositoryImpl
 import io.rcm.wicker.onboarding.data.preferences.OnboardingPreferences
 import io.rcm.wicker.onboarding.data.preferences.OnboardingPreferencesImpl
+import io.rcm.wicker.onboarding.domain.usecase.ShowOnboarding
+import io.rcm.wicker.onboarding.domain.usecase.ShowOnboardingUseCase
 import io.rcm.wicker.onboarding.presentation.OnboardingViewModel
 
 /**
@@ -21,6 +23,9 @@ internal abstract class OnboardingModule {
   @IntoMap
   @ViewModelKey(OnboardingViewModel::class)
   abstract fun bindOnboardingViewModel(onboardingViewModel: OnboardingViewModel): ViewModel
+
+  @Binds
+  abstract fun showOnboardingUseCase(showOnboarding: ShowOnboardingUseCase): ShowOnboarding
 
   @Binds
   abstract fun preferences(preferences: OnboardingPreferencesImpl): OnboardingPreferences
