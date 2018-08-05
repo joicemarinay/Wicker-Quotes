@@ -5,4 +5,7 @@ import io.rcm.wicker.base.presentation.BaseUiState
 /**
  * Created by joicemarinay on 02/08/2018.
  */
-internal sealed class OnboardingState: BaseUiState()
+internal sealed class OnboardingState: BaseUiState() {
+
+  data class PagesLoaded(val pages: List<OnboardingPage>): OnboardingState()
+}

@@ -11,25 +11,7 @@ import io.rcm.wicker.onboarding.presentation.OnboardingPage
  */
 internal class OnboardingPagesAdapter: RecyclerView.Adapter<OnboardingPageViewHolder>() {
 
-  private val pages: List<OnboardingPage> by lazy { listOf(pageOverview, pageShare, pageBeta) }
-
-  private val pageBeta: OnboardingPage by lazy {
-    OnboardingPage(description = R.string.spiel_onboarding_beta,
-      image = R.drawable.onboarding_beta,
-      title = R.string.title_onboarding_beta)
-  }
-  
-  private val pageOverview: OnboardingPage by lazy {
-    OnboardingPage(description = R.string.spiel_onboarding_overview, 
-      image = R.drawable.onboarding_overview, 
-      title = R.string.title_onboarding_overview)
-  }
-
-  private val pageShare: OnboardingPage by lazy {
-    OnboardingPage(description = R.string.spiel_onboarding_share,
-      image = R.drawable.onboarding_share,
-      title = R.string.title_onboarding_share)
-  }
+  private val pages: MutableList<OnboardingPage> = mutableListOf()
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingPageViewHolder =
     OnboardingPageViewHolder(parent.inflate(R.layout.wicker_onboarding_page))
@@ -38,5 +20,11 @@ internal class OnboardingPagesAdapter: RecyclerView.Adapter<OnboardingPageViewHo
 
   override fun onBindViewHolder(holder: OnboardingPageViewHolder, position: Int) {
     holder.bind(pages[position])
+  }
+
+  fun setPages(pages: List<OnboardingPage>) {
+    this.pages.clear()
+    this.pages.addAll(pages)
+    notifyDataSetChanged()
   }
 }
