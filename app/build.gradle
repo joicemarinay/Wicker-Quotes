@@ -66,5 +66,6 @@ dependencies {
     testing()
 
     implementation project(path: ':base')
+    implementation project(path: ':onboarding')
     implementation project(path: ':quotes')
 }
