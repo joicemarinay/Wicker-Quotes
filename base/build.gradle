@@ -9,6 +9,9 @@ apply from: '../config-android.gradle'
 apply from: '../dependencies-groups.gradle'
 
 android {
+
+    //Note: 'src/test/kotlin' is intentionally set as a main source set so dependent's test source sets
+    // can access its contents
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         main.java.srcDirs += 'src/test/kotlin'
