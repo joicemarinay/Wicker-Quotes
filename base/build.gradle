@@ -1,9 +1,14 @@
-apply plugin: 'com.android.feature'
+//Use 'com.android.library' instead of ''com.android.feature' since the latter is more beneficial
+// when developing instant apps
+// Difference between the two: (source: https://stackoverflow.com/a/44361564)
+// - Library plugin will ALWAYS output an Android Archive (AAR) file
+// - Feature plugin is outputs an AAR when the build targets a regular Android application (com.android.application),
+//     and an APK file for that module when the build targets an Instant App (com.android.instantapp)
+apply plugin: 'com.android.library'
 apply from: '../config-android.gradle'
 apply from: '../dependencies-groups.gradle'
 
 android {
-    baseFeature true
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         main.java.srcDirs += 'src/test/kotlin'
@@ -26,7 +31,4 @@ dependencies {
     implementation(deps.jUnit) {
         exclude group: 'org.hamcrest'
     }
-
-    feature project(':quotes')
-    feature project(":onboarding")
 }
