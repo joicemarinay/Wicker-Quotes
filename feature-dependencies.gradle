@@ -1,0 +1,17 @@
+apply from: '../dependencies-groups.gradle'
+
+/**
+ * Dependencies
+ */
+dependencies {
+    kotlin()
+    archiComponents()
+    dagger()
+    rx()
+    ui()
+    testing()
+    timber()
+
+    implementation project(path: ':base')
+}
+

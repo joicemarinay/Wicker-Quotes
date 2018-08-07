@@ -27,11 +27,5 @@ dependencies {
     dagger()
     rx()
     ui()
-    testing()
     timber()
-
-    // For test rules, TODO: improve
-    implementation(deps.jUnit) {
-        exclude group: 'org.hamcrest'
-    }
 }
