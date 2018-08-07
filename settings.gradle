@@ -1,1 +1,1 @@
-include ':app', ':base', ':quotes', ':onboarding'
+include ':app', ':base', ':quotes', ':onboarding', ':settings'
