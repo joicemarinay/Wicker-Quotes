@@ -1,18 +1,10 @@
 apply plugin: 'com.android.library'
 apply from: '../config-android.gradle'
-apply from: '../dependencies-groups.gradle'
+apply from: '../feature-dependencies.gradle'
 
 /**
  * Dependencies
  */
 dependencies {
-    kotlin()
-    archiComponents()
-    dagger()
-    rx()
-    ui()
-    testing()
-    timber()
-
-    implementation project(path: ':base')
+    room()
 }

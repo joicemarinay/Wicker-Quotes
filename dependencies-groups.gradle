@@ -37,16 +37,9 @@ ext {
      */
     //TODO separate group for android components for feature modules
     archiComponents = Group {
-        implementation deps.archiComponents.runtime
+        //For both ViewModel and LiveData
         implementation deps.archiComponents.extensions
-        implementation deps.archiComponents.liveData
-        implementation deps.archiComponents.viewModel
         kapt deps.archiComponents.compiler
-
-        //Room
-        implementation deps.archiComponents.roomRuntime
-        implementation deps.archiComponents.roomRxJava
-        kapt deps.archiComponents.roomCompiler
     }
 
     /**
@@ -65,6 +58,15 @@ ext {
     }
 
     /**
+     * Room
+     */
+    room = Group {
+        implementation deps.archiComponents.roomRuntime
+        implementation deps.archiComponents.roomRxJava
+        kapt deps.archiComponents.roomCompiler
+    }
+
+    /**
      * Rx
      */
     rx = Group {
@@ -76,11 +78,11 @@ ext {
      * UI
      */
     ui = Group {
-        implementation deps.androidSupport.app
-        implementation deps.androidSupport.compat
+        implementation deps.androidSupport.appCompat
         implementation deps.androidSupport.constraint
         implementation deps.androidSupport.design
         implementation deps.androidSupport.recyclerview
+        implementation deps.androidSupport.supportCompat
     }
 
     /**
