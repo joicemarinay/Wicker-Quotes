@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'io.fabric'
 apply from: '../config-android.gradle'
 apply from: '../feature-dependencies.gradle'
 

@@ -5,6 +5,7 @@
 // - Feature plugin is outputs an AAR when the build targets a regular Android application (com.android.application),
 //     and an APK file for that module when the build targets an Instant App (com.android.instantapp)
 apply plugin: 'com.android.library'
+apply plugin: 'io.fabric'
 apply from: '../config-android.gradle'
 apply from: '../dependencies-groups.gradle'
 
@@ -29,5 +30,6 @@ dependencies {
     ui()
     timber()
 
+    implementation deps.analytics.crashlytics
     implementation(deps.jUnit) { exclude group: 'org.hamcrest' }
 }

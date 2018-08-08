@@ -69,4 +69,8 @@ dependencies {
     implementation project(path: ':onboarding')
     implementation project(path: ':quotes')
     implementation project(path: ':settings')
+
+    implementation deps.firebase.core
 }
+
+apply plugin: 'com.google.gms.google-services'

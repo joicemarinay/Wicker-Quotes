@@ -4,14 +4,35 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
     }
 
     dependencies {
         apply from: 'dependencies-versions.gradle'
         apply from: 'dependencies-all.gradle'
 
+        classpath deps.analytics.fabric
         classpath deps.build.gradle
         classpath deps.build.kotlin
+        classpath deps.google.services
+    }
+
+    subprojects {
+        project.configurations.all {
+            //To resolve dependency conflict with Firebase; source: https://stackoverflow.com/a/47383261
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'com.android.support'
+                        && !details.requested.name.contains('multidex')) {
+                    details.useVersion versions.androidSupport
+                }
+                if (details.requested.group == 'android.arch.lifecycle'
+                        && !details.requested.name.contains('multidex')) {
+                    details.useVersion versions.archiComponents
+                }
+            }
+        }
     }
 }
 
@@ -19,7 +40,14 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+        }
     }
+
+//    configurations.all {
+//        resolutionStrategy.force deps.androidSupport.v4
+//    }
 }
 
 task clean(type: Delete) {

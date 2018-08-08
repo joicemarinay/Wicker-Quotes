@@ -15,12 +15,17 @@ ext.deps = [
     'kotlin' : [
         'lib' : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
     ],
+    'analytics' : [
+        'crashlytics' : "com.crashlytics.sdk.android:crashlytics:$versions.crashlytics",
+        'fabric': "io.fabric.tools:gradle:$versions.fabric"
+    ],
     'androidSupport' : [
         'appCompat' : "com.android.support:appcompat-v7:$versions.androidSupport",
         'supportCompat' : "com.android.support:support-compat:$versions.androidSupport",
         'constraint' : "com.android.support.constraint:constraint-layout:$versions.constraintLayout",
         'design' : "com.android.support:design:$versions.androidSupport",
-        'recyclerview' : "com.android.support:recyclerview-v7:$versions.androidSupport"
+        'recyclerview' : "com.android.support:recyclerview-v7:$versions.androidSupport",
+        'v4' : "com.android.support:support-v4:$versions.androidSupport"
     ],
     'archiComponents' : ['compiler' : "android.arch.lifecycle:compiler:$versions.archiComponents",
         'extensions': "android.arch.lifecycle:extensions:$versions.archiComponents",
@@ -32,6 +37,12 @@ ext.deps = [
     'dagger': [
         'dagger' : "com.google.dagger:dagger:$versions.dagger",
         'compiler' : "com.google.dagger:dagger-compiler:$versions.dagger",
+    ],
+    'firebase': [
+        'core' : "com.google.firebase:firebase-core:$versions.firebase"
+    ],
+    'google': [
+        'services' : "com.google.gms:google-services:$versions.googleServices"
     ],
     'rx' : [
         'android': "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
