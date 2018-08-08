@@ -12,6 +12,7 @@ dependencies {
     testing()
     timber()
 
+    implementation deps.analytics.crashlytics
     implementation project(path: ':base')
 }
 
