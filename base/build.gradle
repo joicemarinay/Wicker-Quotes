@@ -28,4 +28,6 @@ dependencies {
     rx()
     ui()
     timber()
+
+    implementation(deps.jUnit) { exclude group: 'org.hamcrest' }
 }
