@@ -21,6 +21,9 @@
   
     <activity
         android:name=".quotes.features.details.presentation.QuoteDetailsActivity"/>
+
+    <activity
+      android:name=".settings.SettingsActivity"/>
   
     <activity
       android:name=".quotes.features.writer.presentation.QuoteWriterActivity"

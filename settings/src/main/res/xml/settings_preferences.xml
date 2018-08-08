@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <PreferenceCategory
+    android:title="@string/label_feedback">
+
+    <Preference
+      android:summary="@string/spiel_suggestions"
+      android:title="@string/label_suggestions">
+      <intent
+        android:action="android.intent.action.VIEW"
+        android:data="@string/link_suggestions" />
+    </Preference>
+
+    <Preference
+      android:summary="@string/spiel_rate_on_playstore"
+      android:title="@string/label_rate_on_playstore">
+      <intent
+        android:action="android.intent.action.VIEW"
+        android:data="@string/link_playstore" />
+    </Preference>
+
+  </PreferenceCategory>
+
+  <PreferenceCategory
+    android:title="@string/label_about">
+
+    <Preference
+      android:title="@string/label_privacy_policy">
+      <intent
+        android:action="android.intent.action.VIEW"
+        android:data="@string/link_privacy_policy" />
+    </Preference>
+
+    <Preference
+      android:title="@string/label_credits">
+      <intent
+        android:action="io.rcm.wicker.settings.presentation.CreditsActivity">
+        <extra android:name="@string/extra_html_asset" android:value="credits_page.html" />
+      </intent>
+    </Preference>
+
+    <!--<Preference-->
+      <!--android:summary="@string/app_version"-->
+      <!--android:title="@string/label_version"/>-->
+
+  </PreferenceCategory>
+
+  <PreferenceCategory
+    android:layout="@layout/wicker_settings_footer"/>
+</PreferenceScreen>

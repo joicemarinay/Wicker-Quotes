@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="extra_html_asset">html_asset</string>
+
+  <string name="label_about">About</string>
+  <string name="label_credits">Credits</string>
+  <string name="label_feedback">Feedback</string>
+  <string name="label_privacy_policy">Privacy Policy</string>
+  <string name="label_rate_on_playstore">Rate Wicker</string>
+  <string name="label_suggestions">Send Suggestions</string>
+  <string name="label_version">Version</string>
+
+  <string name="link_playstore">https://play.google.com/store/apps/details?id=io.rcm.wicker</string>
+  <string name="link_privacy_policy">https://privacypolicies.com/privacy/view/cfee3c0d9496cd248b28af6efc6fb91c</string>
+  <string name="link_suggestions">https://goo.gl/forms/kudrXNCF40HzBflm1</string>
+
+  <string name="spiel_rate_on_playstore">Enjoying the app? Send some love on our Google Play page</string>
+  <string name="spiel_settings_footer">Made with &#10084; in the Philippines</string>
+  <string name="spiel_suggestions">Got a feature in mind? Let us know so we can consider it.</string>
+
+</resources>
