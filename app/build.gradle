@@ -54,4 +54,5 @@ android {
 dependencies {
     implementation project(path: ':onboarding')
     implementation project(path: ':quotes')
+    implementation project(path: ':settings')
 }

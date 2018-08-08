@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.DividerItemDecoration
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.presentation.BaseActivity
@@ -42,6 +44,25 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
     setClickListeners()
     setDataObservers()
     setQuoteListRecyclerView()
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.wicker_menu_quote_list, menu)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when (item?.itemId) {
+      android.R.id.home -> {
+        onBackPressed()
+        return true
+      }
+      R.id.wicker_menu_quotelist_settings -> {
+        openSettings()
+        return true
+      }
+      else -> return super.onOptionsItemSelected(item)
+    }
   }
 
   override fun onQuoteClicked(quote: QuoteUi) {
@@ -115,6 +136,10 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
 
   private fun openQuoteWriter() {
     startActivity(Intent(this, QuoteWriterActivity::class.java))
+  }
+
+  private fun openSettings() {
+    startActivity(Intent(this, Class.forName("io.rcm.wicker.settings.presentation.SettingsActivity")))
   }
 
   companion object {
