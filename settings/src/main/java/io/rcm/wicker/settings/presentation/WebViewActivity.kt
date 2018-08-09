@@ -14,10 +14,16 @@ internal class WebViewActivity: AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.wicker_webview)
-    intent?.let { credits_webview.loadUrl(htmlAssetToLoad(it)) }
+    intent?.let {
+      credits_webview.loadUrl(htmlAssetToLoad(it))
+      title = toolbarTitle(it)
+    }
   }
 
   private fun htmlAssetToLoad(intent: Intent): String =
-    "file:///android_asset/${intent.extras.getString(getString(R.string.extra_html_asset))}"
+    "file:///android_asset/${intent.extras.getString(getString(R.string.webview_extra_html_asset))}"
+
+  private fun toolbarTitle(intent: Intent): String =
+    intent.extras.getString(getString(R.string.webview_extra_toolbar_title))
 
 }

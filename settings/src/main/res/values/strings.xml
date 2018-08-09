@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <string name="extra_html_asset">html_asset</string>
+  <string name="webview_extra_toolbar_title">toolbar_title</string>
+  <string name="webview_extra_html_asset">html_asset</string>
 
   <string name="label_about">About</string>
   <string name="label_credits">Credits</string>
