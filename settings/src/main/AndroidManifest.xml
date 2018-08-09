@@ -6,16 +6,9 @@
     android:theme="@style/BaseAppTheme">
 
     <activity
-      android:name=".presentation.WebViewActivity">
-      <intent-filter>
-        <action android:name="io.rcm.wicker.settings.presentation.WebViewActivity" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-    </activity>
-
-    <activity
       android:name=".presentation.SettingsActivity"
       android:label="@string/label_settings"/>
+
   </application>
 
 </manifest>
