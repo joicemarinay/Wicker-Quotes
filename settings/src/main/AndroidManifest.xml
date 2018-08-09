@@ -8,7 +8,7 @@
     <activity
       android:name=".presentation.WebViewActivity">
       <intent-filter>
-        <action android:name="io.rcm.wicker.settings.presentation.CreditsActivity" />
+        <action android:name="io.rcm.wicker.settings.presentation.WebViewActivity" />
         <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
     </activity>
