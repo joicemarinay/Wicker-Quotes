@@ -22,7 +22,8 @@
       android:name=".features.receiver.presentation.QuoteReceiverActivity"
       android:theme="@android:style/Theme.NoDisplay">
 
-      <intent-filter>
+      <intent-filter
+        android:label="@string/action_save_to_wicker">
         <action android:name="android.intent.action.SEND" />
         <category android:name="android.intent.category.DEFAULT" />
         <data android:mimeType="text/plain" />
