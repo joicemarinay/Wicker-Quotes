@@ -12,6 +12,7 @@
   <string name="label_suggestions">Send Suggestions</string>
   <string name="label_version">Version</string>
 
+  <string name="link_credits">https://joicemarinay.github.io/wicker/credits</string>
   <string name="link_playstore">https://play.google.com/store/apps/details?id=io.rcm.wicker</string>
   <string name="link_privacy_policy">https://joicemarinay.github.io/wicker-privacy-policy.html</string>
   <string name="link_suggestions">https://goo.gl/forms/kudrXNCF40HzBflm1</string>
