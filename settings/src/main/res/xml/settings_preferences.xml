@@ -36,7 +36,7 @@
     <Preference
       android:title="@string/label_credits">
       <intent
-        android:action="io.rcm.wicker.settings.presentation.CreditsActivity">
+        android:action="io.rcm.wicker.settings.presentation.WebViewActivity">
         <extra
           android:name="@string/webview_extra_html_asset"
           android:value="credits_page.html" />
