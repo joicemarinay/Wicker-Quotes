@@ -48,6 +48,7 @@ android {
         debug {
             applicationIdSuffix ".debug"
             resValue "string", "app_name", getAppName(BuildType.DEBUG)
+            resValue "string", "app_version", "${defaultConfig.versionName} - ${BuildType.DEBUG.name()}"
         }
 
         release {
@@ -57,6 +58,7 @@ android {
             signingConfig signingConfigs.release
             zipAlignEnabled true
             resValue "string", "app_name", getAppName(BuildType.RELEASE)
+            resValue "string", "app_version", "${defaultConfig.versionName}"
             testProguardFile 'proguard-rules-test.pro'
         }
     }
