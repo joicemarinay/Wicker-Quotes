@@ -40,9 +40,9 @@
         android:data="@string/link_credits" />
     </Preference>
 
-    <!--<Preference-->
-      <!--android:summary="@string/app_version"-->
-      <!--android:title="@string/label_version"/>-->
+    <Preference
+      android:summary="@string/app_version"
+      android:title="@string/label_version"/>
 
   </PreferenceCategory>
 
