@@ -3,6 +3,8 @@ package io.rcm.wicker.quotes.features.details.presentation
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
 import android.content.Context
+import io.rcm.wicker.base.analytics.AnalyticsEvent
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteState
@@ -16,7 +18,7 @@ import javax.inject.Inject
 /**
  * Created by joicemarinay on 7/1/18.
  */
-internal class QuoteDetailsViewModel @Inject constructor(
+internal class QuoteDetailsViewModel @Inject constructor(private val analytics: AnalyticsTool,
   private val changeDeleteState: ChangeDeleteState, private val getQuoteDetails: GetQuoteDetails,
   private val resourceProvider: ResourceProvider): BaseViewModel<QuoteDetailsState>() {
 
@@ -37,6 +39,7 @@ internal class QuoteDetailsViewModel @Inject constructor(
   override fun state(): LiveData<QuoteDetailsState> = uiState
 
   fun copyQuoteToClipboard(context: Context) {
+    analytics.sendEvent(AnalyticsEvent.Feature.QUOTES, "copy")
     quote.copyToClipBoard(context, resourceProvider)
     uiState.postValue(QuoteDetailsState.CopyFinish)
   }

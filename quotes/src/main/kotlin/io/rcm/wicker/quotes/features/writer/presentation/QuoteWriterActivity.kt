@@ -3,6 +3,8 @@ package io.rcm.wicker.quotes.features.writer.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import io.rcm.wicker.base.analytics.AnalyticsEvent
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.common.KEY_PREFIX
 import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.common.setTextChangeListener
@@ -13,6 +15,7 @@ import io.rcm.wicker.quotes.features.writer.injection.QuoteWriterComponent
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState.*
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import kotlinx.android.synthetic.main.wicker_quote_writer_view.*
+import javax.inject.Inject
 
 /**
  * Created by joicemarinay on 09/05/2018.
@@ -22,6 +25,9 @@ import kotlinx.android.synthetic.main.wicker_quote_writer_view.*
  */
 internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout.wicker_quote_writer_view):
     BaseActivity<QuoteWriterViewModel, QuoteWriterState>() {
+
+  @Inject
+  lateinit var analytics: AnalyticsTool
 
   private val component: QuoteWriterComponent by lazy { QuotesDependencyHolder.writerComponent() }
 
@@ -67,7 +73,9 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
 
   private fun setClickListeners() {
     quoteWriter_button_close.setOnClickListener { onBackPressed() }
-    quoteWriter_button_save.setOnClickListener { viewModel.saveQuote(quote = inputQuote(),
+    quoteWriter_button_save.setOnClickListener {
+      analytics.sendEvent(AnalyticsEvent.Feature.QUOTES, "save_in_app")
+      viewModel.saveQuote(quote = inputQuote(),
       author = inputAuthor(), sourceName = inputSource(), sourceUrl = inputLink()) }
   }
 

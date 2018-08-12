@@ -2,6 +2,8 @@ package io.rcm.wicker.quotes.features.receiver.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import io.rcm.wicker.base.analytics.AnalyticsEvent
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
@@ -10,12 +12,16 @@ import io.rcm.wicker.quotes.features.receiver.injection.QuoteReceiverComponent
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterViewModel
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Created by joicemarinay on 22/07/2018.
  */
 internal class QuoteReceiverActivity(override val layoutResourceId: Int? = null):
   BaseActivity<QuoteWriterViewModel, QuoteWriterState>() {
+
+  @Inject
+  lateinit var analytics: AnalyticsTool
 
   private val component: QuoteReceiverComponent by lazy { QuotesDependencyHolder.receiverComponent() }
 
@@ -48,6 +54,7 @@ internal class QuoteReceiverActivity(override val layoutResourceId: Int? = null)
   private fun handleIntentSendText(intent: Intent) {
     val extraText = intent.getStringExtra(Intent.EXTRA_TEXT)
     if (extraText != null) {
+      analytics.sendEvent(AnalyticsEvent.Feature.QUOTES, "save_via_share")
       viewModel.saveQuote(quote = extraText)
       onSaveSuccessful()
     }

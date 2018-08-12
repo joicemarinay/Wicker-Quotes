@@ -1,7 +1,9 @@
 package io.rcm.wicker.onboarding.presentation
 
+import android.app.Activity
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.onboarding.R
 import io.rcm.wicker.onboarding.domain.usecase.CompleteOnboarding
@@ -12,7 +14,7 @@ import javax.inject.Inject
 /**
  * Created by joicemarinay on 02/08/2018.
  */
-internal class OnboardingViewModel @Inject constructor(
+internal class OnboardingViewModel @Inject constructor(private val analytics: AnalyticsTool,
   private val completeOnboarding: CompleteOnboarding, private val showOnboarding: ShowOnboarding):
   BaseViewModel<OnboardingState>() {
 
@@ -21,22 +23,24 @@ internal class OnboardingViewModel @Inject constructor(
   private val pageBeta: OnboardingPage by lazy {
     OnboardingPage(description = R.string.spiel_onboarding_beta,
       image = R.drawable.onboarding_beta,
-      title = R.string.title_onboarding_beta)
+      title = R.string.title_onboarding_beta, metaName = "Beta")
   }
 
   private val pageOverview: OnboardingPage by lazy {
     OnboardingPage(description = R.string.spiel_onboarding_overview,
       image = R.drawable.onboarding_overview,
-      title = R.string.title_onboarding_overview)
+      title = R.string.title_onboarding_overview, metaName = "Overview")
   }
 
   private val pageShare: OnboardingPage by lazy {
     OnboardingPage(description = R.string.spiel_onboarding_share,
       image = R.drawable.onboarding_share,
-      title = R.string.title_onboarding_share)
+      title = R.string.title_onboarding_share, metaName = "Share")
   }
 
   private val uiState: MediatorLiveData<OnboardingState> = MediatorLiveData()
+
+  private var currentPage: Int = -1
 
   init {
     uiState.addSource(showOnboarding.liveData(), ::onShowOnboardingResult)
@@ -58,7 +62,11 @@ internal class OnboardingViewModel @Inject constructor(
     showOnboarding.execute()
   }
 
-  fun onSelectedPageChange(selectedPagePosition: Int) {
+  fun onSelectedPageChange(activity: Activity, selectedPagePosition: Int) {
+    if (currentPage != selectedPagePosition) {
+      analytics.setScreen(activity, pages[selectedPagePosition].metaName)
+      currentPage = selectedPagePosition
+    }
     uiState.postValue(OnboardingState.PageChange(
       isGetStartedVisible = isLastPage(selectedPagePosition)))
   }

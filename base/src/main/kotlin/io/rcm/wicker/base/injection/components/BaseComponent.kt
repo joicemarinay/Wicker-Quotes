@@ -2,6 +2,7 @@ package io.rcm.wicker.base.injection.components
 
 import android.content.Context
 import dagger.Component
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.injection.modules.AppModule
 import javax.inject.Singleton
 
@@ -15,4 +16,6 @@ import javax.inject.Singleton
 interface BaseComponent {
 
   fun context(): Context
+
+  fun analyticsTool(): AnalyticsTool
 }

@@ -1,6 +1,7 @@
 package io.rcm.wicker.quotes.features.list.injection
 
 import dagger.Component
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.injection.components.BaseComponent
 import io.rcm.wicker.quotes.domain.QuotesRepository
 import io.rcm.wicker.quotes.domain.usecase.DeleteQuote
@@ -28,4 +29,6 @@ internal interface QuoteListComponent {
   fun repository(): QuotesRepository
 
   fun resourceProvider(): ResourceProvider
+
+  fun analyticsTool(): AnalyticsTool
 }

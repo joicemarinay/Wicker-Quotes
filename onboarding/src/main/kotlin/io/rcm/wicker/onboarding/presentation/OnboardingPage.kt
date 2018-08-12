@@ -9,5 +9,6 @@ import android.support.annotation.StringRes
 internal data class OnboardingPage(
   @StringRes val description: Int,
   @DrawableRes val image: Int,
-  @StringRes val title: Int
+  @StringRes val title: Int,
+  val metaName: String //Name for analytics
 )

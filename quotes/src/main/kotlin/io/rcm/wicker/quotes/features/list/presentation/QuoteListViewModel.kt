@@ -2,6 +2,8 @@ package io.rcm.wicker.quotes.features.list.presentation
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
+import io.rcm.wicker.base.analytics.AnalyticsEvent
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteState
@@ -14,7 +16,8 @@ import javax.inject.Inject
  * Created by joicemarinay on 6/24/18.
  */
 internal class QuoteListViewModel @Inject constructor(private val getQuotes: GetQuotes,
-  private val changeDeleteState: ChangeDeleteState, private val deleteQuote: DeleteQuote):
+  private val changeDeleteState: ChangeDeleteState, private val deleteQuote: DeleteQuote,
+  private val analytics: AnalyticsTool):
   BaseViewModel<QuoteListState>() {
 
   private val uiState: MediatorLiveData<QuoteListState> = MediatorLiveData()
@@ -38,10 +41,12 @@ internal class QuoteListViewModel @Inject constructor(private val getQuotes: Get
    * Permanently delete quote when option to undo deletion is ignored
    */
   fun ignoreUndoDelete(deletedQuote: QuoteUi) {
+    analytics.sendEvent(AnalyticsEvent.Feature.QUOTES, "delete")
     deleteQuote.execute(deletedQuote.id)
   }
 
   fun undoDelete(deletedQuote: QuoteUi) {
+    analytics.sendEvent(AnalyticsEvent.Feature.QUOTES, "delete_undo")
     changeDeleteState.execute(deletedQuote, false)
   }
 

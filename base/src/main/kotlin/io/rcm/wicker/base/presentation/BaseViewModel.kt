@@ -34,6 +34,9 @@ import io.rcm.wicker.base.common.Failure
  */
 abstract class BaseViewModel<T: BaseUiState> : ViewModel() {
 
+//  @Inject
+//  protected lateinit var analyticsTool: AnalyticsToolImpl
+
   /**
    * - This will be observed by view [Activity]/[Fragment]
    * - Transform [MediatorLiveData] of T to [LiveData]

@@ -2,6 +2,7 @@ package io.rcm.wicker.quotes.features.writer.presentation
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.presentation.BaseViewModel
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.domain.model.QuoteEntity

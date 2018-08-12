@@ -15,7 +15,9 @@ import io.rcm.wicker.onboarding.presentation.OnboardingState.*
 import io.rcm.wicker.onboarding.presentation.adapter.OnboardingPagesAdapter
 import kotlinx.android.synthetic.main.wicker_onboarding_view.*
 import android.content.Intent
+import io.rcm.wicker.base.analytics.AnalyticsTool
 import io.rcm.wicker.base.common.QUOTES_CLASS_NAME
+import javax.inject.Inject
 
 
 /**
@@ -69,8 +71,8 @@ internal class OnboardingActivity(override val layoutResourceId: Int = R.layout.
   private fun setPagesScrollListener() {
     onboarding_recyclerview_pages.addOnScrollListener(object: RecyclerView.OnScrollListener() {
       override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-        viewModel.onSelectedPageChange((recyclerView.layoutManager as LinearLayoutManager).
-          findLastVisibleItemPosition())
+        viewModel.onSelectedPageChange(this@OnboardingActivity,
+          (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition())
       }
     })
   }
