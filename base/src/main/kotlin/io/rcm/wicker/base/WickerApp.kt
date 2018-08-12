@@ -2,6 +2,7 @@ package io.rcm.wicker.base
 
 import android.app.Application
 import com.crashlytics.android.Crashlytics
+import com.crashlytics.android.core.CrashlyticsCore
 import io.fabric.sdk.android.Fabric
 import io.rcm.wicker.base.injection.components.BaseComponent
 import io.rcm.wicker.base.injection.components.DaggerBaseComponent
@@ -21,13 +22,17 @@ class WickerApp: Application() {
     setupTimber()
   }
 
+  private fun crashlytics(): Crashlytics =
+    Crashlytics.Builder().core(
+      CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build()).build()
+
   private fun initDependencyInjection() {
     baseComponent = DaggerBaseComponent.builder().appModule(AppModule(this)).build()
   }
 
   private fun setupAnalytics() {
     Fabric.with(Fabric.Builder(this)
-      .kits(Crashlytics())
+      .kits(crashlytics())
       .debuggable(BuildConfig.DEBUG)
       .build())
   }
