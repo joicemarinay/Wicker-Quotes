@@ -31,5 +31,8 @@ dependencies {
     timber()
 
     implementation deps.analytics.crashlytics
+    implementation deps.firebase.core
     implementation(deps.jUnit) { exclude group: 'org.hamcrest' }
 }
+
+apply plugin: 'com.google.gms.google-services'

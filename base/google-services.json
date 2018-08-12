@@ -1,0 +1,148 @@
+{
+  "project_info": {
+    "project_number": "378756310313",
+    "firebase_url": "https://wicker-by-rcm.firebaseio.com",
+    "project_id": "wicker-by-rcm",
+    "storage_bucket": "wicker-by-rcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378756310313:android:cac75f1077e69980",
+        "android_client_info": {
+          "package_name": "io.rcm.wicker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378756310313-6nf84rhcboievp60746m0rd6gbkbc8p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI0z1ymLR1RgAEysWlDgL5oSQGe-8q3CA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378756310313:android:caebf2699119f26c",
+        "android_client_info": {
+          "package_name": "io.rcm.wicker.base"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378756310313-6nf84rhcboievp60746m0rd6gbkbc8p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI0z1ymLR1RgAEysWlDgL5oSQGe-8q3CA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378756310313:android:35543b3425c8ffa5",
+        "android_client_info": {
+          "package_name": "io.rcm.wicker.base.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378756310313-6nf84rhcboievp60746m0rd6gbkbc8p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI0z1ymLR1RgAEysWlDgL5oSQGe-8q3CA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378756310313:android:2cf4fc1b865cb77a",
+        "android_client_info": {
+          "package_name": "io.rcm.wicker.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378756310313-gpepioi116nt7r51uhuusvkk63htkbqk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.rcm.wicker.debug",
+            "certificate_hash": "4523b40a70cd417950e35dfca4f50073b0c6286a"
+          }
+        },
+        {
+          "client_id": "378756310313-6nf84rhcboievp60746m0rd6gbkbc8p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI0z1ymLR1RgAEysWlDgL5oSQGe-8q3CA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378756310313-6nf84rhcboievp60746m0rd6gbkbc8p9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
