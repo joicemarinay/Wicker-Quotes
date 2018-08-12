@@ -8,19 +8,22 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import io.rcm.wicker.base.common.observe
+import io.rcm.wicker.base.common.showSnackbarWithActionAndDismissCallback
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
+import io.rcm.wicker.quotes.common.EXTRA_DELETED_QUOTE
 import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsActivity
 import io.rcm.wicker.quotes.features.list.injection.QuoteListComponent
+import io.rcm.wicker.quotes.features.list.presentation.QuoteListState.GetQuotesFailed
+import io.rcm.wicker.quotes.features.list.presentation.QuoteListState.Loading
+import io.rcm.wicker.quotes.features.list.presentation.QuoteListState.QuotesEmpty
+import io.rcm.wicker.quotes.features.list.presentation.QuoteListState.QuotesLoaded
 import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListAdapter
 import io.rcm.wicker.quotes.features.list.presentation.adapter.QuoteListViewHolder
-import io.rcm.wicker.quotes.features.list.presentation.QuoteListState.*
-import io.rcm.wicker.quotes.presentation.QuoteUi
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
+import io.rcm.wicker.quotes.presentation.QuoteUi
 import kotlinx.android.synthetic.main.wicker_quote_list_view.*
-import io.rcm.wicker.quotes.common.EXTRA_DELETED_QUOTE
-import io.rcm.wicker.base.common.showSnackbarWithActionAndDismissCallback
 
 /**
  * Created by joicemarinay on 09/05/2018.

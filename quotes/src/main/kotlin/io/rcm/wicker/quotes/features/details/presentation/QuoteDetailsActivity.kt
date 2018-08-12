@@ -16,7 +16,9 @@ import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
 import io.rcm.wicker.quotes.common.EXTRA_DELETED_QUOTE
 import io.rcm.wicker.quotes.features.details.injection.QuoteDetailsComponent
-import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsState.*
+import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsState.CopyFinish
+import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsState.OpenEditQuote
+import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsState.QuoteLoaded
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterActivity
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import kotlinx.android.synthetic.main.wicker_quote_details_view.*

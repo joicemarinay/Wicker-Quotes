@@ -1,11 +1,8 @@
 package io.rcm.wicker.quotes.presentation
 
-import android.content.ClipboardManager
 import android.content.Context
 import io.rcm.wicker.quotes.R
-import timber.log.Timber
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Created by joicemarinay on 04/07/2018.

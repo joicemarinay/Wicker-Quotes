@@ -3,10 +3,10 @@ package io.rcm.wicker.quotes.features.list.injection
 import dagger.Component
 import io.rcm.wicker.base.injection.components.BaseComponent
 import io.rcm.wicker.quotes.domain.QuotesRepository
-import io.rcm.wicker.quotes.domain.usecase.DeleteQuote
 import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteState
-import io.rcm.wicker.quotes.injection.QuotesModule
+import io.rcm.wicker.quotes.domain.usecase.DeleteQuote
 import io.rcm.wicker.quotes.features.list.presentation.QuoteListActivity
+import io.rcm.wicker.quotes.injection.QuotesModule
 import io.rcm.wicker.quotes.presentation.ResourceProvider
 
 /**

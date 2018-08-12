@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import io.rcm.wicker.base.common.SHARED_PREFS_NAME
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Created by joicemarinay on 06/08/2018.

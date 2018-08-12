@@ -2,11 +2,10 @@ package io.rcm.wicker.quotes.features.details.domain
 
 import io.rcm.wicker.base.domain.BaseUseCase
 import io.rcm.wicker.quotes.domain.QuotesRepository
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-
 import io.rcm.wicker.quotes.domain.model.QuoteEntity
 import io.rcm.wicker.quotes.presentation.QuotesUiMapper
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 

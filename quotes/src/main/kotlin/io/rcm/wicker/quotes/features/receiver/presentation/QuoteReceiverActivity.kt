@@ -2,10 +2,10 @@ package io.rcm.wicker.quotes.features.receiver.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import io.rcm.wicker.base.common.showToast
 import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
-import io.rcm.wicker.base.common.showToast
 import io.rcm.wicker.quotes.features.receiver.injection.QuoteReceiverComponent
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState
 import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterViewModel

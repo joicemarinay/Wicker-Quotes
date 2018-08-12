@@ -9,10 +9,10 @@ import io.rcm.wicker.quotes.data.local.QuotesLocalRepository
 import io.rcm.wicker.quotes.data.local.QuotesLocalSource
 import io.rcm.wicker.quotes.data.local.db.QuotesDb
 import io.rcm.wicker.quotes.domain.QuotesRepository
-import io.rcm.wicker.quotes.domain.usecase.DeleteQuote
-import io.rcm.wicker.quotes.domain.usecase.DeleteQuoteUseCase
 import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteState
 import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteUseCase
+import io.rcm.wicker.quotes.domain.usecase.DeleteQuote
+import io.rcm.wicker.quotes.domain.usecase.DeleteQuoteUseCase
 import io.rcm.wicker.quotes.features.list.injection.QuoteListScope
 import io.rcm.wicker.quotes.presentation.QuotesUiMapper
 import io.rcm.wicker.quotes.presentation.ResourceProvider

@@ -10,7 +10,11 @@ import io.rcm.wicker.base.presentation.BaseActivity
 import io.rcm.wicker.quotes.QuotesDependencyHolder
 import io.rcm.wicker.quotes.R
 import io.rcm.wicker.quotes.features.writer.injection.QuoteWriterComponent
-import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState.*
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState.EditQuote
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState.Loading
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState.SaveFailed
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState.SaveState
+import io.rcm.wicker.quotes.features.writer.presentation.QuoteWriterState.SaveSuccessful
 import io.rcm.wicker.quotes.presentation.QuoteUi
 import kotlinx.android.synthetic.main.wicker_quote_writer_view.*
 

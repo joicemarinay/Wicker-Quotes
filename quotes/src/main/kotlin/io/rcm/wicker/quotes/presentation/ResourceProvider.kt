@@ -1,7 +1,5 @@
 package io.rcm.wicker.quotes.presentation
 
-import android.content.ClipboardManager
-
 /**
  * Created by joicemarinay on 7/7/18.
  */

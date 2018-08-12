@@ -1,9 +1,11 @@
 package io.rcm.wicker.onboarding.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
+import io.rcm.wicker.base.common.QUOTES_CLASS_NAME
 import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.common.setVisibilityByBoolean
 import io.rcm.wicker.base.presentation.BaseActivity
@@ -11,11 +13,11 @@ import io.rcm.wicker.onboarding.R
 import io.rcm.wicker.onboarding.common.LinePagerIndicatorDecoration
 import io.rcm.wicker.onboarding.injection.OnboardingComponent
 import io.rcm.wicker.onboarding.injection.OnboardingDependencyHolder
-import io.rcm.wicker.onboarding.presentation.OnboardingState.*
+import io.rcm.wicker.onboarding.presentation.OnboardingState.ExitOnboarding
+import io.rcm.wicker.onboarding.presentation.OnboardingState.PageChange
+import io.rcm.wicker.onboarding.presentation.OnboardingState.PagesLoaded
 import io.rcm.wicker.onboarding.presentation.adapter.OnboardingPagesAdapter
 import kotlinx.android.synthetic.main.wicker_onboarding_view.*
-import android.content.Intent
-import io.rcm.wicker.base.common.QUOTES_CLASS_NAME
 
 
 /**

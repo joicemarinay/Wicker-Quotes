@@ -1,13 +1,12 @@
 package io.rcm.wicker.base
 
 import android.app.Application
-import android.util.Log
+import com.crashlytics.android.Crashlytics
 import io.fabric.sdk.android.Fabric
 import io.rcm.wicker.base.injection.components.BaseComponent
 import io.rcm.wicker.base.injection.components.DaggerBaseComponent
 import io.rcm.wicker.base.injection.modules.AppModule
 import timber.log.Timber
-import com.crashlytics.android.Crashlytics
 
 /**
  * Created by joicemarinay on 20/04/2018.
