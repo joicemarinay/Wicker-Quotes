@@ -25,6 +25,11 @@ internal class QuoteReceiverActivity(override val layoutResourceId: Int? = null)
     handleIntent()
   }
 
+  override fun onDestroy() {
+    QuotesDependencyHolder.destroyReceiverComponent()
+    super.onDestroy()
+  }
+
   override fun onStateChange(state: QuoteWriterState) {
     Timber.d("onStateChange() $state")
   }
