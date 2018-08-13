@@ -21,7 +21,6 @@ internal class QuoteListViewModel @Inject constructor(private val getQuotes: Get
 
   init {
     uiState.addSource(getQuotes.liveData(), ::onGetQuotesResult)
-    loadQuotes()
   }
 
   //STUDY why destroy component in ViewModel.onCleared() instead of in Activity.onDestroy()
@@ -41,13 +40,13 @@ internal class QuoteListViewModel @Inject constructor(private val getQuotes: Get
     deleteQuote.execute(deletedQuote.id)
   }
 
-  fun undoDelete(deletedQuote: QuoteUi) {
-    changeDeleteState.execute(deletedQuote, false)
-  }
-
-  private fun loadQuotes() {
+  fun loadQuotes() {
     uiState.postValue(QuoteListState.Loading)
     getQuotes.execute()
+  }
+
+  fun undoDelete(deletedQuote: QuoteUi) {
+    changeDeleteState.execute(deletedQuote, false)
   }
 
   private fun onGetQuotesResult(result: GetQuotes.Result?) {

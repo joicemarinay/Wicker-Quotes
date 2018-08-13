@@ -47,6 +47,7 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
     setClickListeners()
     setDataObservers()
     setQuoteListRecyclerView()
+    viewModel.loadQuotes()
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
