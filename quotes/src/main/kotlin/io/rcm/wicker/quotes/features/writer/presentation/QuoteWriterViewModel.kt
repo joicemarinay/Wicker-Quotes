@@ -12,10 +12,9 @@ import javax.inject.Inject
 /**
  * Created by joicemarinay on 6/24/18.
  */
-internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: SaveQuote):
-  BaseViewModel<QuoteWriterState>() {
+internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: SaveQuote,
+  private val uiState: MediatorLiveData<QuoteWriterState>): BaseViewModel<QuoteWriterState>() {
 
-  private val uiState: MediatorLiveData<QuoteWriterState> = MediatorLiveData()
   private var quote: QuoteUi = QuoteUi.empty()
 
   init {

@@ -13,8 +13,8 @@ import javax.inject.Inject
  * Created by joicemarinay on 02/08/2018.
  */
 internal class OnboardingViewModel @Inject constructor(
-  private val completeOnboarding: CompleteOnboarding, private val showOnboarding: ShowOnboarding):
-  BaseViewModel<OnboardingState>() {
+  private val completeOnboarding: CompleteOnboarding, private val showOnboarding: ShowOnboarding,
+  private val uiState: MediatorLiveData<OnboardingState>): BaseViewModel<OnboardingState>() {
 
   private val pages: List<OnboardingPage> by lazy {  listOf(pageOverview, pageShare, pageBeta) }
 
@@ -35,8 +35,6 @@ internal class OnboardingViewModel @Inject constructor(
       image = R.drawable.onboarding_share,
       title = R.string.title_onboarding_share)
   }
-
-  private val uiState: MediatorLiveData<OnboardingState> = MediatorLiveData()
 
   init {
     uiState.addSource(showOnboarding.liveData(), ::onShowOnboardingResult)

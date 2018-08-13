@@ -13,16 +13,27 @@ import javax.inject.Singleton
 internal object OnboardingDependencyHolder {
 
   private var onboardingComponent: OnboardingComponent? = null
+  private var onboardingModuleCompanion: OnboardingModule.Presentation.Companion? = null
   
   fun onboardingComponent(): OnboardingComponent {
     if (onboardingComponent == null)
       onboardingComponent = DaggerOnboardingComponent.builder()
-        .baseComponent(WickerApp.baseComponent).build()
+        .baseComponent(WickerApp.baseComponent)
+        .companion(onboardingModuleCompanion()).build()
     return onboardingComponent as OnboardingComponent
   }
 
   fun destroyOnboardingComponent() {
     onboardingComponent = null
+    onboardingModuleCompanion = null
   }
-  
+
+  private fun onboardingModuleCompanion(): OnboardingModule.Presentation.Companion? {
+    if (onboardingModuleCompanion == null) {
+      onboardingModuleCompanion = OnboardingModule.Presentation.Companion
+    }
+    return onboardingModuleCompanion
+  }
+
+
 }

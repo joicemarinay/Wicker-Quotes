@@ -1,8 +1,10 @@
 package io.rcm.wicker.onboarding.injection
 
+import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.ViewModel
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
 import io.rcm.wicker.base.injection.keys.ViewModelKey
 import io.rcm.wicker.onboarding.data.OnboardingRepository
@@ -13,6 +15,7 @@ import io.rcm.wicker.onboarding.domain.usecase.CompleteOnboarding
 import io.rcm.wicker.onboarding.domain.usecase.CompleteOnboardingUseCase
 import io.rcm.wicker.onboarding.domain.usecase.ShowOnboarding
 import io.rcm.wicker.onboarding.domain.usecase.ShowOnboardingUseCase
+import io.rcm.wicker.onboarding.presentation.OnboardingState
 import io.rcm.wicker.onboarding.presentation.OnboardingViewModel
 
 /**
@@ -21,7 +24,8 @@ import io.rcm.wicker.onboarding.presentation.OnboardingViewModel
 @Module(includes = [
   OnboardingModule.Data::class,
   OnboardingModule.Domain::class,
-  OnboardingModule.Presentation::class
+  OnboardingModule.Presentation::class,
+  OnboardingModule.Presentation.Companion::class
 ])
 internal abstract class OnboardingModule {
 
@@ -55,6 +59,15 @@ internal abstract class OnboardingModule {
     @IntoMap
     @ViewModelKey(OnboardingViewModel::class)
     abstract fun onboardingViewModel(onboardingViewModel: OnboardingViewModel): ViewModel
+
+    @Module
+    companion object {
+
+      @Provides
+      @OnboardingScope
+      fun uiState(): MediatorLiveData<OnboardingState> = MediatorLiveData()
+
+    }
 
   }
 

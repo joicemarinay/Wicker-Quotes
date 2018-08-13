@@ -18,9 +18,9 @@ import javax.inject.Inject
  */
 internal class QuoteDetailsViewModel @Inject constructor(
   private val changeDeleteState: ChangeDeleteState, private val getQuoteDetails: GetQuoteDetails,
-  private val resourceProvider: ResourceProvider): BaseViewModel<QuoteDetailsState>() {
+  private val resourceProvider: ResourceProvider,
+  private val uiState: MediatorLiveData<QuoteDetailsState>): BaseViewModel<QuoteDetailsState>() {
 
-  private val uiState: MediatorLiveData<QuoteDetailsState> = MediatorLiveData()
   private lateinit var quote: QuoteUi
 
   init {
