@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
-import io.rcm.wicker.base.common.QUOTES_CLASS_NAME
+import io.rcm.wicker.base.common.QUOTES_ACTIVITY_CLASS
 import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.common.setVisibilityByBoolean
 import io.rcm.wicker.base.presentation.BaseActivity
@@ -48,7 +48,7 @@ internal class OnboardingActivity(override val layoutResourceId: Int = R.layout.
   }
 
   private fun openQuotes() {
-    startActivity(Intent(this, Class.forName(QUOTES_CLASS_NAME)))
+    startActivity(Intent(this, Class.forName(QUOTES_ACTIVITY_CLASS)))
     finish()
   }
 
