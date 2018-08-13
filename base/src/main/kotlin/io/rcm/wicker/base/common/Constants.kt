@@ -13,10 +13,10 @@ import io.rcm.wicker.base.BuildConfig
  * - Intent extra
  * - SharedPreferences
  */
-val KEY_PREFIX = "${BuildConfig.APPLICATION_ID}.${BuildConfig.BUILD_TYPE}"
+const val KEY_PREFIX = "${BuildConfig.APPLICATION_ID}.${BuildConfig.BUILD_TYPE}"
 
 const val QUOTES_ACTIVITY_CLASS = "io.rcm.wicker.quotes.features.list.presentation.QuoteListActivity"
 
 const val SETTINGS_ACTIVITY_CLASS = "io.rcm.wicker.settings.presentation.SettingsActivity"
 
-val SHARED_PREFS_NAME = "wicker_preferences"
+const val SHARED_PREFS_NAME = "wicker_preferences"
