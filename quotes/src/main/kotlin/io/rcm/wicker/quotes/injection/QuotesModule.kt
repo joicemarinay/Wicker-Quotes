@@ -1,5 +1,6 @@
 package io.rcm.wicker.quotes.injection
 
+import android.arch.lifecycle.MediatorLiveData
 import android.content.Context
 import dagger.Module
 import dagger.Provides
@@ -14,6 +15,7 @@ import io.rcm.wicker.quotes.domain.usecase.ChangeDeleteUseCase
 import io.rcm.wicker.quotes.domain.usecase.DeleteQuote
 import io.rcm.wicker.quotes.domain.usecase.DeleteQuoteUseCase
 import io.rcm.wicker.quotes.features.list.injection.QuoteListScope
+import io.rcm.wicker.quotes.features.list.presentation.QuoteListState
 import io.rcm.wicker.quotes.presentation.QuotesUiMapper
 import io.rcm.wicker.quotes.presentation.ResourceProvider
 import io.rcm.wicker.quotes.presentation.ResourceProviderImpl
@@ -27,6 +29,10 @@ import io.rcm.wicker.quotes.presentation.ResourceProviderImpl
  */
 @Module
 internal class QuotesModule {
+
+  @Provides
+  @QuoteListScope
+  fun quoteListState(): MediatorLiveData<QuoteListState> = MediatorLiveData()
 
   @Provides
   @QuoteListScope

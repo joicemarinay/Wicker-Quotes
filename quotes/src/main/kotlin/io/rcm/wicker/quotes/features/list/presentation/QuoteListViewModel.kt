@@ -14,10 +14,8 @@ import javax.inject.Inject
  * Created by joicemarinay on 6/24/18.
  */
 internal class QuoteListViewModel @Inject constructor(private val getQuotes: GetQuotes,
-  private val changeDeleteState: ChangeDeleteState, private val deleteQuote: DeleteQuote):
-  BaseViewModel<QuoteListState>() {
-
-  private val uiState: MediatorLiveData<QuoteListState> = MediatorLiveData()
+  private val changeDeleteState: ChangeDeleteState, private val deleteQuote: DeleteQuote,
+  private val uiState: MediatorLiveData<QuoteListState>): BaseViewModel<QuoteListState>() {
 
   init {
     uiState.addSource(getQuotes.liveData(), ::onGetQuotesResult)
