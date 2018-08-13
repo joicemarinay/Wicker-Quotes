@@ -17,4 +17,6 @@ val KEY_PREFIX = "${BuildConfig.APPLICATION_ID}.${BuildConfig.BUILD_TYPE}"
 
 val QUOTES_CLASS_NAME = "io.rcm.wicker.quotes.features.list.presentation.QuoteListActivity"
 
+const val SETTINGS_ACTIVITY_CLASS = "io.rcm.wicker.settings.presentation.SettingsActivity"
+
 val SHARED_PREFS_NAME = "wicker_preferences"

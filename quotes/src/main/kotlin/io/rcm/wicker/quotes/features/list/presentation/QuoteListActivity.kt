@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import io.rcm.wicker.base.common.SETTINGS_ACTIVITY_CLASS
 import io.rcm.wicker.base.common.observe
 import io.rcm.wicker.base.common.showSnackbarWithActionAndDismissCallback
 import io.rcm.wicker.base.presentation.BaseActivity
@@ -143,7 +144,7 @@ internal class QuoteListActivity(override val layoutResourceId: Int = R.layout.w
   }
 
   private fun openSettings() {
-    startActivity(Intent(this, Class.forName("io.rcm.wicker.settings.presentation.SettingsActivity")))
+    startActivity(Intent(this, Class.forName(SETTINGS_ACTIVITY_CLASS)))
   }
 
   companion object {
