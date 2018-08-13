@@ -10,5 +10,5 @@ class ActivityModule constructor(private val activity: Activity) {
 
   @Provides
   @PerActivity
-  fun provideActivity(): Activity = activity
+  fun activity(): Activity = activity
 }

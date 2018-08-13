@@ -18,8 +18,8 @@ internal abstract class QuoteWriterModule {
   @Binds
   @IntoMap
   @ViewModelKey(QuoteWriterViewModel::class)
-  abstract fun bindQuoteWriterViewModel(quoteWriterViewModel: QuoteWriterViewModel): ViewModel
+  abstract fun quoteWriterViewModel(quoteWriterViewModel: QuoteWriterViewModel): ViewModel
 
   @Binds
-  abstract fun bindSaveQuoteUseCase(saveQuoteUseCase: SaveQuoteUseCase): SaveQuote
+  abstract fun saveQuoteUseCase(saveQuoteUseCase: SaveQuoteUseCase): SaveQuote
 }

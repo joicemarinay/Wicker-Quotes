@@ -16,11 +16,11 @@ import io.rcm.wicker.quotes.features.details.presentation.QuoteDetailsViewModel
 internal abstract class QuoteDetailsModule {
 
   @Binds
-  abstract fun bindGetQuoteDetails(getQuoteDetailsUseCase: GetQuoteDetailsUseCase): GetQuoteDetails
+  abstract fun getQuoteDetailsUseCase(getQuoteDetailsUseCase: GetQuoteDetailsUseCase): GetQuoteDetails
 
   @Binds
   @IntoMap
   @ViewModelKey(QuoteDetailsViewModel::class)
-  abstract fun bindQuoteDetailsViewModel(quoteDetailsViewModel: QuoteDetailsViewModel): ViewModel
+  abstract fun quoteDetailsViewModel(quoteDetailsViewModel: QuoteDetailsViewModel): ViewModel
 
 }

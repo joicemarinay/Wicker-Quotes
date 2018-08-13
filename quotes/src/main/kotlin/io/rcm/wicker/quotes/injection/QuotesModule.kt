@@ -25,41 +25,57 @@ import io.rcm.wicker.quotes.presentation.ResourceProviderImpl
  *
  * Contains common dependencies across features in quotes module
  *
- * TODO group by layer
  */
-@Module
+@Module(includes = [
+  QuotesModule.Data::class,
+  QuotesModule.Domain::class,
+  QuotesModule.Presentation::class
+])
 internal class QuotesModule {
 
-  @Provides
-  @QuoteListScope
-  fun quoteListState(): MediatorLiveData<QuoteListState> = MediatorLiveData()
+  @Module
+  internal class Data {
 
-  @Provides
-  @QuoteListScope
-  fun changeDeleteStateUseCase(mapper: QuotesUiMapper, repository: QuotesRepository):
-    ChangeDeleteState = ChangeDeleteUseCase(mapper, repository)
+    @Provides
+    @QuoteListScope
+    fun database(context: Context): QuotesDb = QuotesDb.getInstance(context)
 
-  @Provides
-  @QuoteListScope
-  fun deleteQuoteUseCase(repository: QuotesRepository): DeleteQuote =
-    DeleteQuoteUseCase(repository)
+    @Provides
+    @QuoteListScope
+    fun localDataSource(db: QuotesDb, mapper: QuotesLocalMapper): QuotesLocalSource =
+      QuotesLocalDataSource(db, mapper)
 
-  @Provides
-  @QuoteListScope
-  fun provideDb(context: Context): QuotesDb = QuotesDb.getInstance(context)
+    @Provides
+    @QuoteListScope
+    fun repository(localSource: QuotesLocalSource): QuotesRepository =
+      QuotesLocalRepository(localSource)
+  }
 
-  @Provides
-  @QuoteListScope
-  fun localDataSource(db: QuotesDb, mapper: QuotesLocalMapper): QuotesLocalSource =
-    QuotesLocalDataSource(db, mapper)
+  @Module
+  internal class Domain {
 
-  @Provides
-  @QuoteListScope
-  fun repository(localSource: QuotesLocalSource): QuotesRepository =
-    QuotesLocalRepository(localSource)
+    @Provides
+    @QuoteListScope
+    fun changeDeleteStateUseCase(mapper: QuotesUiMapper, repository: QuotesRepository):
+      ChangeDeleteState = ChangeDeleteUseCase(mapper, repository)
 
-  @Provides
-  @QuoteListScope
-  fun resourceProvider(context: Context): ResourceProvider = ResourceProviderImpl(context)
+    @Provides
+    @QuoteListScope
+    fun deleteQuoteUseCase(repository: QuotesRepository): DeleteQuote =
+      DeleteQuoteUseCase(repository)
+
+  }
+
+  @Module
+  internal class Presentation {
+
+    @Provides
+    @QuoteListScope
+    fun quoteListState(): MediatorLiveData<QuoteListState> = MediatorLiveData()
+
+    @Provides
+    @QuoteListScope
+    fun resourceProvider(context: Context): ResourceProvider = ResourceProviderImpl(context)
+  }
 
 }

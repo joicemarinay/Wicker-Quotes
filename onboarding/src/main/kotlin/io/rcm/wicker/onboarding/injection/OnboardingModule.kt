@@ -18,25 +18,44 @@ import io.rcm.wicker.onboarding.presentation.OnboardingViewModel
 /**
  * Created by joicemarinay on 05/08/2018.
  */
-@Module
+@Module(includes = [
+  OnboardingModule.Data::class,
+  OnboardingModule.Domain::class,
+  OnboardingModule.Presentation::class
+])
 internal abstract class OnboardingModule {
 
-  @Binds
-  @IntoMap
-  @ViewModelKey(OnboardingViewModel::class)
-  abstract fun bindOnboardingViewModel(onboardingViewModel: OnboardingViewModel): ViewModel
+  @Module
+  internal abstract class Data {
 
-  @Binds
-  abstract fun completeOnboardingUseCase(completeOnboarding: CompleteOnboardingUseCase):
-    CompleteOnboarding
+    @Binds
+    abstract fun preferences(preferences: OnboardingPreferencesImpl): OnboardingPreferences
 
-  @Binds
-  abstract fun showOnboardingUseCase(showOnboarding: ShowOnboardingUseCase): ShowOnboarding
+    @Binds
+    abstract fun repository(onboardingRepository: OnboardingRepositoryImpl): OnboardingRepository
 
-  @Binds
-  abstract fun preferences(preferences: OnboardingPreferencesImpl): OnboardingPreferences
+  }
 
-  @Binds
-  abstract fun repository(onboardingRepository: OnboardingRepositoryImpl): OnboardingRepository
+  @Module
+  internal abstract class Domain {
+
+    @Binds
+    abstract fun completeOnboardingUseCase(completeOnboarding: CompleteOnboardingUseCase):
+      CompleteOnboarding
+
+    @Binds
+    abstract fun showOnboardingUseCase(showOnboarding: ShowOnboardingUseCase): ShowOnboarding
+
+  }
+
+  @Module
+  internal abstract class Presentation {
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OnboardingViewModel::class)
+    abstract fun onboardingViewModel(onboardingViewModel: OnboardingViewModel): ViewModel
+
+  }
 
 }
