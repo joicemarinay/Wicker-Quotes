@@ -18,8 +18,6 @@ internal class QuoteWriterViewModel @Inject constructor(private val saveQuote: S
   private var quote: QuoteUi = QuoteUi.empty()
 
   init {
-    //Tells view to enable/disable saving on start up
-    postSaveStateByQuoteEmptiness(this.quote.quote)
     /**
      * Start listening to [saveQuote.liveData()]
      *  then call [onSaveQuoteResult(SaveQuote.Result?)] whenever saveQuote.liveData().value changes

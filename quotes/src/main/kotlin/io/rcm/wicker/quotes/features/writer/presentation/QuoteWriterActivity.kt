@@ -36,6 +36,7 @@ internal class QuoteWriterActivity(override val layoutResourceId: Int = R.layout
     setActionListeners()
     setClickListeners()
     setDataObservers()
+    setSaveButton(false)
   }
 
   override fun onStateChange(state: QuoteWriterState) = when(state) {
